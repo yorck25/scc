@@ -3988,3 +3988,12 @@ Start importing Assets/k8s using Guid(22ad687906a024940aaf9c4962640405) Importer
  -> (artifact id: '8aba6b979d44be5faf2fc6531162765b') in 0.014454 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 5940.308651 seconds.
+  path: Assets/Service
+  artifactKey: Guid(ba43599270a334f2495b666062d8d0ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Service using Guid(ba43599270a334f2495b666062d8d0ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 10 workers.
+ -> (artifact id: 'e82a249931b767a46d40a55782a776f1') in 0.085453 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0

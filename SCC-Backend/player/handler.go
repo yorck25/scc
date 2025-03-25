@@ -2,11 +2,11 @@ package player
 
 import "SCC_Backend/core"
 
-func GetPlayer(ctx *core.WebContext) error {
+func HandlerGetPlayer(ctx *core.WebContext) error {
 	repo := NewRepository(ctx)
-	userId := "771"
+	playerId := "1"
 
-	news, err := repo.GetNews(userId)
+	news, err := repo.GetPlayer(playerId)
 	if err != nil {
 		return ctx.InternalError(err.Error())
 	}

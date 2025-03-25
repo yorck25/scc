@@ -15,7 +15,7 @@ func main() {
 	app.Use(middleware.CORSWithConfig(middleware.DefaultCORSConfig))
 
 	app.GET("/", defaultUrl)
-	app.GET("/player", player.GetPlayer)
+	app.GET("/player", player.HandlerGetPlayer)
 
 	app.Logger.Fatal(app.Start(":5555"))
 
