@@ -354,6 +354,7 @@
 -analyzer:"Library/PackageCache/com.unity.collab-proxy@2.7.1/Lib/Editor/log4netPlastic.dll"
 -analyzer:"Library/PackageCache/com.unity.collab-proxy@2.7.1/Lib/Editor/Unity.Plastic.Antlr3.Runtime.dll"
 -analyzer:"Library/PackageCache/com.unity.collab-proxy@2.7.1/Lib/Editor/Unity.Plastic.Newtonsoft.Json.dll"
+"Assets/CameraController.cs"
 "Assets/GirdSystem.cs"
 -langversion:9.0
 /deterministic
