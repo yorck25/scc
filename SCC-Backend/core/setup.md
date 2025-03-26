@@ -12,13 +12,13 @@
    │                      MULTIPLAYER SYSTEM                   │
    └───────────────────────────────────────────────────────────┘
         │                      │                     │
- ┌──────────────┐       ┌────────────────┐     ┌───────────────┐
- │   players    │       │ player_stats   │     │ transactions  │
- ├──────────────┤       ├────────────────┤     ├───────────────┤
- │ id (PK)      │◄─────▶│ player_id (FK) │     │ id (PK)       │
- │ username     │       │ balance        │     │ player_id (FK)│
- │ email        │       │ tax_rate       │     │ amount        │
- └──────────────┘       └────────────────┘     └───────────────┘
+ ┌──────────────┐       ┌────────────────┐     ┌───────────────┐ ┌───────────────┐ ┌───────────────┐
+ │   players    │       │ player_stats   │     │ transactions  │ │ game          │ │ game_players  │
+ ├──────────────┤       ├────────────────┤     ├───────────────┤ ├───────────────┤ ├───────────────┤
+ │ id (PK)      │<────> │ player_id (FK) │     │ id (PK)       │ │ game_id (PK)  │ │ game_id (FK)  │
+ │ username     │       │ balance        │     │ player_id (FK)│ │ name          │ │ id (PK)       │
+ │ email        │       │ tax_rate       │     │ amount        │ │ password      │ │ player_Id (FK)│
+ └──────────────┘       └────────────────┘     └───────────────┘ └───────────────┘ └───────────────┘
           │  
           │   
    ┌───────────────────────────────────────────────────────────┐
@@ -26,12 +26,13 @@
    └───────────────────────────────────────────────────────────┘
         │                      │                     │
  ┌──────────────┐       ┌──────────────┐     ┌───────────────┐
- │  grid_cells  │◄─────▶│  buildings   │◄───▶│ building_types│
+ │  grid_cells  │<─────>│  buildings   │<───>│ building_types│
  ├──────────────┤       ├──────────────┤     ├───────────────┤
  │ x (PK)       │       │ id (PK)      │     │ type (PK)     │
  │ y (PK)       │       │ type (FK)    │     │ description   │
  │ owner_id (FK)│       │ owner_id (FK)│     └───────────────┘
  │ building_id  │       │ created_at   │ 
+ │ game_id (FK) │       │              │ 
  └──────────────┘       └──────────────┘
           │
    ┌───────────────────────────────────────────────────────────┐
@@ -116,4 +117,9 @@ CREATE TABLE audit (
     new_value JSONB,
     FOREIGN KEY (player_id) REFERENCES player(id)
 );
+```
+
+#### Insert Dummy Data
+```postgresql
+INSERT INTO audit (player_id, action, old_value, new_value) VALUES (1, 'read', '{"test":"test"}', '{"test":"test"}')
 ```
