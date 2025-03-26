@@ -123,3 +123,107 @@ CREATE TABLE audit (
 ```postgresql
 INSERT INTO audit (player_id, action, old_value, new_value) VALUES (1, 'read', '{"test":"test"}', '{"test":"test"}')
 ```
+
+### Game Table
+
+```postgresql
+CREATE TABLE game (
+    game_id SERIAL PRIMARY KEY,
+    name varchar(255),
+    password varchar(255),
+    owner_id int,
+    FOREIGN KEY (owner_id) REFERENCES player(id)
+);
+```
+
+### Game_player Table
+
+```postgresql
+CREATE TABLE game_player (
+    id SERIAL PRIMARY KEY,
+    game_id int,
+    player_id int,
+    FOREIGN KEY (player_id) REFERENCES player(id),
+    FOREIGN KEY (game_id) REFERENCES game(game_id)
+);
+```
+
+### Extras
+```postgresql
+Create TABLE Player
+(
+    id       SERIAL PRIMARY KEY,
+    username VARCHAR(128) NOT NULL,
+    email    VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(128) NOT NULL
+);
+
+CREATE TABLE audit
+(
+    id        SERIAL PRIMARY KEY,
+    player_id INT,
+    action    VARCHAR(255) NOT NULL,
+    old_value JSONB,
+    new_value JSONB,
+    FOREIGN KEY (player_id) REFERENCES player (id)
+);
+
+CREATE TABLE game
+(
+    game_id  SERIAL PRIMARY KEY,
+    name     varchar(255),
+    password varchar(255),
+    owner_id int,
+    FOREIGN KEY (owner_id) REFERENCES player (id)
+);
+
+CREATE TABLE player_stats
+(
+    id        SERIAL PRIMARY KEY,
+    player_id INT,
+    game_id   INT,
+    balance   float,
+    tax_rate  INT,
+    FOREIGN KEY (player_id) REFERENCES player (id),
+    FOREIGN KEY (game_id) REFERENCES game (game_id)
+);
+
+CREATE TABLE game_player
+(
+    id        SERIAL PRIMARY KEY,
+    game_id   int,
+    player_id int,
+    FOREIGN KEY (player_id) REFERENCES player (id),
+    FOREIGN KEY (game_id) REFERENCES game (game_id)
+);
+
+Create Table buildings_types
+(
+    id          SERIAL PRIMARY KEY,
+    type        varchar(128),
+    description varchar(255)
+);
+
+CREATE TABLE buildings
+(
+    id         SERIAL PRIMARY KEY,
+    type       int,
+    owner_id   int,
+    game_id    int,
+    created_at timestamp DEFAULT NOW(),
+    FOREIGN KEY (type) REFERENCES buildings_types (id),
+    FOREIGN KEY (owner_id) REFERENCES player (id),
+    FOREIGN KEY (game_id) REFERENCES game (game_id)
+);
+
+Create TABLE grid
+(
+    game_id     int,
+    x           int,
+    y           int,
+    building_id int,
+    PRIMARY KEY (game_id, x, y),
+    FOREIGN KEY (building_id) REFERENCES buildings (id),
+    FOREIGN KEY (game_id) REFERENCES game (game_id)
+);
+```
