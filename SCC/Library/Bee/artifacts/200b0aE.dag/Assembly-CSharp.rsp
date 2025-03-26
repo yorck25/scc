@@ -356,6 +356,9 @@
 -analyzer:"Library/PackageCache/com.unity.collab-proxy@2.7.1/Lib/Editor/Unity.Plastic.Newtonsoft.Json.dll"
 "Assets/CameraController.cs"
 "Assets/GirdSystem.cs"
+"Assets/Service/AuditService.cs"
+"Assets/Service/NewtorkAdapter.cs"
+"Assets/Service/PlayerService.cs"
 -langversion:9.0
 /deterministic
 /optimize+

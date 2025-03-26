@@ -8,7 +8,7 @@ type Player struct {
 }
 
 type PlayerStats struct {
-	PlayerId int64   `json:"player_id" db:"player_id"`
+	PlayerId int64   `json:"playerId" db:"player_id"`
 	Balance  float64 `json:"balance" db:"balance"`
-	tax_rate int64   `json:"tax_rate" db:"tax_rate"`
+	tax_rate int64   `json:"taxRate" db:"tax_rate"`
 }

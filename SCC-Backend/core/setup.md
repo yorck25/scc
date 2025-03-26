@@ -78,7 +78,7 @@
 ### Player Table
 
 #### Create Table
-```sql
+```postgresql
 Create TABLE Player (
     id SERIAL PRIMARY KEY,
     username VARCHAR(128) NOT NULL,
@@ -88,18 +88,32 @@ Create TABLE Player (
 ```
 
 #### Insert Dummy Data
-```sql
+```postgresql
 INSERT INTO player (username, email, password) VALUES ('yorck', 'test@mail.de', 'test1234')
 ```
 
 ### Play Stats Table
 
 #### Create Table
-```sql
+```postgresql
 CREATE TABLE player_stats (
     player_id INT PRIMARY KEY,
     balance float,
     tax_rate INT,
+    FOREIGN KEY (player_id) REFERENCES player(id)
+);
+```
+
+### Audit Table
+
+#### Create Table
+```postgresql
+CREATE TABLE audit (
+    id SERIAL PRIMARY KEY,
+    player_id INT,
+    action VARCHAR(255) NOT NULL,
+    old_value JSONB,
+    new_value JSONB,
     FOREIGN KEY (player_id) REFERENCES player(id)
 );
 ```
