@@ -150,7 +150,7 @@ CREATE TABLE game_player (
 
 ### Extras
 ```postgresql
-Create TABLE Player
+Create TABLE player
 (
     id       SERIAL PRIMARY KEY,
     username VARCHAR(128) NOT NULL,
@@ -177,6 +177,46 @@ CREATE TABLE game
     FOREIGN KEY (owner_id) REFERENCES player (id)
 );
 
+CREATE TABLE city
+(
+    city_id  SERIAL PRIMARY KEY,
+    name     varchar(255),
+    game_id  int,
+    owner_id int,
+    FOREIGN KEY (owner_id) REFERENCES player (id),
+    FOREIGN KEY (game_id) REFERENCES game (game_id)
+);
+
+Create Table buildings_types
+(
+    id          SERIAL PRIMARY KEY,
+    type        varchar(128) NOT NULL UNIQUE,
+    description varchar(255)
+);
+
+CREATE TABLE buildings
+(
+    id         SERIAL PRIMARY KEY,
+    type       int NOT NULL,
+    owner_id   int NOT NULL,
+    game_id    int NOT NULL,
+    created_at timestamp DEFAULT NOW(),
+    FOREIGN KEY (type) REFERENCES buildings_types (id),
+    FOREIGN KEY (owner_id) REFERENCES player (id),
+    FOREIGN KEY (game_id) REFERENCES game (game_id)
+);
+
+Create TABLE grid
+(
+    city_id     int,
+    x           int,
+    y           int,
+    building_id int,
+    PRIMARY KEY (city_id, x, y),
+    FOREIGN KEY (building_id) REFERENCES buildings (id),
+    FOREIGN KEY (city_id) REFERENCES city (city_id)
+);
+
 CREATE TABLE player_stats
 (
     id        SERIAL PRIMARY KEY,
@@ -194,36 +234,6 @@ CREATE TABLE game_player
     game_id   int,
     player_id int,
     FOREIGN KEY (player_id) REFERENCES player (id),
-    FOREIGN KEY (game_id) REFERENCES game (game_id)
-);
-
-Create Table buildings_types
-(
-    id          SERIAL PRIMARY KEY,
-    type        varchar(128),
-    description varchar(255)
-);
-
-CREATE TABLE buildings
-(
-    id         SERIAL PRIMARY KEY,
-    type       int,
-    owner_id   int,
-    game_id    int,
-    created_at timestamp DEFAULT NOW(),
-    FOREIGN KEY (type) REFERENCES buildings_types (id),
-    FOREIGN KEY (owner_id) REFERENCES player (id),
-    FOREIGN KEY (game_id) REFERENCES game (game_id)
-);
-
-Create TABLE grid
-(
-    game_id     int,
-    x           int,
-    y           int,
-    building_id int,
-    PRIMARY KEY (game_id, x, y),
-    FOREIGN KEY (building_id) REFERENCES buildings (id),
     FOREIGN KEY (game_id) REFERENCES game (game_id)
 );
 ```
