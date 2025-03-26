@@ -13,7 +13,7 @@ func NewRepository(ctx *core.WebContext) *Repository {
 	return &Repository{db: ctx.GetDb()}
 }
 
-func (r *Repository) GetAuditsFromPlayer(playerId int64) ([]Audit, error) {
+func (r *Repository) GetAuditsFromPlayer(playerId int) ([]Audit, error) {
 	audits := make([]Audit, 0)
 
 	stmt, err := r.db.PrepareNamed(`SELECT * FROM audit WHERE player_id = :playerId`)
@@ -33,22 +33,25 @@ func (r *Repository) GetAuditsFromPlayer(playerId int64) ([]Audit, error) {
 	return audits, nil
 }
 
-func (r *Repository) CreateNewAudit(playerId int64) ([]Audit, error) {
+func (r *Repository) CreateNewAudit(car CreateAuditRequest, playerId int) error {
 	audits := make([]Audit, 0)
 
-	stmt, err := r.db.PrepareNamed(`Insert INTO audit VALUE (player_id = :playerId)`)
+	stmt, err := r.db.PrepareNamed(`INSERT INTO audit (player_id, action, old_value, new_value) VALUES (:playerId, :action, :old, :new)`)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	params := map[string]any{
 		"playerId": playerId,
+		"action":   car.Action,
+		"old":      car.OldValue,
+		"new":      car.NewValue,
 	}
 
 	err = stmt.Select(&audits, params)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return audits, nil
+	return nil
 }

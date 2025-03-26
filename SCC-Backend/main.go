@@ -17,6 +17,9 @@ func main() {
 	app.GET("/", defaultUrl)
 	app.GET("/player", player.HandlerGetPlayer)
 
+	app.GET("/audit", audit.HandlerGetAudit)
+	app.POST("/audit", audit.HandlerCreateAudit)
+
 	app.Logger.Fatal(app.Start(":5555"))
 
 }

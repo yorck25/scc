@@ -11,3 +11,9 @@ type Audit struct {
 	OldValue json.RawMessage `db:"old_value" json:"oldValue"`
 	NewValue json.RawMessage `db:"new_value" json:"newValue"`
 }
+
+type CreateAuditRequest struct {
+	Action   string          `db:"action" json:"action"`
+	OldValue json.RawMessage `db:"old_value" json:"oldValue"`
+	NewValue json.RawMessage `db:"new_value" json:"newValue"`
+}
