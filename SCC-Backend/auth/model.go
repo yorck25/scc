@@ -1,4 +1,4 @@
-package player
+package auth
 
 type Player struct {
 	Id       int    `json:"id" db:"id"`
@@ -7,8 +7,7 @@ type Player struct {
 	Password string `json:"password" db:"password"`
 }
 
-type PlayerStats struct {
-	PlayerId int     `json:"playerId" db:"player_id"`
-	Balance  float64 `json:"balance" db:"balance"`
-	tax_rate int     `json:"taxRate" db:"tax_rate"`
+type JoinGameRequest struct {
+	GameId   int    `json:"gameId" db:"game_id"`
+	Password string `json:"password" db:"password"`
 }

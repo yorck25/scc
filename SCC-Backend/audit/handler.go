@@ -2,10 +2,11 @@ package audit
 
 import "SCC_Backend/core"
 
-func HandlerGetAudit(ctx *core.WebContext) error {
+func HandleGetAudit(ctx *core.WebContext) error {
 	repo := NewRepository(ctx)
+	playerId := 1
 
-	audit, err := repo.GetAudit()
+	audit, err := repo.GetAuditsFromPlayer(playerId)
 	if err != nil {
 		return ctx.InternalError(err.Error())
 	}
@@ -13,7 +14,7 @@ func HandlerGetAudit(ctx *core.WebContext) error {
 	return ctx.Success(audit)
 }
 
-func HandlerCreateAudit(ctx *core.WebContext) error {
+func HandleCreateAudit(ctx *core.WebContext) error {
 	var car CreateAuditRequest
 	playerId := 1
 

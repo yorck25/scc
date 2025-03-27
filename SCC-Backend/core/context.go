@@ -1,6 +1,7 @@
 package core
 
 import (
+	"errors"
 	"github.com/jmoiron/sqlx"
 	"github.com/labstack/echo/v4"
 	"net/http"
@@ -36,6 +37,26 @@ func CreateCtx(ctx *AppContext) echo.MiddlewareFunc {
 			return next(cc)
 		}
 	}
+}
+
+func (c *WebContext) GetAuthToken() (string, error) {
+	authToken := c.Request().Header.Get("authToken")
+
+	if authToken == "" {
+		return "", errors.New("no auth Token")
+	}
+
+	return authToken, nil
+}
+
+func (c *WebContext) GetGameToken() (string, error) {
+	gameToken := c.Request().Header.Get("gameToken")
+
+	if gameToken == "" {
+		return "", errors.New("no game Token")
+	}
+
+	return gameToken, nil
 }
 
 func (c *WebContext) Success(data ...interface{}) error {

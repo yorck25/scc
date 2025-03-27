@@ -1,4 +1,4 @@
-package player
+package auth
 
 import (
 	"SCC_Backend/core"
@@ -13,16 +13,16 @@ func NewRepository(ctx *core.WebContext) *Repository {
 	return &Repository{db: ctx.GetDb()}
 }
 
-func (r *Repository) GetPlayer(id int) (*Player, error) {
+func (r *Repository) GetPlayer(playerName string) (*Player, error) {
 	var player Player
 
-	stmt, err := r.db.PrepareNamed(`SELECT * FROM player WHERE id = :id`)
+	stmt, err := r.db.PrepareNamed("SELECT * FROM player WHERE username = :playername")
 	if err != nil {
 		return nil, err
 	}
 
 	params := map[string]any{
-		"id": id,
+		"playerName": playerName,
 	}
 
 	err = stmt.Get(&player, params)
@@ -33,22 +33,22 @@ func (r *Repository) GetPlayer(id int) (*Player, error) {
 	return &player, nil
 }
 
-func (r *Repository) GetPlayerStats(playerId int) (*PlayerStats, error) {
-	var playerStats PlayerStats
+func (r *Repository) GetGame(gameId int) (*JoinGameRequest, error) {
+	var game JoinGameRequest
 
-	stmt, err := r.db.PrepareNamed(`SELECT * FROM player_stats WHERE playerId = :playerId`)
+	stmt, err := r.db.PrepareNamed("SELECT * FROM game WHERE game_id = :gameId")
 	if err != nil {
 		return nil, err
 	}
 
 	params := map[string]any{
-		"playerId": playerId,
+		"gameId": gameId,
 	}
 
-	err = stmt.Get(&playerStats, params)
+	err = stmt.Get(&game, params)
 	if err != nil {
 		return nil, err
 	}
 
-	return &playerStats, nil
+	return &game, nil
 }
