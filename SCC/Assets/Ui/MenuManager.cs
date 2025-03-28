@@ -1,43 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using Service;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuManager : MonoBehaviour
+namespace Ui
 {
-    [SerializeField] private TextMeshProUGUI usernameText;
-
-    [SerializeField] private Button loginButton;
-
-    [SerializeField] private TMP_InputField playerNameInputField, passwordInputField;
-
-    private readonly AuthService _authService = new();
-    private string _playerName = "";
-    private string _password = "";
-
-    // Start is called before the first frame update
-    void Start()
+    public class MenuManager : MonoBehaviour
     {
-        loginButton.onClick.AddListener(() => Login());
-    }
+        [SerializeField] private TextMeshProUGUI usernameText;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (playerNameInputField.text != _playerName || passwordInputField.text != _password)
+        [SerializeField] private Button loginButton;
+
+        [SerializeField] private TMP_InputField playerNameInputField, passwordInputField;
+
+        private readonly AuthService _authService = AuthService.Instance;
+        private string _playerName = "";
+        private string _password = "";
+
+        // Start is called before the first frame update
+        void Start()
         {
-            _playerName = playerNameInputField.text;
-            _password = passwordInputField.text;
+            loginButton.onClick.AddListener(() => Login());
         }
 
-        var isValid = _password.Length > 0 && _playerName.Length > 0;
-        loginButton.enabled = isValid;
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            if (playerNameInputField.text != _playerName || passwordInputField.text != _password)
+            {
+                _playerName = playerNameInputField.text;
+                _password = passwordInputField.text;
+            }
 
-    private void Login()
-    {
-        Debug.Log("Perform login request");
-        StartCoroutine(_authService.Login(_playerName, _password));
-    }
+            var isValid = _password.Length > 0 && _playerName.Length > 0;
+            loginButton.enabled = isValid;
+        }
+
+        private void Login()
+        {
+            StartCoroutine(AuthService.Instance?.Login(_playerName, _password));
+        }
+    }   
 }

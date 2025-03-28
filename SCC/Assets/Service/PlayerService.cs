@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Service;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -24,17 +25,24 @@ public class PlayerService : MonoBehaviour
 
     private Player _player = new Player();
     
+    private AuthService _authService;
+
+    private void Awake()
+    {
+        _authService = AuthService.Instance;
+    }
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            StartCoroutine(GetPlayerFromToken("/player"));
+            StartCoroutine(GetPlayerFromToken());
         }
     }
 
-    IEnumerator GetPlayerFromToken(string uri)
+    IEnumerator GetPlayerFromToken()
     {
-        var request = UnityWebRequest.Get(BaseUrl + uri).AddAuthHeader();
+        var request = UnityWebRequest.Get(BaseUrl + "/player").AddAuthHeader();
         yield return request.SendWebRequest();
 
         if (request.result != UnityWebRequest.Result.Success)

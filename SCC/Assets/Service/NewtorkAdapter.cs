@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Service;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -9,18 +11,26 @@ public class NetworkAdapter : MonoBehaviour
 
 public static class UnityWebRequestExtensions
 {
-    private static string jwtToken = "your-default-token";
-
-    public static void SetAuthToken(string token)
-    {
-        jwtToken = token;
-    }
-
     public static UnityWebRequest AddAuthHeader(this UnityWebRequest request)
     {
-        if (!string.IsNullOrEmpty(jwtToken))
+        string authToken = AuthService.Instance?.GetToken();
+        if (!string.IsNullOrEmpty(authToken))
         {
-            request.SetRequestHeader("Authorization", "Bearer " + jwtToken);
+            request.SetRequestHeader("authToken", authToken);
+        }
+        else
+        {
+            Debug.LogError("Auth token is missing!");
+        }
+        return request;
+    }
+    
+    public static UnityWebRequest AddGameAuth(this UnityWebRequest request)
+    {
+        string gameToken = AuthService.Instance?.GetToken();
+        if (!string.IsNullOrEmpty(gameToken))
+        {
+            request.SetRequestHeader("gameToken", gameToken);
         }
         return request;
     }

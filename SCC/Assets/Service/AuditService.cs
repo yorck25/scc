@@ -1,24 +1,33 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class AuditService : MonoBehaviour
+namespace Service
 {
-    private const string BaseUrl = "http://localhost:5555";
-
-    public IEnumerator WriteAudit(string uri)
+    public class AuditService : MonoBehaviour
     {
-        var request = UnityWebRequest.Get(BaseUrl + uri).AddAuthHeader();
-        yield return request.SendWebRequest();
-        
-        if (request.result != UnityWebRequest.Result.Success)
+        private const string BaseUrl = "http://localhost:5555";
+
+        private AuthService _authService;
+
+        private void Awake()
         {
-            Debug.Log(request.error);
+            _authService = AuthService.Instance;
         }
-        else
+
+        public IEnumerator WriteAudit(string uri)
         {
-            Debug.Log("Audit written successfully");
+            var request = UnityWebRequest.Get(BaseUrl + uri).AddAuthHeader();
+            yield return request.SendWebRequest();
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                Debug.Log("Audit written successfully");
+            }
         }
     }
 }
