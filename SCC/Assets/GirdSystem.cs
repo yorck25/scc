@@ -6,6 +6,7 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     public GameObject objectToPlace;
+    public bool isBuildModeEnabled = false;
     public float gridSize = 1f;
     private GameObject _ghostObject;
     private HashSet<Vector3> _occupiedPositions = new HashSet<Vector3>();
@@ -17,6 +18,11 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void Update()
     {
+        if (!isBuildModeEnabled)
+        {
+            return;
+        }
+        
         UpdateGhostPosition();
 
         if (Input.GetMouseButtonDown(0))

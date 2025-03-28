@@ -80,7 +80,7 @@ func DecodeGameToken(token string, ctx *core.WebContext) (int, int, error) {
 }
 
 func signToken(claims jwt.Claims, config *core.Config) (string, error) {
-	token := jwt.NewWithClaims(jwt.SigningMethodES256, claims)
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
 	signedToken, err := token.SignedString(config.JwtSecretKey)
 	if err != nil {

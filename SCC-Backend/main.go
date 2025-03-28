@@ -2,6 +2,7 @@ package main
 
 import (
 	"SCC_Backend/audit"
+	"SCC_Backend/auth"
 	"SCC_Backend/city"
 	"SCC_Backend/core"
 	"SCC_Backend/game"
@@ -20,6 +21,9 @@ func main() {
 
 	app.GET("/", defaultUrl)
 	app.GET("/health", healthUrl)
+
+	app.GET("/login", auth.Login)
+	app.GET("/join-game", auth.JoinGame)
 
 	app.GET("/player", player.HandleGetPlayer)
 

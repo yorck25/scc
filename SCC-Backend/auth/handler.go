@@ -11,7 +11,7 @@ import (
 func Login(ctx *core.WebContext) error {
 	repo := NewRepository(ctx)
 
-	playerName := ctx.Request().Header.Get("username")
+	playerName := ctx.Request().Header.Get("playerName")
 	password := ctx.Request().Header.Get("password")
 
 	player, err := repo.GetPlayer(playerName)
@@ -19,10 +19,15 @@ func Login(ctx *core.WebContext) error {
 		return ctx.Unauthorized(err.Error())
 	}
 
-	err = bcrypt.CompareHashAndPassword([]byte(player.Password), []byte(password))
-	if err != nil {
+	//temp while no registration process with pw hashing
+	if password != player.Password {
 		return ctx.Unauthorized("password is false")
 	}
+
+	//err = bcrypt.CompareHashAndPassword([]byte(player.Password), []byte(password))
+	//if err != nil {
+	//	return ctx.Unauthorized("password is false")
+	//}
 
 	token, err := api.GenerateAuthToken(player.Id, ctx.GetConfig())
 	if err != nil {

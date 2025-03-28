@@ -16,7 +16,7 @@ func NewRepository(ctx *core.WebContext) *Repository {
 func (r *Repository) GetPlayer(playerName string) (*Player, error) {
 	var player Player
 
-	stmt, err := r.db.PrepareNamed("SELECT * FROM player WHERE username = :playername")
+	stmt, err := r.db.PrepareNamed("SELECT * FROM player WHERE username = :playerName")
 	if err != nil {
 		return nil, err
 	}

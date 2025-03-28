@@ -20,7 +20,7 @@ func LoadConfig() (*Config, error) {
 
 	JwtSecretKey := os.Getenv("JWT_SECRET_KEY")
 	if JwtSecretKey == "" {
-		JwtSecretKey = "my-super-save-key"
+		JwtSecretKey = "saveKey"
 		//return nil, errors.New("no jwt secret key")
 	}
 
