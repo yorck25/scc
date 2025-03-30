@@ -72,9 +72,11 @@ namespace Ui
             if (success)
             {
                 Debug.Log("Login successful!");
-                StartCoroutine(_auditService.WriteAudit(action: "User logged in", oldValue: null, newValue: null));
+                //StartCoroutine(_auditService.WriteAudit(action: "User logged in", oldValue: null, newValue: null));
                 ToggleLoginCanvas(false);
                 ToggleJoinGameCanvas(true);
+
+                StartCoroutine(RenderGameList());
             }
             else
             {
@@ -118,11 +120,6 @@ namespace Ui
         private void ToggleJoinGameCanvas(bool state)
         {
             joinGameCanvas.SetActive(state);
-
-            if (state)
-            {
-                StartCoroutine(RenderGameList());
-            }
         }
 
         private void ToggleLoginCanvas(bool state)
