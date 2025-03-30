@@ -5,51 +5,31 @@ using UnityEngine.Networking;
 
 namespace Service
 {
-    [System.Serializable]
-    public class CreateAuditRequest
-    {
-        public string action;
-        public string oldValue;
-        public string newValue;
-    }
-
     public class AuditService : MonoBehaviour
     {
         public static AuditService Instance { get; private set; }
-
+        
         private const string BaseUrl = "http://localhost:5555";
         private AuthService _authService;
 
-        private void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
 
-        private void Start()
+        private void Awake()
         {
             _authService = AuthService.Instance;
         }
 
         public IEnumerator WriteAudit(string action, [CanBeNull] string oldValue, [CanBeNull] string newValue)
         {
-            CreateAuditRequest auditRequest = new CreateAuditRequest
+            var auditRequest = new
             {
                 action = action,
-                oldValue = string.IsNullOrEmpty(oldValue) ? null : oldValue,
-                newValue = string.IsNullOrEmpty(newValue) ? null : newValue
+                oldValue = oldValue,
+                newValue = newValue
             };
 
             var jsonAuditRequest = JsonUtility.ToJson(auditRequest);
-
-            var request = UnityWebRequest.Post(BaseUrl + "/audit", jsonAuditRequest, "application/json").AddAuthHeader();
+            
+            var request = UnityWebRequest.PostWwwForm(BaseUrl + "/audit", jsonAuditRequest).AddAuthHeader();
             yield return request.SendWebRequest();
 
             if (request.result != UnityWebRequest.Result.Success)

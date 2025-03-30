@@ -25,6 +25,7 @@ namespace Ui
 
         private AuthService _authService;
         private GameService _gameService;
+        private AuditService _auditService;
 
         private void Awake()
         {
@@ -42,6 +43,7 @@ namespace Ui
         {
             loginButton.onClick.AddListener(() => StartCoroutine(Login()));
             _authService = AuthService.Instance;
+            _auditService = AuditService.Instance;
         }
 
         private IEnumerator Login()
@@ -70,6 +72,7 @@ namespace Ui
             if (success)
             {
                 Debug.Log("Login successful! Switching UI...");
+                StartCoroutine(_auditService.WriteAudit(action: "User logged in", oldValue: null, newValue: null));
                 loginCanvas.SetActive(false);
                 joinGameCanvas.SetActive(true);
             }

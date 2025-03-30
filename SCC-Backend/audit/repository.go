@@ -44,8 +44,8 @@ func (r *Repository) CreateNewAudit(car CreateAuditRequest, playerId int) error 
 	params := map[string]any{
 		"playerId": playerId,
 		"action":   car.Action,
-		"old":      car.OldValue,
-		"new":      car.NewValue,
+		"old":      string(car.OldValue),
+		"new":      string(car.NewValue),
 	}
 
 	err = stmt.Select(&audits, params)
