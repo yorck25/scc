@@ -30,6 +30,7 @@ func main() {
 	app.GET("/audit", audit.HandleGetAudit)
 	app.POST("/audit", audit.HandleCreateAudit)
 
+	app.GET("/game", game.HandleListGames)
 	app.GET("/game/:searchNameValue", game.HandleSearchGame)
 	app.POST("/game", game.HandleCreateGame)
 	app.PUT("/game", game.HandleUpdateGame)

@@ -28,6 +28,27 @@ func HandleSearchGame(ctx *core.WebContext) error {
 	return ctx.Success(games)
 }
 
+func HandleListGames(ctx *core.WebContext) error {
+	repo := NewRepository(ctx)
+
+	token, err := ctx.GetAuthToken()
+	if err != nil {
+		return ctx.Unauthorized("no auth token provided")
+	}
+
+	_, err = api.DecodeAuthToken(token, ctx)
+	if err != nil {
+		return ctx.Unauthorized(err.Error())
+	}
+
+	games, err := repo.ListGames()
+	if err != nil {
+		return ctx.InternalError(err.Error())
+	}
+
+	return ctx.Success(games)
+}
+
 func HandleCreateGame(ctx *core.WebContext) error {
 	repo := NewRepository(ctx)
 

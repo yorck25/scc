@@ -13,6 +13,22 @@ func NewRepository(ctx *core.WebContext) *Repository {
 	return &Repository{db: ctx.GetDb()}
 }
 
+func (r *Repository) ListGames() ([]Game, error) {
+	var games []Game
+
+	stmt, err := r.db.PrepareNamed(`SELECT * FROM game LIMIT 25`)
+	if err != nil {
+		return nil, err
+	}
+
+	err = stmt.Select(&games, map[string]any{})
+	if err != nil {
+		return nil, err
+	}
+
+	return games, nil
+}
+
 func (r *Repository) GetGameByName(searchName string) ([]Game, error) {
 	var game []Game
 

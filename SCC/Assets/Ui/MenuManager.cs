@@ -1,46 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using Service;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Ui
 {
     public class MenuManager : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI usernameText;
+        public static MenuManager Instance { get; private set; }
 
-        [SerializeField] private Button loginButton;
+        [Header("UI Canvases")] [SerializeField]
+        private GameObject loginCanvas;
 
-        [SerializeField] private TMP_InputField playerNameInputField, passwordInputField;
+        [SerializeField] public GameObject joinGameCanvas;
 
-        private readonly AuthService _authService = AuthService.Instance;
-        private string _playerName = "";
-        private string _password = "";
+        [Header("Login Canvas UI-Elements")] [SerializeField]
+        private Button loginButton;
 
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] private TMP_InputField playerNameInput;
+
+        [SerializeField] private TMP_InputField passwordInput;
+
+        private AuthService _authService;
+        private GameService _gameService;
+
+        private void Awake()
         {
-            loginButton.onClick.AddListener(() => Login());
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Start()
         {
-            if (playerNameInputField.text != _playerName || passwordInputField.text != _password)
+            loginButton.onClick.AddListener(() => StartCoroutine(Login()));
+            _authService = AuthService.Instance;
+        }
+
+        private IEnumerator Login()
+        {
+            if (_authService == null)
             {
-                _playerName = playerNameInputField.text;
-                _password = passwordInputField.text;
+                Debug.LogError("AuthService is not initialized!");
+                yield break;
             }
 
-            var isValid = _password.Length > 0 && _playerName.Length > 0;
-            loginButton.enabled = isValid;
+            string username = playerNameInput.text;
+            string password = passwordInput.text;
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                Debug.LogError("Username or password is empty!");
+                yield break;
+            }
+
+            Debug.Log("Logging in...");
+            yield return StartCoroutine(_authService.Login(username, password, OnLoginResult));
         }
 
-        private void Login()
+        private void OnLoginResult(bool success)
         {
-            StartCoroutine(AuthService.Instance?.Login(_playerName, _password));
+            if (success)
+            {
+                Debug.Log("Login successful! Switching UI...");
+                loginCanvas.SetActive(false);
+                joinGameCanvas.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("Login failed: No token received.");
+            }
         }
-    }   
+    }
 }
