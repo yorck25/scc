@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Service;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,17 +10,14 @@ namespace Ui
     {
         public static MenuManager Instance { get; private set; }
 
-        [Header("UI Canvases")] [SerializeField]
-        private GameObject loginCanvas;
-
+        [SerializeField] private GameObject loginCanvas;
         [SerializeField] public GameObject joinGameCanvas;
-
-        [Header("Login Canvas UI-Elements")] [SerializeField]
-        private Button loginButton;
-
+        [SerializeField] private Button loginButton;
         [SerializeField] private TMP_InputField playerNameInput;
-
         [SerializeField] private TMP_InputField passwordInput;
+
+        [SerializeField] private Transform gameListContainer;
+        [SerializeField] private GameObject gameEntryPrefab;
 
         private AuthService _authService;
         private GameService _gameService;
@@ -44,6 +40,10 @@ namespace Ui
             loginButton.onClick.AddListener(() => StartCoroutine(Login()));
             _authService = AuthService.Instance;
             _auditService = AuditService.Instance;
+            _gameService = GameService.Instance;
+
+            ToggleLoginCanvas(true);
+            ToggleJoinGameCanvas(false);
         }
 
         private IEnumerator Login()
@@ -71,15 +71,63 @@ namespace Ui
         {
             if (success)
             {
-                Debug.Log("Login successful! Switching UI...");
+                Debug.Log("Login successful!");
                 StartCoroutine(_auditService.WriteAudit(action: "User logged in", oldValue: null, newValue: null));
-                loginCanvas.SetActive(false);
-                joinGameCanvas.SetActive(true);
+                ToggleLoginCanvas(false);
+                ToggleJoinGameCanvas(true);
             }
             else
             {
                 Debug.LogError("Login failed: No token received.");
             }
+        }
+
+        private IEnumerator RenderGameList()
+        {
+            Debug.Log("RenderGameList Started.");
+
+            if (_gameService == null || gameEntryPrefab == null || gameListContainer == null)
+            {
+                Debug.LogError("needed services are missing");
+                yield break;
+            }
+
+            yield return StartCoroutine(_gameService.GetGameList());
+
+            if (_gameService.GameList == null || _gameService.GameList.Count == 0)
+            {
+                Debug.LogError("No games to map");
+                yield break;
+            }
+
+            foreach (var game in _gameService.GameList)
+            {
+                GameObject gameEntry = Instantiate(gameEntryPrefab, gameListContainer);
+                var gameEntryScript = gameEntry.GetComponent<GameListObject>();
+                if (gameEntryScript != null)
+                {
+                    gameEntryScript.Setup(game);
+                }
+                else
+                {
+                    Debug.LogError("GameEntry script is missing from the prefab.");
+                }
+            }
+        }
+
+        private void ToggleJoinGameCanvas(bool state)
+        {
+            joinGameCanvas.SetActive(state);
+
+            if (state)
+            {
+                StartCoroutine(RenderGameList());
+            }
+        }
+
+        private void ToggleLoginCanvas(bool state)
+        {
+            loginCanvas.SetActive(state);
         }
     }
 }

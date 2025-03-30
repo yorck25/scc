@@ -2,19 +2,19 @@ package game
 
 type Game struct {
 	GameId   int    `json:"gameId" db:"game_id"`
-	Name     string `json:"username" db:"username"`
+	Name     string `json:"name" db:"name"`
 	Password string `json:"password" db:"password"`
 	OwnerId  int    `json:"ownerId" db:"owner_id"`
 }
 
 type CreateGameRequest struct {
-	Name     string `json:"username" db:"username"`
+	Name     string `json:"name" db:"name"`
 	Password string `json:"password" db:"password"`
 }
 
 type UpdateGameRequest struct {
 	GameId   int    `json:"gameId" db:"game_id"`
-	Name     string `json:"username" db:"username"`
+	Name     string `json:"name" db:"name"`
 	Password string `json:"password" db:"password"`
 	OwnerId  int    `json:"ownerId" db:"owner_id"`
 }

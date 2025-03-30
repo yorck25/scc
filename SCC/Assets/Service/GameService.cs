@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 
 namespace Service
 {
+    [System.Serializable]
     public class Game
     {
         public int gameId { get; set; }
@@ -37,20 +38,47 @@ namespace Service
             }
         }
 
+        // public IEnumerator GetGameList()
+        // {
+        //     var request = UnityWebRequest.Get(BaseUrl + "/game").AddAuthHeader();
+        //     yield return null;
+        //
+        //     if (request.result != UnityWebRequest.Result.Success)
+        //     {
+        //         Debug.Log("Fail to lod games");
+        //     }
+        //     else
+        //     {
+        //         GameList = JsonUtility.FromJson<List<Game>>(request.downloadHandler.text);
+        //         Debug.Log(GameList);
+        //
+        //         foreach (var item in GameList)
+        //         {
+        //             Debug.Log(item.name);
+        //         }
+        //     }
+        // }
+
         public IEnumerator GetGameList()
         {
-            var request = UnityWebRequest.Get(BaseUrl + "/game").AddAuthHeader();
-            yield return null;
+            // Simulate fetching game list
+            yield return new WaitForSeconds(1f);
+            GameList = new List<Game>
+            {
+                new Game { gameId = 1, name = "Game 1" },
+                new Game { gameId = 2, name = "Game 2" },
+                new Game { gameId = 3, name = "Game 3" }
+            };
+            Debug.Log("Game list populated.");
+        }
 
-            if (request.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log("Fail to lod games");
-            }
-            else
-            {
-                GameList = JsonUtility.FromJson<List<Game>>(request.downloadHandler.text);
-                Debug.Log(GameList);
-            }
+        public IEnumerator JoinGame(int gameId, string password, System.Action<bool> callback)
+        {
+            // Simulate joining a game
+            Debug.Log("try to login to gane");
+            // callback(true);
+            yield return new WaitForSeconds(1f);
+            ;
         }
     }
 }
