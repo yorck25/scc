@@ -208,13 +208,22 @@ CREATE TABLE buildings
 
 Create TABLE grid
 (
-    city_id     int,
-    x           int,
-    y           int,
-    building_id int,
-    PRIMARY KEY (city_id, x, y),
-    FOREIGN KEY (building_id) REFERENCES buildings (id),
+    city_id int PRIMARY KEY,
+    height int NOT NULL,
+    width int NOT NULL, 
+    UpdatedAt timestamp,
     FOREIGN KEY (city_id) REFERENCES city (city_id)
+);
+
+CREATE TABLE cells 
+(
+    cell_id SERIAL PRIMARY KEY,
+    x int NOT NULL,
+    y int NOT NULL,
+    building_id int,
+    city_id int,
+    FOREIGN KEY (building_id) REFERENCES buildings(id),
+    FOREIGN KEY (city_id) REFERENCES grid(city_id)
 );
 
 CREATE TABLE player_stats

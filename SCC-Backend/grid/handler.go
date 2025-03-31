@@ -30,7 +30,7 @@ func HandleGetGridForCity(ctx *core.WebContext) error {
 		return ctx.InternalError(err.Error())
 	}
 
-	grid, err := repo.GetGridForGame(cityId)
+	grid, err := repo.GetGridForCity(cityId)
 	if err != nil {
 		return ctx.InternalError(err.Error())
 	}
@@ -90,6 +90,8 @@ func HandleUpdateGrid(ctx *core.WebContext) error {
 	if err != nil {
 		return ctx.InternalError(err.Error())
 	}
+
+	broadcastGridUpdate(&ugr)
 
 	return ctx.Success("Update Grid")
 }
