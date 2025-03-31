@@ -5,6 +5,7 @@ import (
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
+	"strconv"
 	"sync"
 )
 
@@ -14,8 +15,10 @@ type WSMessage struct {
 }
 
 var (
+	Mu                     sync.RWMutex
 	ActiveWebSocketClients = make(map[*websocket.Conn]string)
-	Mu                     sync.Mutex
+	PlayerGameMapping      = make(map[string]int)
+	GameGroups             = make(map[int]map[*websocket.Conn]bool)
 )
 
 var upgrader = websocket.Upgrader{
@@ -38,8 +41,22 @@ func HandleWebSocket(ctx *WebContext) error {
 		return nil
 	}
 
+	gameID, err := strconv.Atoi(ctx.Request().Header.Get("X-Game-ID"))
+	if err != nil {
+		_, msg, err := ws.ReadMessage()
+		if err != nil {
+			ws.Close()
+			return nil
+		}
+		gameID, err = strconv.Atoi(string(msg))
+		if err != nil {
+			ws.WriteMessage(websocket.TextMessage, []byte("Invalid gameID format"))
+			ws.Close()
+			return nil
+		}
+	}
+
 	Mu.Lock()
-	// Check if player was previously connected
 	wasConnected := false
 	for _, id := range ActiveWebSocketClients {
 		if id == playerId {
@@ -48,18 +65,26 @@ func HandleWebSocket(ctx *WebContext) error {
 		}
 	}
 	ActiveWebSocketClients[ws] = playerId
+	PlayerGameMapping[playerId] = gameID
+
+	if GameGroups[gameID] == nil {
+		GameGroups[gameID] = make(map[*websocket.Conn]bool)
+	}
+	GameGroups[gameID][ws] = true
 	Mu.Unlock()
 
-	if err := ws.WriteMessage(websocket.TextMessage, []byte(fmt.Sprintf("Welcome, Player %s!", playerId))); err != nil {
+	welcomeMsg := fmt.Sprintf("Welcome to game %d, Player %s!", gameID, playerId)
+	if err := ws.WriteMessage(websocket.TextMessage, []byte(welcomeMsg)); err != nil {
 		RemoveWebSocketClient(ws)
 		return nil
 	}
 
-	if wasConnected {
-		notifyOtherClients(playerId, "reconnected")
-	} else {
-		notifyOtherClients(playerId, "connected")
-	}
+	notification := fmt.Sprintf("Player %s has %s to game %d",
+		playerId,
+		map[bool]string{true: "reconnected", false: "connected"}[wasConnected],
+		gameID)
+
+	BroadcastToGame(gameID, []byte(notification))
 
 	defer func() {
 		RemoveWebSocketClient(ws)
@@ -67,66 +92,59 @@ func HandleWebSocket(ctx *WebContext) error {
 	}()
 
 	for {
-		_, _, err := ws.ReadMessage()
+		_, msg, err := ws.ReadMessage()
 		if err != nil {
 			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseNormalClosure) {
 				log.Printf("Unexpected WebSocket close for Player %s: %v", playerId, err)
 			}
 			break
 		}
+
+		HandleGameAction(ws, playerId, msg)
 	}
 
 	return nil
 }
 
-func GetActiveClients() []*websocket.Conn {
-	Mu.Lock()
-	defer Mu.Unlock()
+func HandleGameAction(ws *websocket.Conn, playerId string, msg []byte) {
+	Mu.RLock()
+	gameID, exists := PlayerGameMapping[playerId]
+	Mu.RUnlock()
 
-	clients := make([]*websocket.Conn, 0, len(ActiveWebSocketClients))
-	for client := range ActiveWebSocketClients {
-		clients = append(clients, client)
+	if !exists {
+		return
 	}
-	return clients
+
+	response := fmt.Sprintf("Player %s: %s", playerId, string(msg))
+
+	BroadcastToGame(gameID, []byte(response))
 }
 
 func RemoveWebSocketClient(ws *websocket.Conn) {
 	Mu.Lock()
-	playerId, exists := ActiveWebSocketClients[ws]
-	if exists {
-		delete(ActiveWebSocketClients, ws)
-	}
-	Mu.Unlock()
-
-	if exists {
-		notifyOtherClientsOnDisconnect(playerId)
-	}
-}
-
-func notifyOtherClients(playerId string, action string) {
-	Mu.Lock()
 	defer Mu.Unlock()
 
-	message := fmt.Sprintf("Player %s has %s!", playerId, action)
-	for wsClient, id := range ActiveWebSocketClients {
-		if id != playerId {
-			if err := wsClient.WriteMessage(websocket.TextMessage, []byte(message)); err != nil {
-				log.Printf("Error sending to Player %s: %v", id, err)
-			}
+	playerId := ActiveWebSocketClients[ws]
+	delete(ActiveWebSocketClients, ws)
+	delete(PlayerGameMapping, playerId)
+
+	for gameID := range GameGroups {
+		delete(GameGroups[gameID], ws)
+		if len(GameGroups[gameID]) == 0 {
+			delete(GameGroups, gameID)
 		}
 	}
 }
 
-func notifyOtherClientsOnDisconnect(disconnectedPlayerId string) {
-	Mu.Lock()
-	defer Mu.Unlock()
+func BroadcastToGame(gameID int, message []byte) {
+	Mu.RLock()
+	defer Mu.RUnlock()
 
-	message := fmt.Sprintf("Player %s has disconnected.", disconnectedPlayerId)
-	for wsClient, playerId := range ActiveWebSocketClients {
-		if playerId != disconnectedPlayerId {
-			if err := wsClient.WriteMessage(websocket.TextMessage, []byte(message)); err != nil {
-				log.Printf("Error sending to Player %s: %v", playerId, err)
-			}
+	for ws := range GameGroups[gameID] {
+		if err := ws.WriteMessage(websocket.TextMessage, message); err != nil {
+			log.Println("Broadcast error:", err)
+			ws.Close()
+			RemoveWebSocketClient(ws)
 		}
 	}
 }
