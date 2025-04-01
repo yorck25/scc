@@ -105,7 +105,7 @@ namespace Ui
 
             foreach (var game in _gameService.GameList)
             {
-                GameObject gameEntry = Instantiate(gameEntryPrefab, gameListContainer);
+                var gameEntry = Instantiate(gameEntryPrefab, gameListContainer);
                 var gameEntryScript = gameEntry.GetComponent<GameListObject>();
                 if (gameEntryScript != null)
                 {
@@ -116,10 +116,7 @@ namespace Ui
                     Debug.LogError("GameEntry script is missing from the prefab.");
                 }
             }
-            
-            gameEntryPrefab.SetActive(false);
         }
-        
         
         public void ToggleMenu(bool state)
         {
