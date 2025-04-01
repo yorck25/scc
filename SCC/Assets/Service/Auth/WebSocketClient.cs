@@ -67,12 +67,27 @@ namespace Service.Auth
         private async void StartReceiving()
         {
             var buffer = new byte[1024];
+
             while (_webSocket.State == WebSocketState.Open)
             {
-                var result =
-                    await _webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), _cancellationTokenSource.Token);
-                var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                Debug.Log("Received: " + message);
+                try
+                {
+                    WebSocketReceiveResult result = await _webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), _cancellationTokenSource.Token);
+                    if (result.MessageType == WebSocketMessageType.Close)
+                    {
+                        Debug.Log("WebSocket closed by the server.");
+                        await CloseConnection();
+                        return;
+                    }
+
+                    string message = Encoding.UTF8.GetString(buffer, 0, result.Count);
+                    Debug.Log("Received: " + message);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("WebSocket receive error: " + e.Message);
+                    await Task.Delay(1000);
+                }
             }
         }
 

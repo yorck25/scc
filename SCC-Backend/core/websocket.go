@@ -77,8 +77,13 @@ func HandleWebSocket(ctx *WebContext) error {
 	BroadcastToGame(gameId, []byte(notification))
 
 	defer func() {
-		RemoveWebSocketClient(ws)
+		playerId, gameId := RemoveWebSocketClient(ws)
 		ws.Close()
+
+		if playerId != "" {
+			notification := fmt.Sprintf("Player %s has disconnected from game %d", playerId, gameId)
+			BroadcastToGame(gameId, []byte(notification))
+		}
 	}()
 
 	for {
@@ -110,31 +115,46 @@ func HandleGameAction(ws *websocket.Conn, playerId string, msg []byte) {
 	BroadcastToGame(gameId, []byte(response))
 }
 
-func RemoveWebSocketClient(ws *websocket.Conn) {
+func RemoveWebSocketClient(ws *websocket.Conn) (string, int) {
 	Mu.Lock()
 	defer Mu.Unlock()
 
 	playerId := ActiveWebSocketClients[ws]
+	gameId, exists := PlayerGameMapping[playerId]
+
+	if !exists {
+		return "", 0
+	}
+
 	delete(ActiveWebSocketClients, ws)
 	delete(PlayerGameMapping, playerId)
 
-	for gameId := range GameGroups {
-		delete(GameGroups[gameId], ws)
-		if len(GameGroups[gameId]) == 0 {
-			delete(GameGroups, gameId)
+	for gid := range GameGroups {
+		delete(GameGroups[gid], ws)
+		if len(GameGroups[gid]) == 0 {
+			delete(GameGroups, gid)
 		}
 	}
+
+	return playerId, gameId
 }
 
 func BroadcastToGame(gameId int, message []byte) {
 	Mu.RLock()
 	defer Mu.RUnlock()
 
-	for ws := range GameGroups[gameId] {
+	group, exists := GameGroups[gameId]
+	if !exists {
+		return
+	}
+
+	for ws := range group {
 		if err := ws.WriteMessage(websocket.TextMessage, message); err != nil {
 			log.Println("Broadcast error:", err)
-			ws.Close()
-			RemoveWebSocketClient(ws)
+			go func(ws *websocket.Conn) {
+				ws.Close()
+				RemoveWebSocketClient(ws)
+			}(ws)
 		}
 	}
 }
