@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq.Expressions;
 using Service;
 using TMPro;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace Ui
 
         public void Setup(Game gameData)
         {
-            _gameData = _gameData;
+            _gameData = gameData;
             gameNameText.text = gameData.name;
             joinButton.onClick.AddListener(() => OnJoinButtonClicked());
         }
@@ -30,22 +31,8 @@ namespace Ui
         private void OnJoinButtonClicked()
         {
             string enteredPassword = passwordInput.text;
-            StartCoroutine(JoinGame(_gameData.gameId, enteredPassword));
-        }
-
-        private IEnumerator JoinGame(int gameId, string password)
-        {
-            bool isJoined = false;
-            yield return StartCoroutine(_gameService.JoinGame(gameId, password, (success) => { isJoined = success; }));
-
-            if (isJoined)
-            {
-                Debug.Log("Joined game successfully!");
-            }
-            else
-            {
-                Debug.LogError("Failed to join the game.");
-            }
+            Debug.Log(enteredPassword);
+            _gameService.JoinGame(_gameData.gameId, enteredPassword);
         }
     }
 }

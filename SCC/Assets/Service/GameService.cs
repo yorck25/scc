@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Ui;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Service
 {
-    [System.Serializable]
+    [Serializable]
     public class Game
     {
         public int gameId;
@@ -20,7 +22,7 @@ namespace Service
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class GameListWrapper
     {
         public List<Game> games;
@@ -30,7 +32,9 @@ namespace Service
     {
         public static GameService Instance { get; private set; }
         public List<Game> GameList = new();
+        public Game CurrentGame;
         private const string BaseUrl = "http://localhost:5555";
+        private AuthService _authService;
 
         private void Awake()
         {
@@ -43,6 +47,11 @@ namespace Service
             {
                 Destroy(gameObject);
             }
+        }
+
+        private void Start()
+        {
+            _authService = AuthService.Instance;
         }
 
         public IEnumerator GetGameList()
@@ -70,12 +79,26 @@ namespace Service
             }
         }
 
-        public IEnumerator JoinGame(int gameId, string password, System.Action<bool> callback)
+        public async Task JoinGame(int gameId, string password)
         {
-            // Simulate joining a game
             Debug.Log("try to login to gane");
-            // callback(true);
-            yield return new WaitForSeconds(1f);
+            var res = await _authService.JoinGame(gameId, password);
+            Debug.Log(res);
+
+            if (res)
+            {
+                var game = GameList.Find(item => item.gameId == gameId);
+                
+                if(game == null)
+                {
+                    Debug.LogError("Game not found");
+                    return;
+                }
+                
+                CurrentGame = game;
+                
+                MenuManager.Instance.ToggleMenu(false);
+            }
         }
     }
 }

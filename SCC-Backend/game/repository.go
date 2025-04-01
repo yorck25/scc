@@ -16,7 +16,7 @@ func NewRepository(ctx *core.WebContext) *Repository {
 func (r *Repository) ListGames() ([]Game, error) {
 	var games []Game
 
-	stmt, err := r.db.PrepareNamed(`SELECT * FROM game LIMIT 25`)
+	stmt, err := r.db.PrepareNamed(`SELECT game_id, name, owner_id FROM game LIMIT 25`)
 	if err != nil {
 		return nil, err
 	}
@@ -32,7 +32,7 @@ func (r *Repository) ListGames() ([]Game, error) {
 func (r *Repository) GetGameByName(searchName string) ([]Game, error) {
 	var game []Game
 
-	stmt, err := r.db.PrepareNamed(`SELECT * FROM game WHERE name LIKE :name`)
+	stmt, err := r.db.PrepareNamed(`SELECT game_id, name, owner_id FROM game WHERE name LIKE :name`)
 	if err != nil {
 		return nil, err
 	}

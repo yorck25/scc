@@ -4,7 +4,6 @@ import (
 	"SCC_Backend/api"
 	"SCC_Backend/core"
 	"github.com/labstack/echo/v4"
-	"golang.org/x/crypto/bcrypt"
 	"strconv"
 )
 
@@ -34,7 +33,7 @@ func Login(ctx *core.WebContext) error {
 		return ctx.InternalError(err.Error())
 	}
 
-	return ctx.Success(echo.Map{"authToken": token})
+	return ctx.Success(echo.Map{"token": token})
 }
 
 func JoinGame(ctx *core.WebContext) error {
@@ -63,15 +62,19 @@ func JoinGame(ctx *core.WebContext) error {
 		return ctx.InternalError("No game with this params found")
 	}
 
-	err = bcrypt.CompareHashAndPassword([]byte(game.Password), []byte(password))
-	if err != nil {
-		return ctx.Unauthorized("Password is false")
+	if password != game.Password {
+		return ctx.Unauthorized("password is false")
 	}
+
+	//err = bcrypt.CompareHashAndPassword([]byte(game.Password), []byte(password))
+	//if err != nil {
+	//	return ctx.Unauthorized("Password is false")
+	//}
 
 	token, err := api.GenerateGameToken(gameId, ctx.GetConfig())
 	if err != nil {
 		return ctx.InternalError(err.Error())
 	}
 
-	return ctx.Success(echo.Map{"gameToken": token})
+	return ctx.Success(echo.Map{"token": token})
 }

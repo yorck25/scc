@@ -114,7 +114,16 @@ namespace Ui
                 {
                     Debug.LogError("GameEntry script is missing from the prefab.");
                 }
+                
+                gameEntryPrefab.SetActive(false);
             }
+        }
+        
+        
+        public void ToggleMenu(bool state)
+        {
+            ToggleJoinGameCanvas(state);
+            ToggleLoginCanvas(state);
         }
 
         private void ToggleJoinGameCanvas(bool state)

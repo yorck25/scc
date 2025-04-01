@@ -36,7 +36,7 @@ func (r *Repository) GetPlayer(playerName string) (*Player, error) {
 func (r *Repository) GetGame(gameId int) (*JoinGameRequest, error) {
 	var game JoinGameRequest
 
-	stmt, err := r.db.PrepareNamed("SELECT * FROM game WHERE game_id = :gameId")
+	stmt, err := r.db.PrepareNamed("SELECT game_id, password FROM game WHERE game_id = :gameId")
 	if err != nil {
 		return nil, err
 	}
