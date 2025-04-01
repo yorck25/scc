@@ -2,6 +2,7 @@ package core
 
 import (
 	"fmt"
+	"github.com/golang-jwt/jwt"
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
@@ -34,27 +35,16 @@ func HandleWebSocket(ctx *WebContext) error {
 		return err
 	}
 
-	playerId := ctx.Request().Header.Get("X-Player-ID")
-	if playerId == "" {
-		ws.WriteMessage(websocket.TextMessage, []byte("No playerId provided"))
+	gameToken := ctx.Request().Header.Get("X-Game-Token")
+
+	gameId, sPlayerId, err := DecodeGameToken(gameToken, ctx)
+	if err != nil {
+		ws.WriteMessage(websocket.TextMessage, []byte("Fail to decode game token"))
 		ws.Close()
 		return nil
 	}
 
-	gameID, err := strconv.Atoi(ctx.Request().Header.Get("X-Game-ID"))
-	if err != nil {
-		_, msg, err := ws.ReadMessage()
-		if err != nil {
-			ws.Close()
-			return nil
-		}
-		gameID, err = strconv.Atoi(string(msg))
-		if err != nil {
-			ws.WriteMessage(websocket.TextMessage, []byte("Invalid gameID format"))
-			ws.Close()
-			return nil
-		}
-	}
+	playerId := strconv.Itoa(sPlayerId)
 
 	Mu.Lock()
 	wasConnected := false
@@ -65,15 +55,15 @@ func HandleWebSocket(ctx *WebContext) error {
 		}
 	}
 	ActiveWebSocketClients[ws] = playerId
-	PlayerGameMapping[playerId] = gameID
+	PlayerGameMapping[playerId] = gameId
 
-	if GameGroups[gameID] == nil {
-		GameGroups[gameID] = make(map[*websocket.Conn]bool)
+	if GameGroups[gameId] == nil {
+		GameGroups[gameId] = make(map[*websocket.Conn]bool)
 	}
-	GameGroups[gameID][ws] = true
+	GameGroups[gameId][ws] = true
 	Mu.Unlock()
 
-	welcomeMsg := fmt.Sprintf("Welcome to game %d, Player %s!", gameID, playerId)
+	welcomeMsg := fmt.Sprintf("Welcome to game %d, Player %s!", gameId, playerId)
 	if err := ws.WriteMessage(websocket.TextMessage, []byte(welcomeMsg)); err != nil {
 		RemoveWebSocketClient(ws)
 		return nil
@@ -82,9 +72,9 @@ func HandleWebSocket(ctx *WebContext) error {
 	notification := fmt.Sprintf("Player %s has %s to game %d",
 		playerId,
 		map[bool]string{true: "reconnected", false: "connected"}[wasConnected],
-		gameID)
+		gameId)
 
-	BroadcastToGame(gameID, []byte(notification))
+	BroadcastToGame(gameId, []byte(notification))
 
 	defer func() {
 		RemoveWebSocketClient(ws)
@@ -108,7 +98,7 @@ func HandleWebSocket(ctx *WebContext) error {
 
 func HandleGameAction(ws *websocket.Conn, playerId string, msg []byte) {
 	Mu.RLock()
-	gameID, exists := PlayerGameMapping[playerId]
+	gameId, exists := PlayerGameMapping[playerId]
 	Mu.RUnlock()
 
 	if !exists {
@@ -117,7 +107,7 @@ func HandleGameAction(ws *websocket.Conn, playerId string, msg []byte) {
 
 	response := fmt.Sprintf("Player %s: %s", playerId, string(msg))
 
-	BroadcastToGame(gameID, []byte(response))
+	BroadcastToGame(gameId, []byte(response))
 }
 
 func RemoveWebSocketClient(ws *websocket.Conn) {
@@ -128,23 +118,43 @@ func RemoveWebSocketClient(ws *websocket.Conn) {
 	delete(ActiveWebSocketClients, ws)
 	delete(PlayerGameMapping, playerId)
 
-	for gameID := range GameGroups {
-		delete(GameGroups[gameID], ws)
-		if len(GameGroups[gameID]) == 0 {
-			delete(GameGroups, gameID)
+	for gameId := range GameGroups {
+		delete(GameGroups[gameId], ws)
+		if len(GameGroups[gameId]) == 0 {
+			delete(GameGroups, gameId)
 		}
 	}
 }
 
-func BroadcastToGame(gameID int, message []byte) {
+func BroadcastToGame(gameId int, message []byte) {
 	Mu.RLock()
 	defer Mu.RUnlock()
 
-	for ws := range GameGroups[gameID] {
+	for ws := range GameGroups[gameId] {
 		if err := ws.WriteMessage(websocket.TextMessage, message); err != nil {
 			log.Println("Broadcast error:", err)
 			ws.Close()
 			RemoveWebSocketClient(ws)
 		}
 	}
+}
+
+type GameClaims struct {
+	GameId   int `json:"gameId"`
+	PlayerId int `json:"playerId"`
+	jwt.StandardClaims
+}
+
+func DecodeGameToken(token string, ctx *WebContext) (int, int, error) {
+	claims := GameClaims{}
+
+	_, err := jwt.ParseWithClaims(token, &claims, func(token *jwt.Token) (interface{}, error) {
+		return ctx.GetConfig().JwtSecretKey, nil
+	})
+
+	if err != nil {
+		return 0, 0, err
+	}
+
+	return claims.GameId, claims.PlayerId, nil
 }

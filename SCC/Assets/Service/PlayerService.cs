@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Service;
+using Service.Auth;
 using UnityEngine;
 using UnityEngine.Networking;
 

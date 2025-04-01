@@ -44,7 +44,7 @@ func JoinGame(ctx *core.WebContext) error {
 		return ctx.Unauthorized("no auth token provided")
 	}
 
-	_, err = api.DecodeAuthToken(authToken, ctx)
+	playerId, err := api.DecodeAuthToken(authToken, ctx)
 	if err != nil {
 		return ctx.Unauthorized(err.Error())
 	}
@@ -71,7 +71,7 @@ func JoinGame(ctx *core.WebContext) error {
 	//	return ctx.Unauthorized("Password is false")
 	//}
 
-	token, err := api.GenerateGameToken(gameId, ctx.GetConfig())
+	token, err := api.GenerateGameToken(gameId, playerId, ctx.GetConfig())
 	if err != nil {
 		return ctx.InternalError(err.Error())
 	}

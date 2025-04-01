@@ -1,0 +1,2963 @@
+Unity Editor version:    2022.3.31f1 (4ede2d13e8b4)
+Branch:                  2022.3/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 15.1 (Build 24B83)
+Darwin version:          24.1.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        16384 MB
+Using pre-set license
+Pro License: YES
+
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/2022.3.31f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker3
+-projectPath
+/Users/yorckdombrowsky/Documents/code/scc/SCC
+-logFile
+Logs/AssetImportWorker3.log
+-srvPort
+50093
+Successfully changed project path to: /Users/yorckdombrowsky/Documents/code/scc/SCC
+/Users/yorckdombrowsky/Documents/code/scc/SCC
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [8385132608] Host "[IP] 192.168.178.131 [Port] 0 [Flags] 2 [Guid] 1532821009 [EditorId] 1532821009 [Version] 1048832 [Id] OSXEditor(0,MacBookPro.fritz.box) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [8385132608] Host "[IP] 192.168.178.131 [Port] 0 [Flags] 2 [Guid] 1532821009 [EditorId] 1532821009 [Version] 1048832 [Id] OSXEditor(0,MacBookPro.fritz.box) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[PhysX] Initialized MultithreadedTaskDispatcher with 10 workers.
+Refreshing native plugins compatible for Editor in 9.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.31f1 (4ede2d13e8b4)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2022.3.31f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/yorckdombrowsky/Documents/code/scc/SCC/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+ preferred device: Apple M1 Pro (high power)
+Metal devices available: 1
+0: Apple M1 Pro (high power)
+Using device Apple M1 Pro (high power)
+Initializing Metal device caps: Apple M1 Pro
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/2022.3.31f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2022.3.31f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/2022.3.31f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56398
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/2022.3.31f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2022.3.31f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.001510 seconds.
+- Loaded All Assemblies, in  0.258 seconds
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.165 seconds
+Domain Reload Profiling: 423ms
+	BeginReloadAssembly (92ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (104ms)
+		LoadAssemblies (93ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (101ms)
+			TypeCache.Refresh (100ms)
+				TypeCache.ScanAssembly (89ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (165ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (127ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (1ms)
+			ProcessInitializeOnLoadAttributes (88ms)
+			ProcessInitializeOnLoadMethodAttributes (29ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.445 seconds
+Refreshing native plugins compatible for Editor in 0.82 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.459 seconds
+Domain Reload Profiling: 904ms
+	BeginReloadAssembly (77ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (16ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (22ms)
+	LoadAllAssembliesAndSetupDomain (314ms)
+		LoadAssemblies (227ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (123ms)
+			TypeCache.Refresh (112ms)
+				TypeCache.ScanAssembly (98ms)
+			ScanForSourceGeneratedMonoScriptInfo (8ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (459ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (361ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (34ms)
+			ProcessInitializeOnLoadAttributes (308ms)
+			ProcessInitializeOnLoadMethodAttributes (12ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Launching external process: /Applications/Unity/Hub/Editor/2022.3.31f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.23 seconds
+Refreshing native plugins compatible for Editor in 0.85 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3177 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 34 unused Assets / (52.1 KB). Loaded Objects now: 3638.
+Memory consumption went from 133.3 MB to 133.2 MB.
+Total: 2.715666 ms (FindLiveObjects: 0.122292 ms CreateObjectMapping: 0.041875 ms MarkObjects: 2.466000 ms  DeleteObjects: 0.084875 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 39fc049fd3c842fac39523464380d1e4 -> 10f8afd3b307c5ede5c7b43ba6ef7766
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 83197.930828 seconds.
+  path: 
+  artifactKey: Guid(25d1c4ced8f24e66b3066b0fc68b1400) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(25d1c4ced8f24e66b3066b0fc68b1400) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000029 seconds
+Import Error Code:(3)
+Message: Unknown asset with GUID '25d1c4ced8f24e66b3066b0fc68b1400'
+  ERROR: Unknown asset with GUID '25d1c4ced8f24e66b3066b0fc68b1400'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x17e593000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.310 seconds
+Refreshing native plugins compatible for Editor in 0.81 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.805 seconds
+Domain Reload Profiling: 1115ms
+	BeginReloadAssembly (115ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (43ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (18ms)
+	LoadAllAssembliesAndSetupDomain (146ms)
+		LoadAssemblies (160ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (25ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (8ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (805ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (328ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (35ms)
+			ProcessInitializeOnLoadAttributes (274ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.04 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.6 KB). Loaded Objects now: 3641.
+Memory consumption went from 137.3 MB to 137.3 MB.
+Total: 2.487584 ms (FindLiveObjects: 0.105458 ms CreateObjectMapping: 0.038833 ms MarkObjects: 2.296167 ms  DeleteObjects: 0.046583 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 39fc049fd3c842fac39523464380d1e4 -> 10f8afd3b307c5ede5c7b43ba6ef7766
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 12.760928 seconds.
+  path: 
+  artifactKey: Guid(6a06fa6ffb95a4e24a1c996a1585ada3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(6a06fa6ffb95a4e24a1c996a1585ada3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000022 seconds
+Import Error Code:(3)
+Message: Unknown asset with GUID '6a06fa6ffb95a4e24a1c996a1585ada3'
+  ERROR: Unknown asset with GUID '6a06fa6ffb95a4e24a1c996a1585ada3'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 436.320683 seconds.
+  path: 
+  artifactKey: Guid(9c45ca10170ae4f6f98601c78f8bdeea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(9c45ca10170ae4f6f98601c78f8bdeea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000308 seconds
+Import Error Code:(3)
+Message: Unknown asset with GUID '9c45ca10170ae4f6f98601c78f8bdeea'
+  ERROR: Unknown asset with GUID '9c45ca10170ae4f6f98601c78f8bdeea'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.595759 seconds.
+  path: 
+  artifactKey: Guid(9c45ca10170ae4f6f98601c78f8bdeea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(9c45ca10170ae4f6f98601c78f8bdeea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000039 seconds
+Import Error Code:(3)
+Message: Unknown asset with GUID '9c45ca10170ae4f6f98601c78f8bdeea'
+  ERROR: Unknown asset with GUID '9c45ca10170ae4f6f98601c78f8bdeea'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.014100 seconds.
+  path: 
+  artifactKey: Guid(9c45ca10170ae4f6f98601c78f8bdeea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(9c45ca10170ae4f6f98601c78f8bdeea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000039 seconds
+Import Error Code:(3)
+Message: Unknown asset with GUID '9c45ca10170ae4f6f98601c78f8bdeea'
+  ERROR: Unknown asset with GUID '9c45ca10170ae4f6f98601c78f8bdeea'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x17ff47000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.327 seconds
+Refreshing native plugins compatible for Editor in 0.93 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.862 seconds
+Domain Reload Profiling: 1190ms
+	BeginReloadAssembly (121ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (43ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (155ms)
+		LoadAssemblies (169ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (30ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (8ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (863ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (333ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (35ms)
+			ProcessInitializeOnLoadAttributes (279ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.92 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3644.
+Memory consumption went from 145.8 MB to 145.8 MB.
+Total: 2.563916 ms (FindLiveObjects: 0.118334 ms CreateObjectMapping: 0.039167 ms MarkObjects: 2.351875 ms  DeleteObjects: 0.053916 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x17ebaf000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.318 seconds
+Refreshing native plugins compatible for Editor in 0.86 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.798 seconds
+Domain Reload Profiling: 1116ms
+	BeginReloadAssembly (106ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (42ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (15ms)
+	LoadAllAssembliesAndSetupDomain (164ms)
+		LoadAssemblies (179ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (19ms)
+			TypeCache.Refresh (13ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (798ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (338ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (35ms)
+			ProcessInitializeOnLoadAttributes (284ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.93 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3157 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.6 KB). Loaded Objects now: 3647.
+Memory consumption went from 154.4 MB to 154.4 MB.
+Total: 2.585125 ms (FindLiveObjects: 0.103375 ms CreateObjectMapping: 0.037458 ms MarkObjects: 2.398584 ms  DeleteObjects: 0.045333 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 25.722727 seconds.
+  path: 
+  artifactKey: Guid(9c45ca10170ae4f6f98601c78f8bdeea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(9c45ca10170ae4f6f98601c78f8bdeea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000020 seconds
+Import Error Code:(3)
+Message: Unknown asset with GUID '9c45ca10170ae4f6f98601c78f8bdeea'
+  ERROR: Unknown asset with GUID '9c45ca10170ae4f6f98601c78f8bdeea'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x17e387000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.327 seconds
+Refreshing native plugins compatible for Editor in 0.86 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.833 seconds
+Domain Reload Profiling: 1160ms
+	BeginReloadAssembly (118ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (50ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (156ms)
+		LoadAssemblies (169ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (27ms)
+			TypeCache.Refresh (12ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (9ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (834ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (352ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (33ms)
+			ProcessInitializeOnLoadAttributes (300ms)
+			ProcessInitializeOnLoadMethodAttributes (12ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.05 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3155 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 26 unused Assets / (32.1 KB). Loaded Objects now: 3649.
+Memory consumption went from 162.6 MB to 162.6 MB.
+Total: 2.769166 ms (FindLiveObjects: 0.127292 ms CreateObjectMapping: 0.038000 ms MarkObjects: 2.556750 ms  DeleteObjects: 0.046666 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 93.514560 seconds.
+  path: 
+  artifactKey: Guid(9c45ca10170ae4f6f98601c78f8bdeea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(9c45ca10170ae4f6f98601c78f8bdeea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000019 seconds
+Import Error Code:(3)
+Message: Unknown asset with GUID '9c45ca10170ae4f6f98601c78f8bdeea'
+  ERROR: Unknown asset with GUID '9c45ca10170ae4f6f98601c78f8bdeea'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x17e387000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.301 seconds
+Refreshing native plugins compatible for Editor in 0.87 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.845 seconds
+Domain Reload Profiling: 1149ms
+	BeginReloadAssembly (104ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (41ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (151ms)
+		LoadAssemblies (165ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (19ms)
+			TypeCache.Refresh (11ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (845ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (338ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (34ms)
+			ProcessInitializeOnLoadAttributes (284ms)
+			ProcessInitializeOnLoadMethodAttributes (12ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.03 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3155 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.8 KB). Loaded Objects now: 3652.
+Memory consumption went from 171.1 MB to 171.1 MB.
+Total: 3.307666 ms (FindLiveObjects: 0.135750 ms CreateObjectMapping: 0.052208 ms MarkObjects: 3.070125 ms  DeleteObjects: 0.049041 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x17e387000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.387 seconds
+Refreshing native plugins compatible for Editor in 0.87 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.804 seconds
+Domain Reload Profiling: 1191ms
+	BeginReloadAssembly (128ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (52ms)
+	RebuildCommonClasses (31ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (29ms)
+	LoadAllAssembliesAndSetupDomain (190ms)
+		LoadAssemblies (198ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (34ms)
+			TypeCache.Refresh (20ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (7ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (804ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (320ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (32ms)
+			ProcessInitializeOnLoadAttributes (270ms)
+			ProcessInitializeOnLoadMethodAttributes (10ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.88 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3655.
+Memory consumption went from 179.7 MB to 179.7 MB.
+Total: 2.644958 ms (FindLiveObjects: 0.105792 ms CreateObjectMapping: 0.039583 ms MarkObjects: 2.453583 ms  DeleteObjects: 0.045417 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.396 seconds
+Refreshing native plugins compatible for Editor in 1.07 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.829 seconds
+Domain Reload Profiling: 1225ms
+	BeginReloadAssembly (149ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (67ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (25ms)
+	LoadAllAssembliesAndSetupDomain (187ms)
+		LoadAssemblies (201ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (39ms)
+			TypeCache.Refresh (26ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (8ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (830ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (327ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (33ms)
+			ProcessInitializeOnLoadAttributes (275ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.09 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3658.
+Memory consumption went from 188.1 MB to 188.1 MB.
+Total: 2.502667 ms (FindLiveObjects: 0.104834 ms CreateObjectMapping: 0.038000 ms MarkObjects: 2.306709 ms  DeleteObjects: 0.052500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.316 seconds
+Refreshing native plugins compatible for Editor in 0.88 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.537 seconds
+Domain Reload Profiling: 853ms
+	BeginReloadAssembly (118ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (42ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (21ms)
+	LoadAllAssembliesAndSetupDomain (145ms)
+		LoadAssemblies (164ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (26ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (10ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (537ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (324ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (33ms)
+			ProcessInitializeOnLoadAttributes (274ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.80 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3661.
+Memory consumption went from 196.5 MB to 196.4 MB.
+Total: 2.620584 ms (FindLiveObjects: 0.100709 ms CreateObjectMapping: 0.035459 ms MarkObjects: 2.439209 ms  DeleteObjects: 0.044334 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.325 seconds
+Refreshing native plugins compatible for Editor in 1.46 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.567 seconds
+Domain Reload Profiling: 892ms
+	BeginReloadAssembly (136ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (53ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (20ms)
+	LoadAllAssembliesAndSetupDomain (135ms)
+		LoadAssemblies (158ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (25ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (7ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (567ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (338ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (33ms)
+			ProcessInitializeOnLoadAttributes (279ms)
+			ProcessInitializeOnLoadMethodAttributes (18ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3664.
+Memory consumption went from 204.9 MB to 204.8 MB.
+Total: 3.511542 ms (FindLiveObjects: 0.103500 ms CreateObjectMapping: 0.038042 ms MarkObjects: 3.309667 ms  DeleteObjects: 0.059709 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.302 seconds
+Refreshing native plugins compatible for Editor in 0.93 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.526 seconds
+Domain Reload Profiling: 828ms
+	BeginReloadAssembly (126ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (54ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (124ms)
+		LoadAssemblies (147ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (22ms)
+			TypeCache.Refresh (11ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (5ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (526ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (316ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (33ms)
+			ProcessInitializeOnLoadAttributes (265ms)
+			ProcessInitializeOnLoadMethodAttributes (10ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.81 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.6 KB). Loaded Objects now: 3667.
+Memory consumption went from 213.2 MB to 213.2 MB.
+Total: 2.683667 ms (FindLiveObjects: 0.111709 ms CreateObjectMapping: 0.038333 ms MarkObjects: 2.488292 ms  DeleteObjects: 0.044792 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.338 seconds
+Refreshing native plugins compatible for Editor in 0.85 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.784 seconds
+Domain Reload Profiling: 1122ms
+	BeginReloadAssembly (138ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (44ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (150ms)
+		LoadAssemblies (183ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (23ms)
+			TypeCache.Refresh (11ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (8ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (784ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (309ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (32ms)
+			ProcessInitializeOnLoadAttributes (261ms)
+			ProcessInitializeOnLoadMethodAttributes (10ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.87 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.6 KB). Loaded Objects now: 3670.
+Memory consumption went from 221.6 MB to 221.6 MB.
+Total: 3.016000 ms (FindLiveObjects: 0.103500 ms CreateObjectMapping: 0.038209 ms MarkObjects: 2.662666 ms  DeleteObjects: 0.210958 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.279 seconds
+Refreshing native plugins compatible for Editor in 0.84 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.570 seconds
+Domain Reload Profiling: 849ms
+	BeginReloadAssembly (111ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (47ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (14ms)
+	LoadAllAssembliesAndSetupDomain (121ms)
+		LoadAssemblies (142ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (14ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (570ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (336ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (34ms)
+			ProcessInitializeOnLoadAttributes (284ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.92 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.6 KB). Loaded Objects now: 3673.
+Memory consumption went from 230.0 MB to 230.0 MB.
+Total: 2.741084 ms (FindLiveObjects: 0.108083 ms CreateObjectMapping: 0.037792 ms MarkObjects: 2.550375 ms  DeleteObjects: 0.044167 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.325 seconds
+Refreshing native plugins compatible for Editor in 1.01 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.844 seconds
+Domain Reload Profiling: 1170ms
+	BeginReloadAssembly (112ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (45ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (22ms)
+	LoadAllAssembliesAndSetupDomain (159ms)
+		LoadAssemblies (184ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (13ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (845ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (340ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (35ms)
+			ProcessInitializeOnLoadAttributes (286ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.90 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3676.
+Memory consumption went from 238.4 MB to 238.3 MB.
+Total: 2.609000 ms (FindLiveObjects: 0.110458 ms CreateObjectMapping: 0.038042 ms MarkObjects: 2.412917 ms  DeleteObjects: 0.047041 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.313 seconds
+Refreshing native plugins compatible for Editor in 0.93 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.801 seconds
+Domain Reload Profiling: 1115ms
+	BeginReloadAssembly (131ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (53ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (16ms)
+	LoadAllAssembliesAndSetupDomain (134ms)
+		LoadAssemblies (157ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (19ms)
+			TypeCache.Refresh (12ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (801ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (326ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (35ms)
+			ProcessInitializeOnLoadAttributes (272ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.11 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3679.
+Memory consumption went from 246.8 MB to 246.7 MB.
+Total: 2.569875 ms (FindLiveObjects: 0.114458 ms CreateObjectMapping: 0.038708 ms MarkObjects: 2.371542 ms  DeleteObjects: 0.044459 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.304 seconds
+Refreshing native plugins compatible for Editor in 0.88 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.810 seconds
+Domain Reload Profiling: 1115ms
+	BeginReloadAssembly (119ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (49ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (134ms)
+		LoadAssemblies (162ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (11ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (811ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (339ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (34ms)
+			ProcessInitializeOnLoadAttributes (286ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.24 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3682.
+Memory consumption went from 255.1 MB to 255.1 MB.
+Total: 2.571875 ms (FindLiveObjects: 0.114500 ms CreateObjectMapping: 0.037125 ms MarkObjects: 2.379292 ms  DeleteObjects: 0.040500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.344 seconds
+Refreshing native plugins compatible for Editor in 1.79 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.853 seconds
+Domain Reload Profiling: 1199ms
+	BeginReloadAssembly (117ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (45ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (16ms)
+	LoadAllAssembliesAndSetupDomain (178ms)
+		LoadAssemblies (174ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (43ms)
+			TypeCache.Refresh (14ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (22ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (853ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (344ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (37ms)
+			ProcessInitializeOnLoadAttributes (286ms)
+			ProcessInitializeOnLoadMethodAttributes (13ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (4ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.02 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3685.
+Memory consumption went from 263.5 MB to 263.5 MB.
+Total: 3.035750 ms (FindLiveObjects: 0.324083 ms CreateObjectMapping: 0.048375 ms MarkObjects: 2.565750 ms  DeleteObjects: 0.097000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.276 seconds
+Refreshing native plugins compatible for Editor in 1.00 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.558 seconds
+Domain Reload Profiling: 834ms
+	BeginReloadAssembly (109ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (38ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (15ms)
+	LoadAllAssembliesAndSetupDomain (121ms)
+		LoadAssemblies (149ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (12ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (558ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (348ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (35ms)
+			ProcessInitializeOnLoadAttributes (293ms)
+			ProcessInitializeOnLoadMethodAttributes (12ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.90 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3688.
+Memory consumption went from 271.9 MB to 271.8 MB.
+Total: 4.278500 ms (FindLiveObjects: 0.101667 ms CreateObjectMapping: 0.035417 ms MarkObjects: 4.004834 ms  DeleteObjects: 0.135917 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.289 seconds
+Refreshing native plugins compatible for Editor in 1.07 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.844 seconds
+Domain Reload Profiling: 1133ms
+	BeginReloadAssembly (111ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (43ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (15ms)
+	LoadAllAssembliesAndSetupDomain (131ms)
+		LoadAssemblies (154ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (15ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (844ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (324ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (36ms)
+			ProcessInitializeOnLoadAttributes (270ms)
+			ProcessInitializeOnLoadMethodAttributes (10ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.21 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3691.
+Memory consumption went from 280.2 MB to 280.2 MB.
+Total: 2.826666 ms (FindLiveObjects: 0.119375 ms CreateObjectMapping: 0.040083 ms MarkObjects: 2.616542 ms  DeleteObjects: 0.050125 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.315 seconds
+Refreshing native plugins compatible for Editor in 1.14 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.819 seconds
+Domain Reload Profiling: 1135ms
+	BeginReloadAssembly (119ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (49ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (146ms)
+		LoadAssemblies (162ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (23ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (7ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (820ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (329ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (33ms)
+			ProcessInitializeOnLoadAttributes (278ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.87 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3694.
+Memory consumption went from 288.6 MB to 288.6 MB.
+Total: 2.478541 ms (FindLiveObjects: 0.123041 ms CreateObjectMapping: 0.037209 ms MarkObjects: 2.280209 ms  DeleteObjects: 0.037375 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.305 seconds
+Refreshing native plugins compatible for Editor in 1.14 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.847 seconds
+Domain Reload Profiling: 1156ms
+	BeginReloadAssembly (117ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (47ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (14ms)
+	LoadAllAssembliesAndSetupDomain (145ms)
+		LoadAssemblies (165ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (17ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (7ms)
+	FinalizeReload (847ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (328ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (36ms)
+			ProcessInitializeOnLoadAttributes (273ms)
+			ProcessInitializeOnLoadMethodAttributes (12ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.93 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.6 KB). Loaded Objects now: 3697.
+Memory consumption went from 297.0 MB to 297.0 MB.
+Total: 2.789291 ms (FindLiveObjects: 0.112584 ms CreateObjectMapping: 0.038083 ms MarkObjects: 2.588542 ms  DeleteObjects: 0.049500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.336 seconds
+Refreshing native plugins compatible for Editor in 0.94 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.845 seconds
+Domain Reload Profiling: 1182ms
+	BeginReloadAssembly (141ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (59ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (18ms)
+	LoadAllAssembliesAndSetupDomain (145ms)
+		LoadAssemblies (167ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (23ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (7ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (845ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (323ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (33ms)
+			ProcessInitializeOnLoadAttributes (271ms)
+			ProcessInitializeOnLoadMethodAttributes (12ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.86 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3700.
+Memory consumption went from 305.4 MB to 305.3 MB.
+Total: 2.642709 ms (FindLiveObjects: 0.109375 ms CreateObjectMapping: 0.038084 ms MarkObjects: 2.419125 ms  DeleteObjects: 0.075125 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.301 seconds
+Refreshing native plugins compatible for Editor in 0.83 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.755 seconds
+Domain Reload Profiling: 1056ms
+	BeginReloadAssembly (113ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (41ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (14ms)
+	LoadAllAssembliesAndSetupDomain (141ms)
+		LoadAssemblies (160ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (22ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (7ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (755ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (318ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (38ms)
+			ProcessInitializeOnLoadAttributes (262ms)
+			ProcessInitializeOnLoadMethodAttributes (10ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.88 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3703.
+Memory consumption went from 313.8 MB to 313.7 MB.
+Total: 2.523750 ms (FindLiveObjects: 0.136250 ms CreateObjectMapping: 0.039292 ms MarkObjects: 2.305375 ms  DeleteObjects: 0.042083 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.316 seconds
+Refreshing native plugins compatible for Editor in 1.62 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.631 seconds
+Domain Reload Profiling: 947ms
+	BeginReloadAssembly (128ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (43ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (16ms)
+	LoadAllAssembliesAndSetupDomain (140ms)
+		LoadAssemblies (178ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (16ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (7ms)
+	FinalizeReload (631ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (365ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (37ms)
+			ProcessInitializeOnLoadAttributes (306ms)
+			ProcessInitializeOnLoadMethodAttributes (14ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (4ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.93 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.6 KB). Loaded Objects now: 3706.
+Memory consumption went from 322.1 MB to 322.1 MB.
+Total: 2.625000 ms (FindLiveObjects: 0.115292 ms CreateObjectMapping: 0.039333 ms MarkObjects: 2.423375 ms  DeleteObjects: 0.046542 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.317 seconds
+Refreshing native plugins compatible for Editor in 1.33 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.856 seconds
+Domain Reload Profiling: 1174ms
+	BeginReloadAssembly (117ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (44ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (149ms)
+		LoadAssemblies (166ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (24ms)
+			TypeCache.Refresh (11ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (8ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (856ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (333ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (35ms)
+			ProcessInitializeOnLoadAttributes (279ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.89 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.6 KB). Loaded Objects now: 3709.
+Memory consumption went from 330.5 MB to 330.5 MB.
+Total: 2.721625 ms (FindLiveObjects: 0.109625 ms CreateObjectMapping: 0.037542 ms MarkObjects: 2.530667 ms  DeleteObjects: 0.043083 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.285 seconds
+Refreshing native plugins compatible for Editor in 1.13 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.570 seconds
+Domain Reload Profiling: 856ms
+	BeginReloadAssembly (113ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (44ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (16ms)
+	LoadAllAssembliesAndSetupDomain (125ms)
+		LoadAssemblies (149ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (13ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (571ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (341ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (39ms)
+			ProcessInitializeOnLoadAttributes (283ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.83 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3712.
+Memory consumption went from 338.9 MB to 338.8 MB.
+Total: 2.720666 ms (FindLiveObjects: 0.111708 ms CreateObjectMapping: 0.035084 ms MarkObjects: 2.531458 ms  DeleteObjects: 0.041834 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.335 seconds
+Refreshing native plugins compatible for Editor in 0.89 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.869 seconds
+Domain Reload Profiling: 1204ms
+	BeginReloadAssembly (134ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (53ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (150ms)
+		LoadAssemblies (167ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (27ms)
+			TypeCache.Refresh (13ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (8ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (869ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (342ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (36ms)
+			ProcessInitializeOnLoadAttributes (287ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.18 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.8 KB). Loaded Objects now: 3715.
+Memory consumption went from 347.3 MB to 347.2 MB.
+Total: 2.603750 ms (FindLiveObjects: 0.105125 ms CreateObjectMapping: 0.037125 ms MarkObjects: 2.417208 ms  DeleteObjects: 0.043583 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.273 seconds
+Refreshing native plugins compatible for Editor in 0.91 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.575 seconds
+Domain Reload Profiling: 849ms
+	BeginReloadAssembly (92ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (31ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (14ms)
+	LoadAllAssembliesAndSetupDomain (136ms)
+		LoadAssemblies (149ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (20ms)
+			TypeCache.Refresh (15ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (575ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (344ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (38ms)
+			ProcessInitializeOnLoadAttributes (288ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.88 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3718.
+Memory consumption went from 355.6 MB to 355.6 MB.
+Total: 2.871625 ms (FindLiveObjects: 0.132000 ms CreateObjectMapping: 0.037958 ms MarkObjects: 2.655792 ms  DeleteObjects: 0.045166 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.312 seconds
+Refreshing native plugins compatible for Editor in 0.89 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.854 seconds
+Domain Reload Profiling: 1166ms
+	BeginReloadAssembly (116ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (41ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (148ms)
+		LoadAssemblies (182ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (13ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (854ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (348ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (37ms)
+			ProcessInitializeOnLoadAttributes (292ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.92 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3721.
+Memory consumption went from 364.0 MB to 364.0 MB.
+Total: 2.783125 ms (FindLiveObjects: 0.127625 ms CreateObjectMapping: 0.041250 ms MarkObjects: 2.564125 ms  DeleteObjects: 0.049500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.319 seconds
+Refreshing native plugins compatible for Editor in 0.85 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.866 seconds
+Domain Reload Profiling: 1186ms
+	BeginReloadAssembly (114ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (43ms)
+	RebuildCommonClasses (22ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (28ms)
+	LoadAllAssembliesAndSetupDomain (147ms)
+		LoadAssemblies (171ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (12ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (866ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (345ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (37ms)
+			ProcessInitializeOnLoadAttributes (288ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.95 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3724.
+Memory consumption went from 372.4 MB to 372.3 MB.
+Total: 2.648166 ms (FindLiveObjects: 0.118792 ms CreateObjectMapping: 0.040625 ms MarkObjects: 2.440708 ms  DeleteObjects: 0.047583 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.318 seconds
+Refreshing native plugins compatible for Editor in 0.82 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.865 seconds
+Domain Reload Profiling: 1185ms
+	BeginReloadAssembly (123ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (45ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (15ms)
+	LoadAllAssembliesAndSetupDomain (149ms)
+		LoadAssemblies (175ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (19ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (867ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (355ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (8ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (39ms)
+			ProcessInitializeOnLoadAttributes (293ms)
+			ProcessInitializeOnLoadMethodAttributes (12ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.18 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3727.
+Memory consumption went from 380.8 MB to 380.7 MB.
+Total: 2.532875 ms (FindLiveObjects: 0.114916 ms CreateObjectMapping: 0.038500 ms MarkObjects: 2.331917 ms  DeleteObjects: 0.047125 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b80b000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.360 seconds
+Refreshing native plugins compatible for Editor in 0.87 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.883 seconds
+Domain Reload Profiling: 1244ms
+	BeginReloadAssembly (135ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (57ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (174ms)
+		LoadAssemblies (183ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (34ms)
+			TypeCache.Refresh (22ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (7ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (883ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (337ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (36ms)
+			ProcessInitializeOnLoadAttributes (282ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.90 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.6 KB). Loaded Objects now: 3730.
+Memory consumption went from 389.1 MB to 389.1 MB.
+Total: 2.679542 ms (FindLiveObjects: 0.115459 ms CreateObjectMapping: 0.040416 ms MarkObjects: 2.480125 ms  DeleteObjects: 0.042959 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b0ef000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.249 seconds
+Refreshing native plugins compatible for Editor in 1.00 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.557 seconds
+Domain Reload Profiling: 806ms
+	BeginReloadAssembly (89ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (30ms)
+	RebuildCommonClasses (21ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (12ms)
+	LoadAllAssembliesAndSetupDomain (119ms)
+		LoadAssemblies (138ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (14ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (557ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (342ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (38ms)
+			ProcessInitializeOnLoadAttributes (286ms)
+			ProcessInitializeOnLoadMethodAttributes (11ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.86 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3733.
+Memory consumption went from 397.5 MB to 397.5 MB.
+Total: 2.514416 ms (FindLiveObjects: 0.120750 ms CreateObjectMapping: 0.039959 ms MarkObjects: 2.313708 ms  DeleteObjects: 0.039375 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b0ef000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.320 seconds
+Refreshing native plugins compatible for Editor in 1.14 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.865 seconds
+Domain Reload Profiling: 1185ms
+	BeginReloadAssembly (119ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (41ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (153ms)
+		LoadAssemblies (183ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (12ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (865ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (353ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (38ms)
+			ProcessInitializeOnLoadAttributes (296ms)
+			ProcessInitializeOnLoadMethodAttributes (12ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 0.91 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3736.
+Memory consumption went from 405.9 MB to 405.9 MB.
+Total: 2.779708 ms (FindLiveObjects: 0.123500 ms CreateObjectMapping: 0.039083 ms MarkObjects: 2.568875 ms  DeleteObjects: 0.047541 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b0ef000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.309 seconds
+Refreshing native plugins compatible for Editor in 0.90 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.867 seconds
+Domain Reload Profiling: 1176ms
+	BeginReloadAssembly (118ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (48ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (142ms)
+		LoadAssemblies (167ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (15ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (868ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (348ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (41ms)
+			ProcessInitializeOnLoadAttributes (287ms)
+			ProcessInitializeOnLoadMethodAttributes (12ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.05 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.7 KB). Loaded Objects now: 3739.
+Memory consumption went from 414.2 MB to 414.2 MB.
+Total: 2.730750 ms (FindLiveObjects: 0.120333 ms CreateObjectMapping: 0.038708 ms MarkObjects: 2.520875 ms  DeleteObjects: 0.050208 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Begin MonoManager ReloadAssembly
+Thread 0x16b0ef000 may have been prematurely finalized
+- Loaded All Assemblies, in  0.329 seconds
+Refreshing native plugins compatible for Editor in 0.78 ms, found 2 plugins.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.918 seconds
+Domain Reload Profiling: 1247ms
+	BeginReloadAssembly (110ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (41ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (22ms)
+	LoadAllAssembliesAndSetupDomain (164ms)
+		LoadAssemblies (191ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (12ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (918ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (370ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (37ms)
+			ProcessInitializeOnLoadAttributes (314ms)
+			ProcessInitializeOnLoadMethodAttributes (12ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Script is not up to date after domain reload: guid(2ffa7285c122347fe83d818ffb7b412b) path("Assets/Service/NewtorkAdapter.cs") state(2)
+Script is not up to date after domain reload: guid(05c943381c97741c3ad2cc2938b595c5) path("Assets/Ui/MenuManager.cs") state(2)
+Script is not up to date after domain reload: guid(ebb559255bea54717b2080805061eaf2) path("Assets/Service/AuthService.cs") state(2)
+Script is not up to date after domain reload: guid(58deb4af8cdeb4354be8f13456855423) path("Assets/Service/GameService.cs") state(2)
+Script is not up to date after domain reload: guid(b4b3d7849d7324e398f2d13cf8e7fc91) path("Assets/Service/AuditService.cs") state(2)
+Refreshing native plugins compatible for Editor in 1.38 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (31.6 KB). Loaded Objects now: 3742.
+Memory consumption went from 422.6 MB to 422.6 MB.
+Total: 2.640041 ms (FindLiveObjects: 0.118292 ms CreateObjectMapping: 0.039083 ms MarkObjects: 2.429250 ms  DeleteObjects: 0.052917 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/GameList.cs: db8f92be29d779b1a40385f8b50cdfab -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/GameEntry.cs: 110f7a720413a83d293981f65884a1cb -> 
+  custom:scripting/monoscript/fileName/AuthService.cs: 610366e39ebea13f36702d2756b23cad -> 13cb03bb5cf4f1247cfe4eca55f69ccb
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 3918e3fc78b5a79bad01e8451be0beb8 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 

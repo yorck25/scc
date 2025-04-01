@@ -1,5 +1,6 @@
 using System.Collections;
 using Service;
+using Service.Auth;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -114,9 +115,9 @@ namespace Ui
                 {
                     Debug.LogError("GameEntry script is missing from the prefab.");
                 }
-                
-                gameEntryPrefab.SetActive(false);
             }
+            
+            gameEntryPrefab.SetActive(false);
         }
         
         

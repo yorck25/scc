@@ -48,9 +48,10 @@ func DecodeAuthToken(token string, ctx *core.WebContext) (int, error) {
 	return claims.PlayerId, nil
 }
 
-func GenerateGameToken(gameId int, config *core.Config) (string, error) {
+func GenerateGameToken(gameId int, playerId int, config *core.Config) (string, error) {
 	claims := &GameClaims{
-		GameId: gameId,
+		GameId:   gameId,
+		PlayerId: playerId,
 		StandardClaims: jwt.StandardClaims{
 			IssuedAt:  time.Now().Unix(),
 			ExpiresAt: time.Now().Add(time.Hour * 24).Unix(),

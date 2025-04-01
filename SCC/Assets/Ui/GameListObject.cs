@@ -28,11 +28,11 @@ namespace Ui
             _gameService = GameService.Instance;
         }
 
-        private void OnJoinButtonClicked()
+        private async void OnJoinButtonClicked()
         {
             string enteredPassword = passwordInput.text;
             Debug.Log(enteredPassword);
-            _gameService.JoinGame(_gameData.gameId, enteredPassword);
+            await _gameService.JoinGame(_gameData.gameId, enteredPassword);
         }
     }
 }

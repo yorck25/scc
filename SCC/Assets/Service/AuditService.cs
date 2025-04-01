@@ -1,5 +1,6 @@
 using System.Collections;
 using JetBrains.Annotations;
+using Service.Auth;
 using UnityEngine;
 using UnityEngine.Networking;
 
