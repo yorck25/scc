@@ -210,12 +210,12 @@ Create TABLE grid
 (
     city_id int PRIMARY KEY,
     height int NOT NULL,
-    width int NOT NULL, 
+    width int NOT NULL,
     UpdatedAt timestamp,
     FOREIGN KEY (city_id) REFERENCES city (city_id)
 );
 
-CREATE TABLE cells 
+CREATE TABLE cells
 (
     cell_id SERIAL PRIMARY KEY,
     x int NOT NULL,
@@ -245,4 +245,10 @@ CREATE TABLE game_player
     FOREIGN KEY (player_id) REFERENCES player (id),
     FOREIGN KEY (game_id) REFERENCES game (game_id)
 );
+
+INSERT INTO player (username, email, password) VALUES ('yorck', 'test@mail.de', 'test1234');
+INSERT INTO player (username, email, password) VALUES ('test', 'test@gmail.de', 'test1234');
+
+INSERT INTO game (name, password, owner_id) VALUES ('test game 1', 'test1234', 1);
+INSERT INTO game (name, password, owner_id) VALUES ('test game 2', 'test1234', 2);
 ```
