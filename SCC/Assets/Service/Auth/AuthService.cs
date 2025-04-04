@@ -21,10 +21,11 @@ namespace Service.Auth
             if (Instance == null)
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
+                Debug.Log("✅ AuthService initialized successfully");
             }
             else
             {
+                Debug.LogWarning("⚠️ Duplicate AuthService detected! Destroying...");
                 Destroy(gameObject);
             }
         }
@@ -111,6 +112,11 @@ namespace Service.Auth
         public string GetGameToken()
         {
             return _gameToken.token;
+        }
+
+        public bool IsUserLoggedIn()
+        {
+            return _authToken.token != null;
         }
     }
 }

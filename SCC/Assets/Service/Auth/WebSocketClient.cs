@@ -11,13 +11,13 @@ namespace Service.Auth
 {
     public class WebSocketClient : MonoBehaviour
     {
+        public static WebSocketClient Instance { get; private set; }
+        
         private GameToken _gameToken;
         private ClientWebSocket _webSocket;
         private readonly string _webSocketUrl = "ws://localhost:5555/ws";
         private CancellationTokenSource _cancellationTokenSource;
-        public static WebSocketClient Instance { get; private set; }
-        public bool IsConnected => _webSocket?.State == WebSocketState.Open;
-
+        
         private void Awake()
         {
             if (Instance == null)
@@ -38,16 +38,8 @@ namespace Service.Auth
 
         public async Task<bool> Connect()
         {
-            if (string.IsNullOrEmpty(GameToken.Instance.token))
-            {
-                Debug.LogError("Cannot connect to WebSocket: game token is missing!");
-                return false;
-            }
-
             _cancellationTokenSource = new CancellationTokenSource();
             _webSocket = new ClientWebSocket();
-
-            Debug.Log("Using Game Token: " + GameToken.Instance.token);
             _webSocket.Options.SetRequestHeader("X-Game-Token", GameToken.Instance.token);
     
             try

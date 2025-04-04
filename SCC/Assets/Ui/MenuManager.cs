@@ -38,10 +38,10 @@ namespace Ui
 
         private void Start()
         {
-            loginButton.onClick.AddListener(() => StartCoroutine(Login()));
             _authService = AuthService.Instance;
             _auditService = AuditService.Instance;
             _gameService = GameService.Instance;
+            loginButton.onClick.AddListener(() => StartCoroutine(Login()));
 
             ToggleLoginCanvas(true);
             ToggleJoinGameCanvas(false);
