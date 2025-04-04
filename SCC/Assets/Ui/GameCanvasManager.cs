@@ -9,9 +9,9 @@ using UnityEngine.UI;
 public class GameCanvas : MonoBehaviour
 {
     [SerializeField] private Button leaveButton;
-    
+
     private GameService _gameService;
-    
+
     private void Start()
     {
         _gameService = GameService.Instance;
@@ -21,7 +21,10 @@ public class GameCanvas : MonoBehaviour
     private async void OnLeaveButtonClick()
     {
         Debug.Log("start leave process");
-        // await _gameService.LeaveGame();
-        // MenuManager.Instance.LeaveGame(false);
+
+        if (await _gameService.LeaveGame())
+        {
+            MenuManager.Instance.ChangeDisplayMenu(MenuManager.UiElement.GameList);
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace Ui
         [SerializeField] private GameObject loginCanvas;
         [SerializeField] private GameObject joinGameCanvas;
         [SerializeField] private GameObject inGameCanvas;
+        [SerializeField] private GameObject createGameCanvas;
         [SerializeField] private Button loginButton;
         [SerializeField] private TMP_InputField playerNameInput;
         [SerializeField] private TMP_InputField passwordInput;
@@ -51,8 +52,17 @@ namespace Ui
             _gameService = GameService.Instance;
             loginButton.onClick.AddListener(() => StartCoroutine(Login()));
 
-            ToggleLoginCanvas(true);
-            ToggleJoinGameCanvas(false);
+            if (_authService.IsUserLoggedIn())
+            {
+                ChangeDisplayMenu(UiElement.GameList);
+                OnLoginResult(true);
+            }
+            else
+            {
+                ChangeDisplayMenu(UiElement.Login);
+            }
+            
+            createGameCanvas.SetActive(false);
         }
 
         private IEnumerator Login()

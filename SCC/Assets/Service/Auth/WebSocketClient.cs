@@ -12,12 +12,12 @@ namespace Service.Auth
     public class WebSocketClient : MonoBehaviour
     {
         public static WebSocketClient Instance { get; private set; }
-        
+
         private GameToken _gameToken;
         private ClientWebSocket _webSocket;
         private readonly string _webSocketUrl = "ws://localhost:5555/ws";
         private CancellationTokenSource _cancellationTokenSource;
-        
+
         private void Awake()
         {
             if (Instance == null)
@@ -41,7 +41,7 @@ namespace Service.Auth
             _cancellationTokenSource = new CancellationTokenSource();
             _webSocket = new ClientWebSocket();
             _webSocket.Options.SetRequestHeader("X-Game-Token", GameToken.Instance.token);
-    
+
             try
             {
                 await _webSocket.ConnectAsync(new Uri(_webSocketUrl), _cancellationTokenSource.Token);
@@ -64,7 +64,8 @@ namespace Service.Auth
             {
                 try
                 {
-                    WebSocketReceiveResult result = await _webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), _cancellationTokenSource.Token);
+                    WebSocketReceiveResult result = await _webSocket.ReceiveAsync(new ArraySegment<byte>(buffer),
+                        _cancellationTokenSource.Token);
                     if (result.MessageType == WebSocketMessageType.Close)
                     {
                         Debug.Log("WebSocket closed by the server.");
@@ -98,14 +99,28 @@ namespace Service.Auth
             await CloseConnection();
         }
 
-        public async Task CloseConnection()
+        public async Task<bool> CloseConnection()
         {
-            if (_webSocket != null)
+            try
             {
-                await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closing",
-                    _cancellationTokenSource.Token);
-                _webSocket.Dispose();
-                _webSocket = null;
+                if (_webSocket == null)
+                {
+                    return false;
+                }
+                
+                if (_webSocket.State == WebSocketState.Open)
+                {
+                    await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
+                    _webSocket.Dispose();
+                    _webSocket = null;
+                }
+                
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Error closing WebSocket connection: " + ex.Message);
+                return false;
             }
         }
     }

@@ -101,5 +101,18 @@ namespace Service
                 MenuManager.Instance.ChangeDisplayMenu(MenuManager.UiElement.InGame);
             }
         }
+        
+        public async Task<bool> LeaveGame()
+        {
+            Debug.Log("try to leave game");
+            var res = await _authService.LeaveGame();
+
+            if (res)
+            {
+                CurrentGame = null;
+            }
+
+            return res;
+        }
     }
 }

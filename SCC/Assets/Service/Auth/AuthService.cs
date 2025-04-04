@@ -91,18 +91,34 @@ namespace Service.Auth
             }
         }
 
+        public async Task<bool> LeaveGame()
+        {
+            var success = await DisconnectFromWebsocket();
+            if (success)
+            {
+                GameToken.Instance.token = null;
+            }
+            
+            return success;
+        }
+
         private async Task<bool> ConnectToWebsocket()
         {
             Debug.Log("Trying to connect to WebSocket...");
             bool success = await _webSocketClient.Connect();
             return success;
         }
-
-        public bool HasAuthToken()
+        
+        private async Task<bool> DisconnectFromWebsocket()
         {
-            return !string.IsNullOrEmpty(_authToken.token);
+            if (_webSocketClient != null)
+            {
+                var res = await _webSocketClient.CloseConnection();
+                Debug.Log("Disconnected from WebSocket");
+                return res;
+            }
+            return false;
         }
-
 
         public string GetAuthToken()
         {
@@ -116,7 +132,7 @@ namespace Service.Auth
 
         public bool IsUserLoggedIn()
         {
-            return _authToken.token != null;
+            return GetAuthToken() != null;
         }
     }
 }
