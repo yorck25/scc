@@ -32,7 +32,12 @@ namespace Ui
         {
             string enteredPassword = passwordInput.text;
             Debug.Log(enteredPassword);
-            await _gameService.JoinGame(_gameData.gameId, enteredPassword);
+            var res = await _gameService.JoinGame(_gameData.gameId, enteredPassword);
+
+            if (!res)
+            {
+                passwordInput.text = string.Empty;
+            }
         }
     }
 }

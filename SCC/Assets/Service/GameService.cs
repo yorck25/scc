@@ -80,11 +80,10 @@ namespace Service
             }
         }
 
-        public async Task JoinGame(int gameId, string password)
+        public async Task<bool> JoinGame(int gameId, string password)
         {
             Debug.Log("try to login to gane");
             var res = await _authService.JoinGame(gameId, password);
-            Debug.Log(res);
 
             if (res)
             {
@@ -93,13 +92,15 @@ namespace Service
                 if(game == null)
                 {
                     Debug.LogError("Game not found");
-                    return;
+                    return false;
                 }
                 
                 CurrentGame = game;
                 
                 MenuManager.Instance.ChangeDisplayMenu(MenuManager.UiElement.InGame);
             }
+
+            return res;
         }
         
         public async Task<bool> LeaveGame()
