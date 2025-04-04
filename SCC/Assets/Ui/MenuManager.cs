@@ -11,8 +11,16 @@ namespace Ui
     {
         public static MenuManager Instance { get; private set; }
 
+        public enum UiElement
+        {
+            Login,
+            GameList,
+            InGame,
+        }
+
         [SerializeField] private GameObject loginCanvas;
-        [SerializeField] public GameObject joinGameCanvas;
+        [SerializeField] private GameObject joinGameCanvas;
+        [SerializeField] private GameObject inGameCanvas;
         [SerializeField] private Button loginButton;
         [SerializeField] private TMP_InputField playerNameInput;
         [SerializeField] private TMP_InputField passwordInput;
@@ -117,11 +125,33 @@ namespace Ui
                 }
             }
         }
-        
-        public void ToggleMenu(bool state)
+
+        public void ChangeDisplayMenu(UiElement uiElement)
         {
-            ToggleJoinGameCanvas(state);
-            ToggleLoginCanvas(state);
+            HideAllMenus();
+
+            switch (uiElement)
+            {
+                case UiElement.Login:
+                    ToggleLoginCanvas(true);
+                    break;
+                case UiElement.GameList:
+                    ToggleJoinGameCanvas(true);
+                    break;
+                case UiElement.InGame:
+                    ToggleInGameCanvas(true);
+                    break;
+                default:
+                    ToggleLoginCanvas(true);
+                    break;
+            }
+        }
+
+        private void HideAllMenus()
+        {
+            ToggleLoginCanvas(false);
+            ToggleJoinGameCanvas(false);
+            ToggleInGameCanvas(false);
         }
 
         private void ToggleJoinGameCanvas(bool state)
@@ -132,6 +162,11 @@ namespace Ui
         private void ToggleLoginCanvas(bool state)
         {
             loginCanvas.SetActive(state);
+        }
+
+        private void ToggleInGameCanvas(bool state)
+        {
+            inGameCanvas.SetActive(state);
         }
     }
 }

@@ -98,7 +98,7 @@ namespace Service
                 
                 CurrentGame = game;
                 
-                MenuManager.Instance.ToggleMenu(false);
+                MenuManager.Instance.ChangeDisplayMenu(MenuManager.UiElement.InGame);
             }
         }
     }
