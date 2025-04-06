@@ -19,8 +19,9 @@ namespace Ui
             InGame,
         }
 
-        [Header("UI Elements")]
+        [Header("UI Elements")] 
         [SerializeField] private GameObject loginCanvas;
+
         [SerializeField] private GameObject joinGameCanvas;
         [SerializeField] private GameObject inGameCanvas;
         [SerializeField] private GameObject createGameCanvas;
@@ -28,11 +29,11 @@ namespace Ui
         [SerializeField] private TMP_InputField playerNameInput;
         [SerializeField] private TMP_InputField passwordInput;
 
-        [Header("Game List")]
-        [SerializeField] private Transform gameListContainer;
+        [Header("Game List")] [SerializeField] private Transform gameListContainer;
         [SerializeField] private GameObject gameEntryPrefab;
         [SerializeField] private TMP_InputField searchGameInput;
-        
+        [SerializeField] private Button openCreateGameButton;
+
         private AuthService _authService;
         private GameService _gameService;
 
@@ -52,8 +53,9 @@ namespace Ui
         {
             _authService = AuthService.Instance;
             _gameService = GameService.Instance;
-            
+
             loginButton.onClick.AddListener(async () => await Login());
+            openCreateGameButton.onClick.AddListener(OpenCreateGameCanvas);
             searchGameInput.onValueChanged.AddListener(async (value) => await OnSearchValueChanged(value));
 
             if (_authService.GetAuthToken() != "")
@@ -65,22 +67,26 @@ namespace Ui
             {
                 ChangeDisplayMenu(UiElement.Login);
             }
-            
+
             createGameCanvas.SetActive(false);
+        }
+
+        private void OpenCreateGameCanvas()
+        {
+            createGameCanvas.SetActive(!createGameCanvas.activeSelf);
         }
 
         private async Task LoadGamesAfterLogin()
         {
             await _gameService.GetGameList();
-            
-            ClearItemList();
-            RenderItems(_gameService.GameList);
+
+            RerenderGameList();
         }
 
         private async Task OnSearchValueChanged(string value)
         {
             await _gameService.SearchGame(value);
-            
+
             ClearItemList();
             RenderItems(_gameService.GameList);
         }
@@ -103,7 +109,7 @@ namespace Ui
             }
 
             var success = await _authService.Login(username, password);
-            
+
             OnLoginResult(success);
         }
 
@@ -113,12 +119,18 @@ namespace Ui
             {
                 Debug.Log("Login successful!");
                 ChangeDisplayMenu(UiElement.GameList);
-                _ = LoadGamesAfterLogin(); // Fire and forget
+                _ = LoadGamesAfterLogin();
             }
             else
             {
                 Debug.LogError("Login failed: Invalid credentials or network error");
             }
+        }
+
+        public void RerenderGameList()
+        {
+            ClearItemList();
+            RenderItems(_gameService.GameList);
         }
         
         private void ClearItemList()
@@ -150,7 +162,7 @@ namespace Ui
             {
                 var gameEntry = Instantiate(gameEntryPrefab, gameListContainer);
                 gameEntry.SetActive(true);
-                
+
                 var gameEntryScript = gameEntry.GetComponent<GameListObject>();
                 if (gameEntryScript != null)
                 {

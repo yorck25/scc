@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using JetBrains.Annotations;
 using Service.Auth;
@@ -6,7 +7,7 @@ using UnityEngine.Networking;
 
 namespace Service
 {
-    [System.Serializable]
+    [Serializable]
     public class CreateAuditRequest
     {
         public string action;

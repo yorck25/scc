@@ -24,6 +24,13 @@ namespace Service
     }
 
     [Serializable]
+    public class CreateGameRequest
+    {
+        public string name;
+        public string password;
+    }
+
+    [Serializable]
     public class GameListWrapper
     {
         public List<Game> games;
@@ -84,7 +91,7 @@ namespace Service
                 {
                     GameListWrapper wrapper = JsonUtility.FromJson<GameListWrapper>(
                         "{\"games\":" + request.downloadHandler.text + "}");
-                    
+
                     GameList = wrapper?.games ?? new List<Game>();
                     Debug.Log($"Successfully loaded {GameList.Count} games");
                 }
@@ -129,7 +136,7 @@ namespace Service
                 {
                     GameListWrapper wrapper = JsonUtility.FromJson<GameListWrapper>(
                         "{\"games\":" + request.downloadHandler.text + "}");
-                    
+
                     GameList = wrapper.games;
                 }
                 catch (Exception ex)
@@ -142,6 +149,47 @@ namespace Service
                 Debug.LogError($"Exception in SearchGame: {ex.Message}");
                 GameList = new List<Game>();
             }
+        }
+
+        public async Task<bool> CreateGame(string name, string password)
+        {
+            CreateGameRequest gameRequest = new CreateGameRequest
+            {
+                name = name,
+                password = password
+            };
+
+            var jsonGameRequest = JsonUtility.ToJson(gameRequest);
+
+            var request = UnityWebRequest.Post(BaseUrl + "/game", jsonGameRequest, "application/json").AddAuthHeader();
+            request.SendWebRequest();
+
+            while (!request.isDone)
+            {
+                await Task.Yield();
+            }
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError($"Failed to create game: {request.error}");
+                return false;
+            }
+
+            Debug.Log("Game was successfully created");
+
+            try
+            {
+                Game createdGamesRes = JsonUtility.FromJson<Game>(request.downloadHandler.text);
+
+                Debug.Log(createdGamesRes);
+                GameList.Add(createdGamesRes);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error parsing search results: {ex.Message}");
+            }
+
+            return true;
         }
 
         public async Task<bool> JoinGame(int gameId, string password)
@@ -163,6 +211,7 @@ namespace Service
                     MenuManager.Instance.ChangeDisplayMenu(MenuManager.UiElement.InGame);
                     return true;
                 }
+
                 return false;
             }
             catch (Exception ex)
@@ -182,6 +231,7 @@ namespace Service
                 {
                     CurrentGame = null;
                 }
+
                 return res;
             }
             catch (Exception ex)

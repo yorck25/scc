@@ -69,12 +69,12 @@ func HandleCreateGame(ctx *core.WebContext) error {
 		return ctx.InternalError(err.Error())
 	}
 
-	err = repo.CreateNewGame(cgr, playerId)
+	createdGame, err := repo.CreateNewGame(cgr, playerId)
 	if err != nil {
 		return ctx.InternalError(err.Error())
 	}
 
-	return ctx.Success("Created Game")
+	return ctx.Success(createdGame)
 }
 
 func HandleUpdateGame(ctx *core.WebContext) error {

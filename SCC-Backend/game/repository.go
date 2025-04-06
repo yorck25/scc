@@ -49,24 +49,31 @@ func (r *Repository) GetGameByName(searchName string) ([]Game, error) {
 	return game, nil
 }
 
-func (r *Repository) CreateNewGame(cgr CreateGameRequest, playerId int) error {
-	stmt, err := r.db.PrepareNamed(`INSERT INTO game (name, password, owner_id) VALUES (:name, :pw, :ownerId)`)
+func (r *Repository) CreateNewGame(cgr CreateGameRequest, playerId int) (*Game, error) {
+	var game Game
+
+	stmt, err := r.db.PrepareNamed(`
+        INSERT INTO game (name, password, owner_id) 
+        VALUES (:name, :password, :ownerId)
+        RETURNING *
+    `)
+
 	if err != nil {
-		return err
+		return &game, err
 	}
 
 	params := map[string]any{
-		"name":    cgr.Name,
-		"pw":      cgr.Password,
-		"ownerId": playerId,
+		"name":     cgr.Name,
+		"password": cgr.Password,
+		"ownerId":  playerId,
 	}
 
-	_, err = stmt.Exec(params)
+	err = stmt.Get(&game, params)
 	if err != nil {
-		return err
+		return &game, err
 	}
 
-	return nil
+	return &game, nil
 }
 
 func (r *Repository) UpdateGame(ugr UpdateGameRequest, playerId int) error {
