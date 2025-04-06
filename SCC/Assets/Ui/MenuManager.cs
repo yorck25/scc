@@ -1,4 +1,5 @@
-using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Service;
 using Service.Auth;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace Ui
             InGame,
         }
 
+        [Header("UI Elements")]
         [SerializeField] private GameObject loginCanvas;
         [SerializeField] private GameObject joinGameCanvas;
         [SerializeField] private GameObject inGameCanvas;
@@ -26,12 +28,13 @@ namespace Ui
         [SerializeField] private TMP_InputField playerNameInput;
         [SerializeField] private TMP_InputField passwordInput;
 
+        [Header("Game List")]
         [SerializeField] private Transform gameListContainer;
         [SerializeField] private GameObject gameEntryPrefab;
-
+        [SerializeField] private TMP_InputField searchGameInput;
+        
         private AuthService _authService;
         private GameService _gameService;
-        private AuditService _auditService;
 
         private void Awake()
         {
@@ -45,17 +48,18 @@ namespace Ui
             }
         }
 
-        private void Start()
+        private async void Start()
         {
             _authService = AuthService.Instance;
-            _auditService = AuditService.Instance;
             _gameService = GameService.Instance;
-            loginButton.onClick.AddListener(() => StartCoroutine(Login()));
+            
+            loginButton.onClick.AddListener(async () => await Login());
+            searchGameInput.onValueChanged.AddListener(async (value) => await OnSearchValueChanged(value));
 
-            if (_authService.IsUserLoggedIn())
+            if (_authService.GetAuthToken() != "")
             {
                 ChangeDisplayMenu(UiElement.GameList);
-                OnLoginResult(true);
+                await LoadGamesAfterLogin();
             }
             else
             {
@@ -65,12 +69,28 @@ namespace Ui
             createGameCanvas.SetActive(false);
         }
 
-        private IEnumerator Login()
+        private async Task LoadGamesAfterLogin()
+        {
+            await _gameService.GetGameList();
+            
+            ClearItemList();
+            RenderItems(_gameService.GameList);
+        }
+
+        private async Task OnSearchValueChanged(string value)
+        {
+            await _gameService.SearchGame(value);
+            
+            ClearItemList();
+            RenderItems(_gameService.GameList);
+        }
+
+        private async Task Login()
         {
             if (_authService == null)
             {
                 Debug.LogError("AuthService is not initialized!");
-                yield break;
+                return;
             }
 
             string username = playerNameInput.text;
@@ -79,11 +99,12 @@ namespace Ui
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 Debug.LogError("Username or password is empty!");
-                yield break;
+                return;
             }
 
-            Debug.Log("Logging in...");
-            yield return StartCoroutine(_authService.Login(username, password, OnLoginResult));
+            var success = await _authService.Login(username, password);
+            
+            OnLoginResult(success);
         }
 
         private void OnLoginResult(bool success)
@@ -91,39 +112,45 @@ namespace Ui
             if (success)
             {
                 Debug.Log("Login successful!");
-                //StartCoroutine(_auditService.WriteAudit(action: "User logged in", oldValue: null, newValue: null));
-                ToggleLoginCanvas(false);
-                ToggleJoinGameCanvas(true);
-
-                StartCoroutine(RenderGameList());
+                ChangeDisplayMenu(UiElement.GameList);
+                _ = LoadGamesAfterLogin(); // Fire and forget
             }
             else
             {
-                Debug.LogError("Login failed: No token received.");
+                Debug.LogError("Login failed: Invalid credentials or network error");
+            }
+        }
+        
+        private void ClearItemList()
+        {
+            foreach (Transform child in gameListContainer)
+            {
+                if (child.gameObject != gameEntryPrefab)
+                {
+                    Destroy(child.gameObject);
+                }
             }
         }
 
-        private IEnumerator RenderGameList()
+        private void RenderItems(List<Game> games)
         {
-            Debug.Log("RenderGameList Started.");
-
-            if (_gameService == null || gameEntryPrefab == null || gameListContainer == null)
+            if (games == null)
             {
-                Debug.LogError("needed services are missing");
-                yield break;
+                Debug.LogWarning("Trying to render null game list");
+                return;
             }
 
-            yield return StartCoroutine(_gameService.GetGameList());
-
-            if (_gameService.GameList == null || _gameService.GameList.Count == 0)
+            if (gameEntryPrefab == null || gameListContainer == null)
             {
-                Debug.LogError("No games to map");
-                yield break;
+                Debug.LogError("Missing required UI components");
+                return;
             }
 
-            foreach (var game in _gameService.GameList)
+            foreach (var game in games)
             {
                 var gameEntry = Instantiate(gameEntryPrefab, gameListContainer);
+                gameEntry.SetActive(true);
+                
                 var gameEntryScript = gameEntry.GetComponent<GameListObject>();
                 if (gameEntryScript != null)
                 {
@@ -132,6 +159,7 @@ namespace Ui
                 else
                 {
                     Debug.LogError("GameEntry script is missing from the prefab.");
+                    Destroy(gameEntry);
                 }
             }
         }
@@ -143,40 +171,25 @@ namespace Ui
             switch (uiElement)
             {
                 case UiElement.Login:
-                    ToggleLoginCanvas(true);
+                    loginCanvas.SetActive(true);
                     break;
                 case UiElement.GameList:
-                    ToggleJoinGameCanvas(true);
+                    joinGameCanvas.SetActive(true);
                     break;
                 case UiElement.InGame:
-                    ToggleInGameCanvas(true);
+                    inGameCanvas.SetActive(true);
                     break;
                 default:
-                    ToggleLoginCanvas(true);
+                    loginCanvas.SetActive(true);
                     break;
             }
         }
 
         private void HideAllMenus()
         {
-            ToggleLoginCanvas(false);
-            ToggleJoinGameCanvas(false);
-            ToggleInGameCanvas(false);
-        }
-
-        private void ToggleJoinGameCanvas(bool state)
-        {
-            joinGameCanvas.SetActive(state);
-        }
-
-        private void ToggleLoginCanvas(bool state)
-        {
-            loginCanvas.SetActive(state);
-        }
-
-        private void ToggleInGameCanvas(bool state)
-        {
-            inGameCanvas.SetActive(state);
+            loginCanvas.SetActive(false);
+            joinGameCanvas.SetActive(false);
+            inGameCanvas.SetActive(false);
         }
     }
 }

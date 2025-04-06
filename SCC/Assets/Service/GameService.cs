@@ -19,7 +19,7 @@ namespace Service
 
         public override string ToString()
         {
-            return $"ID: {gameId}, Name: {name}, Password: {password}, Owner ID: {ownerId}";
+            return $"ID: {gameId}, Name: {name}, Owner ID: {ownerId}";
         }
     }
 
@@ -55,65 +55,140 @@ namespace Service
             _authService = AuthService.Instance;
         }
 
-        public IEnumerator GetGameList()
+        public async Task GetGameList()
         {
-            var request = UnityWebRequest.Get(BaseUrl + "/game").AddAuthHeader();
-            yield return request.SendWebRequest();
+            try
+            {
+                var request = UnityWebRequest.Get(BaseUrl + "/game").AddAuthHeader();
+                request.SendWebRequest();
 
-            if (request.result != UnityWebRequest.Result.Success)
-            {
-                Debug.LogError(request.result + " : Failed to load games");
-            }
-            else
-            {
+                while (!request.isDone)
+                {
+                    await Task.Yield();
+                }
+
+                if (request.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError($"Failed to load games: {request.error} (HTTP {request.responseCode})");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(request.downloadHandler.text))
+                {
+                    Debug.LogWarning("Received empty game list");
+                    GameList = new List<Game>();
+                    return;
+                }
+
                 try
                 {
-                    GameListWrapper wrapper =
-                        JsonUtility.FromJson<GameListWrapper>("{\"games\":" + request.downloadHandler.text + "}");
+                    GameListWrapper wrapper = JsonUtility.FromJson<GameListWrapper>(
+                        "{\"games\":" + request.downloadHandler.text + "}");
+                    
+                    GameList = wrapper?.games ?? new List<Game>();
+                    Debug.Log($"Successfully loaded {GameList.Count} games");
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"Error parsing games: {ex.Message}\nResponse: {request.downloadHandler.text}");
+                    GameList = new List<Game>();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Exception in GetGameList: {ex.Message}");
+                GameList = new List<Game>();
+            }
+        }
 
+        public async Task SearchGame(string value)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    await GetGameList();
+                    return;
+                }
+
+                var request = UnityWebRequest.Get(BaseUrl + "/game/" + value).AddAuthHeader();
+                request.SendWebRequest();
+
+                while (!request.isDone)
+                {
+                    await Task.Yield();
+                }
+
+                if (request.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError($"Failed to search games: {request.error}");
+                    return;
+                }
+
+                try
+                {
+                    GameListWrapper wrapper = JsonUtility.FromJson<GameListWrapper>(
+                        "{\"games\":" + request.downloadHandler.text + "}");
+                    
                     GameList = wrapper.games;
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogError("Error parsing the game list: " + ex.Message);
+                    Debug.LogError($"Error parsing search results: {ex.Message}");
                 }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Exception in SearchGame: {ex.Message}");
+                GameList = new List<Game>();
             }
         }
 
         public async Task<bool> JoinGame(int gameId, string password)
         {
-            Debug.Log("try to login to gane");
-            var res = await _authService.JoinGame(gameId, password);
-
-            if (res)
+            try
             {
-                var game = GameList.Find(item => item.gameId == gameId);
-                
-                if(game == null)
-                {
-                    Debug.LogError("Game not found");
-                    return false;
-                }
-                
-                CurrentGame = game;
-                
-                MenuManager.Instance.ChangeDisplayMenu(MenuManager.UiElement.InGame);
-            }
+                Debug.Log($"Attempting to join game {gameId}");
+                var res = await _authService.JoinGame(gameId, password);
 
-            return res;
+                if (res)
+                {
+                    CurrentGame = GameList.Find(item => item.gameId == gameId);
+                    if (CurrentGame == null)
+                    {
+                        Debug.LogError("Game not found in local list");
+                        return false;
+                    }
+
+                    MenuManager.Instance.ChangeDisplayMenu(MenuManager.UiElement.InGame);
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Exception in JoinGame: {ex.Message}");
+                return false;
+            }
         }
-        
+
         public async Task<bool> LeaveGame()
         {
-            Debug.Log("try to leave game");
-            var res = await _authService.LeaveGame();
-
-            if (res)
+            try
             {
-                CurrentGame = null;
+                Debug.Log("Attempting to leave current game");
+                var res = await _authService.LeaveGame();
+                if (res)
+                {
+                    CurrentGame = null;
+                }
+                return res;
             }
-
-            return res;
+            catch (Exception ex)
+            {
+                Debug.LogError($"Exception in LeaveGame: {ex.Message}");
+                return false;
+            }
         }
     }
 }

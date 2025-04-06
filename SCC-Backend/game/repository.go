@@ -41,7 +41,7 @@ func (r *Repository) GetGameByName(searchName string) ([]Game, error) {
 		"name": searchName + "%",
 	}
 
-	err = stmt.Get(&game, params)
+	err = stmt.Select(&game, params)
 	if err != nil {
 		return nil, err
 	}
