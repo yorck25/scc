@@ -19,8 +19,8 @@ namespace Ui
             InGame,
         }
 
-        [Header("UI Elements")] 
-        [SerializeField] private GameObject loginCanvas;
+        [Header("UI Elements")] [SerializeField]
+        private GameObject loginCanvas;
 
         [SerializeField] private GameObject joinGameCanvas;
         [SerializeField] private GameObject inGameCanvas;
@@ -47,6 +47,8 @@ namespace Ui
             {
                 Destroy(gameObject);
             }
+
+            HideAllMenus();
         }
 
         private async void Start()
@@ -58,9 +60,7 @@ namespace Ui
             openCreateGameButton.onClick.AddListener(OpenCreateGameCanvas);
             searchGameInput.onValueChanged.AddListener(async (value) => await OnSearchValueChanged(value));
 
-            var isTokenValid = await _authService.ValidateAuthToken();
-            
-            if (_authService.GetAuthToken() != "" && isTokenValid)
+            if (_authService.GetAuthToken() != "" && await _authService.ValidateAuthToken())
             {
                 ChangeDisplayMenu(UiElement.GameList);
                 await LoadGamesAfterLogin();
@@ -134,7 +134,7 @@ namespace Ui
             ClearItemList();
             RenderItems(_gameService.GameList);
         }
-        
+
         private void ClearItemList()
         {
             foreach (Transform child in gameListContainer)

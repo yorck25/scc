@@ -27,6 +27,8 @@ namespace Service
 
         public static UnityWebRequest AddGameAuth(this UnityWebRequest request)
         {
+            AddAuthHeader(request);
+            
             string gameToken = AuthService.Instance?.GetGameToken();
             if (!string.IsNullOrEmpty(gameToken))
             {

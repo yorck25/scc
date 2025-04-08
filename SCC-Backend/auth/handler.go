@@ -80,7 +80,7 @@ func JoinGame(ctx *core.WebContext) error {
 }
 
 func ValidateAuthToken(ctx *core.WebContext) error {
-	token := ctx.Request().Header.Get("auth-Token")
+	token := ctx.Request().Header.Get("authToken")
 	if token == "" {
 		return ctx.Unauthorized("no auth token provided")
 	}
@@ -94,7 +94,7 @@ func ValidateAuthToken(ctx *core.WebContext) error {
 }
 
 func ValidateGameToken(ctx *core.WebContext) error {
-	token := ctx.Request().Header.Get("game-Token")
+	token := ctx.Request().Header.Get("gameToken")
 	if token == "" {
 		return ctx.Unauthorized("no game token provided")
 	}

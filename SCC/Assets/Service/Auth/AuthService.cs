@@ -25,7 +25,6 @@ namespace Service.Auth
             }
             else
             {
-                Debug.LogWarning("⚠️ Duplicate AuthService detected! Destroying...");
                 Destroy(gameObject);
             }
         }
@@ -39,7 +38,25 @@ namespace Service.Auth
 
         public async Task<bool> ValidateAuthToken()
         {
-            var request = UnityWebRequest.Get(BaseUrl + "/validate-auth").AddAuthHeader();
+            var request = UnityWebRequest.Get(BaseUrl + "/validate-auth-token").AddAuthHeader();
+            request.SendWebRequest();
+            
+            while (!request.isDone)
+            {
+                await Task.Yield();
+            }
+            
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                return true;
+            }
+            
+            return false;
+        }
+        
+        public async Task<bool> ValidateGameToken()
+        {
+            var request = UnityWebRequest.Get(BaseUrl + "/validate-game-token").AddGameAuth();
             request.SendWebRequest();
             while (!request.isDone)
             {
