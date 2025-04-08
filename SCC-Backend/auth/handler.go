@@ -78,3 +78,31 @@ func JoinGame(ctx *core.WebContext) error {
 
 	return ctx.Success(echo.Map{"token": token})
 }
+
+func ValidateAuthToken(ctx *core.WebContext) error {
+	token := ctx.Request().Header.Get("auth-Token")
+	if token == "" {
+		return ctx.Unauthorized("no auth token provided")
+	}
+
+	_, err := api.DecodeAuthToken(token, ctx)
+	if err != nil {
+		return ctx.Unauthorized("auth token invalid")
+	}
+
+	return ctx.Success()
+}
+
+func ValidateGameToken(ctx *core.WebContext) error {
+	token := ctx.Request().Header.Get("game-Token")
+	if token == "" {
+		return ctx.Unauthorized("no game token provided")
+	}
+
+	_, _, err := api.DecodeGameToken(token, ctx)
+	if err != nil {
+		return ctx.Unauthorized("auth token invalid")
+	}
+
+	return ctx.Success()
+}

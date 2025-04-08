@@ -21,6 +21,8 @@ func main() {
 
 	app.GET("/", defaultUrl)
 	app.GET("/health", healthUrl)
+	app.GET("/validate-auth-token", auth.ValidateAuthToken)
+	app.GET("/validate-game-token", auth.ValidateGameToken)
 
 	app.GET("/ws", core.HandleWebSocket)
 

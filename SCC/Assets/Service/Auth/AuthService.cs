@@ -37,6 +37,23 @@ namespace Service.Auth
             _webSocketClient = WebSocketClient.Instance;
         }
 
+        public async Task<bool> ValidateAuthToken()
+        {
+            var request = UnityWebRequest.Get(BaseUrl + "/validate-auth").AddAuthHeader();
+            request.SendWebRequest();
+            while (!request.isDone)
+            {
+                await Task.Yield();
+            }
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                return true;
+            }
+            
+            return false;
+        }
+        
         public async Task<bool> Login(string playerName, string password)
         {
             var request = UnityWebRequest.Get(BaseUrl + "/login");

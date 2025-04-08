@@ -58,7 +58,9 @@ namespace Ui
             openCreateGameButton.onClick.AddListener(OpenCreateGameCanvas);
             searchGameInput.onValueChanged.AddListener(async (value) => await OnSearchValueChanged(value));
 
-            if (_authService.GetAuthToken() != "")
+            var isTokenValid = await _authService.ValidateAuthToken();
+            
+            if (_authService.GetAuthToken() != "" && isTokenValid)
             {
                 ChangeDisplayMenu(UiElement.GameList);
                 await LoadGamesAfterLogin();
