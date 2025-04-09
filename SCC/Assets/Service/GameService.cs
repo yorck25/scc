@@ -41,6 +41,7 @@ namespace Service
         public static GameService Instance { get; private set; }
         public List<Game> GameList = new();
         public Game CurrentGame;
+        public bool IsInGame;
         private const string BaseUrl = "http://localhost:5555";
         private AuthService _authService;
 
@@ -57,9 +58,19 @@ namespace Service
             }
         }
 
-        private void Start()
+        private async void Start()
         {
             _authService = AuthService.Instance;
+
+            if (_authService.GetGameToken() != "" && await _authService.ValidateGameToken())
+            {
+                IsInGame = true;
+            }
+            else
+            {
+                Debug.LogError("Game token is invalid or not set");
+                return;
+            }
         }
 
         public async Task GetGameList()
@@ -209,9 +220,11 @@ namespace Service
                     }
 
                     MenuManager.Instance.ChangeDisplayMenu(MenuManager.UiElement.InGame);
+                    IsInGame = true;
                     return true;
                 }
 
+                IsInGame = false;
                 return false;
             }
             catch (Exception ex)
@@ -230,6 +243,7 @@ namespace Service
                 if (res)
                 {
                     CurrentGame = null;
+                    IsInGame = false;
                 }
 
                 return res;

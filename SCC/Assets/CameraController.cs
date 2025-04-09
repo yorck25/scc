@@ -1,3 +1,4 @@
+using Service;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -11,7 +12,7 @@ public class CameraController : MonoBehaviour
     public float movementTime;
     public float rotationAmount;
     public Vector3 zoomAmount;
-    
+
     public Vector3 newPosition;
     public Quaternion newRotation;
     public Vector3 newZoom;
@@ -24,17 +25,24 @@ public class CameraController : MonoBehaviour
     public float minZoomLimit = 0;
     public float maxZoomLimit = 75;
 
-    // Start is called before the first frame update
+    private GameService _gameService;
+
     void Start()
     {
+        _gameService = GameService.Instance;
+
         newPosition = transform.position;
         newRotation = transform.rotation;
         newZoom = cameraTransform.localPosition;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (!_gameService.IsInGame)
+        {
+            return;
+        }
+
         HandleMouseInput();
         HandleMovementInput();
     }
@@ -53,7 +61,7 @@ public class CameraController : MonoBehaviour
                 newZoom.y = minZoomLimit;
             }
 
-            if(newZoom.y > maxZoomLimit)
+            if (newZoom.y > maxZoomLimit)
             {
                 newZoom.z = oldZPosition;
                 newZoom.y = maxZoomLimit;
@@ -64,6 +72,7 @@ public class CameraController : MonoBehaviour
         {
             rotateStartPosition = Input.mousePosition;
         }
+
         if (Input.GetMouseButton(2))
         {
             rotateCurrentPosition = Input.mousePosition;
@@ -87,6 +96,7 @@ public class CameraController : MonoBehaviour
                 dragStartPosition = ray.GetPoint(entry);
             }
         }
+
         if (Input.GetMouseButton(0))
         {
             Plane plane = new Plane(Vector3.up, Vector3.zero);
@@ -113,18 +123,22 @@ public class CameraController : MonoBehaviour
         {
             movementSpeed = fastSpeed;
         }
+
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             newPosition += transform.forward * movementSpeed;
         }
+
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             newPosition += transform.forward * -movementSpeed;
         }
+
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             newPosition += transform.right * movementSpeed;
         }
+
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             newPosition += transform.right * -movementSpeed;
@@ -146,6 +160,7 @@ public class CameraController : MonoBehaviour
         {
             newZoom += zoomAmount;
         }
+
         if (Input.GetKey(KeyCode.F) && newZoom.y < maxZoomLimit)
         {
             newZoom -= zoomAmount;
@@ -153,6 +168,7 @@ public class CameraController : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * movementTime);
-        cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
+        cameraTransform.localPosition =
+            Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
     }
 }

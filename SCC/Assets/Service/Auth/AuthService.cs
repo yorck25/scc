@@ -56,13 +56,14 @@ namespace Service.Auth
         
         public async Task<bool> ValidateGameToken()
         {
-            var request = UnityWebRequest.Get(BaseUrl + "/validate-game-token").AddGameAuth();
+            var request = UnityWebRequest.Get(BaseUrl + "/validate-game-token").AddAuthHeader();
             request.SendWebRequest();
+            
             while (!request.isDone)
             {
                 await Task.Yield();
             }
-
+            
             if (request.result == UnityWebRequest.Result.Success)
             {
                 return true;
