@@ -42,6 +42,7 @@ namespace Service
         public List<Game> GameList = new();
         public Game CurrentGame;
         public bool IsInGame;
+        public bool IsBuildModeActive;
         private const string BaseUrl = "http://localhost:5555";
         private AuthService _authService;
 
@@ -56,21 +57,43 @@ namespace Service
             {
                 Destroy(gameObject);
             }
+            
+            _authService = AuthService.Instance;
+        }
+        private void Start()
+        {
+            StartCoroutine(InitializeAfterAuthService());
         }
 
-        private async void Start()
+        private IEnumerator InitializeAfterAuthService()
         {
-            _authService = AuthService.Instance;
+            while (_authService == null)
+            {
+                _authService = AuthService.Instance;
+                yield return null;
+            }
 
-            if (_authService.GetGameToken() != "" && await _authService.ValidateGameToken())
+            yield return StartCoroutine(ValidateGameTokenRoutine());
+        }
+
+        private IEnumerator ValidateGameTokenRoutine()
+        {
+            var validateTask = _authService.ValidateGameToken();
+            yield return new WaitUntil(() => validateTask.IsCompleted);
+    
+            if (_authService.GetGameToken() != "" && validateTask.Result)
             {
                 IsInGame = true;
             }
             else
             {
                 Debug.LogError("Game token is invalid or not set");
-                return;
             }
+        }
+
+        public void ToggleBuildMode()
+        {
+            IsBuildModeActive = !IsBuildModeActive;
         }
 
         public async Task GetGameList()

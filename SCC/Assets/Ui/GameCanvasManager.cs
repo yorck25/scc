@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Service;
 using Ui;
 using UnityEngine;
@@ -9,6 +6,7 @@ using UnityEngine.UI;
 public class GameCanvas : MonoBehaviour
 {
     [SerializeField] private Button leaveButton;
+    [SerializeField] private Button toggleBuildModeButton;
 
     private GameService _gameService;
 
@@ -16,6 +14,12 @@ public class GameCanvas : MonoBehaviour
     {
         _gameService = GameService.Instance;
         leaveButton.onClick.AddListener(() => OnLeaveButtonClick());
+        toggleBuildModeButton.onClick.AddListener(() => OnToggleBuildButtonClick());
+    }
+
+    private void OnToggleBuildButtonClick()
+    {
+        _gameService.ToggleBuildMode();
     }
 
     private async void OnLeaveButtonClick()

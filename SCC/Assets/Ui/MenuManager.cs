@@ -60,17 +60,26 @@ namespace Ui
             openCreateGameButton.onClick.AddListener(OpenCreateGameCanvas);
             searchGameInput.onValueChanged.AddListener(async (value) => await OnSearchValueChanged(value));
 
+            createGameCanvas.SetActive(false);
+            
+            Debug.Log("Check game mode");
+            
+            if (_authService.GetGameToken() != "" && await _authService.ValidateGameToken())
+            {
+                Debug.Log("Game token is valid");
+                _gameService.IsInGame = true;
+                ChangeDisplayMenu(UiElement.InGame);
+                return;
+            }
+
             if (_authService.GetAuthToken() != "" && await _authService.ValidateAuthToken())
             {
                 ChangeDisplayMenu(UiElement.GameList);
                 await LoadGamesAfterLogin();
-            }
-            else
-            {
-                ChangeDisplayMenu(UiElement.Login);
+                return;
             }
 
-            createGameCanvas.SetActive(false);
+            ChangeDisplayMenu(UiElement.Login);
         }
 
         private void OpenCreateGameCanvas()
