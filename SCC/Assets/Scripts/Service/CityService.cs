@@ -27,7 +27,7 @@ namespace Service
         public City CurrentCity;
 
         private const string BaseUrl = GameConfig.BaseUrl;
-        private GameService _gameService;
+        private GameService _gameService => GameService.Instance;
 
         private void Awake()
         {
@@ -40,13 +40,22 @@ namespace Service
             {
                 Destroy(gameObject);
             }
-
-            _gameService = GameService.Instance;
         }
 
         public async Task<bool> CreateCity(string cityName)
         {
-            CreateCityRequest ccr = new CreateCityRequest
+            if (_gameService == null)
+            {
+                Debug.LogError("CityService: _gameService is null!");
+            }
+
+            if (_gameService.CurrentGame == null)
+            {
+                Debug.LogError("CityService: _gameService.CurrentGame is null!");
+                return false;
+            }
+            
+            var ccr = new CreateCityRequest
             {
                 name = cityName,
                 gameId = _gameService.CurrentGame.gameId

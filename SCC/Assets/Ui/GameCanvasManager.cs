@@ -44,6 +44,7 @@ public class GameCanvas : MonoBehaviour
 
     private async void OnCreateCitySubmit()
     {
+        Debug.Log("Try to create city");
         var cityName = createCityNameInput.text;
 
         if (await _cityService.CreateCity(cityName))
