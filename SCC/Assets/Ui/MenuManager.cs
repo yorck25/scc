@@ -19,9 +19,9 @@ namespace Ui
             InGame,
         }
 
-        [Header("UI Elements")] [SerializeField]
-        private GameObject loginCanvas;
-
+        //Todo: Put Canvas handling in a separate class
+        [Header("UI Elements")] 
+        [SerializeField] private GameObject loginCanvas;
         [SerializeField] private GameObject joinGameCanvas;
         [SerializeField] private GameObject inGameCanvas;
         [SerializeField] private GameObject createGameCanvas;
@@ -29,7 +29,8 @@ namespace Ui
         [SerializeField] private TMP_InputField playerNameInput;
         [SerializeField] private TMP_InputField passwordInput;
 
-        [Header("Game List")] [SerializeField] private Transform gameListContainer;
+        [Header("Game List")] 
+        [SerializeField] private Transform gameListContainer;
         [SerializeField] private GameObject gameEntryPrefab;
         [SerializeField] private TMP_InputField searchGameInput;
         [SerializeField] private Button openCreateGameButton;

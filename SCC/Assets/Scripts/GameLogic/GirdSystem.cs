@@ -9,16 +9,19 @@ public class GridSystem : MonoBehaviour
     public GameObject objectToPlace;
     public bool isBuildModeEnabled = false;
     public float gridSize = 1f;
+    
     private GameObject _ghostObject;
     private HashSet<Vector3> _occupiedPositions = new();
+    private GameService _gameService;
     private void Start()
     {
+        _gameService = GameService.Instance;
         Create_ghostObject();
     }
 
     private void Update()
     {
-        if (!isBuildModeEnabled)
+        if (!_gameService.IsBuildModeActive)
         {
             return;
         }

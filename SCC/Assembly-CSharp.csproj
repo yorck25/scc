@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/Service/GridService.cs" />
-    <Compile Include="Assets/Scripts/Service/NewtorkAdapter.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextEventHandler.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexShakeA.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_ExampleScript_01.cs" />
@@ -88,12 +87,14 @@
     <Compile Include="Assets/Scripts/Service/Auth/WebSocketClient.cs" />
     <Compile Include="Assets/Ui/CreateGameManager.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/CameraController.cs" />
+    <Compile Include="Assets/Scripts/lib/NewtorkAdapter.cs" />
     <Compile Include="Assets/Ui/GameCanvasManager.cs" />
     <Compile Include="Assets/Scripts/GameConfig.cs" />
     <Compile Include="Assets/Scripts/GameLogic/CameraController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark03.cs" />
     <Compile Include="Assets/Ui/GameListObject.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets/Scripts/Service/CityService.cs" />
     <Compile Include="Assets/Scripts/Service/AuditService.cs" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
