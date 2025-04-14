@@ -1,7 +1,5 @@
-using System;
 using Service;
 using TMPro;
-using Ui;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +11,10 @@ namespace Ui
         GamePlay,
     }
 
-    public class GameCanvas : MonoBehaviour
+    public class GameCanvasManager : MonoBehaviour
     {
+        public static GameCanvasManager Instance { get; private set; }
+        
         [Header("In Game Canvases")] 
         [SerializeField] private GameObject createCityCanvas;
         [SerializeField] private GameObject inGameCanvas;
@@ -31,6 +31,20 @@ namespace Ui
 
         private GameService _gameService;
         private CityService _cityService;
+        
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
+            HideAllCanvases();
+        }
 
         private void Start()
         {
@@ -66,6 +80,7 @@ namespace Ui
 
             if (await _gameService.LeaveGame())
             {
+                HideAllCanvases();
                 MenuManager.Instance.ChangeDisplayMenu(MenuManager.UiElement.GameList);
             }
         }
@@ -89,6 +104,16 @@ namespace Ui
             createCityCanvas.SetActive(false);
         }
 
+        private void ShowGamePlayCanvas()
+        {
+            inGameCanvas.SetActive(true);
+            
+            if(_cityService.CurrentCity == null)
+            {
+                createCityCanvas.SetActive(true);
+            }
+        }
+
         public void ChangeDisplayedCanvas(InGameUiElement uiElement)
         {
             HideAllCanvases();
@@ -96,15 +121,10 @@ namespace Ui
             switch (uiElement)
             {
                 case InGameUiElement.GamePlay:
-                    Debug.Log("hide menu");
-                    inGameCanvas.SetActive(true);
+                    ShowGamePlayCanvas();
                     break;
                 case InGameUiElement.CreateCity:
-                    Debug.Log("show menu");
                     createCityCanvas.SetActive(true);
-                    break;
-                default:
-                    inGameCanvas.SetActive(true);
                     break;
             }
         }

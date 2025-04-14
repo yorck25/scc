@@ -203,6 +203,7 @@ namespace Ui
                     break;
                 case UiElement.InGame:
                     gameCanvases.SetActive(true);
+                    GameCanvasManager.Instance.ChangeDisplayedCanvas(InGameUiElement.GamePlay);
                     break;
                 default:
                     loginCanvas.SetActive(true);
