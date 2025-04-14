@@ -80,7 +80,6 @@ namespace Service
             try
             {
                 City createdCity = JsonUtility.FromJson<City>(request.downloadHandler.text);
-                Debug.Log(createdCity);
                 CurrentCity = createdCity;
                 return true;
             }

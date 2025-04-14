@@ -9,7 +9,7 @@ namespace Service.Auth
         public static AuthToken Instance => _instance ??= new AuthToken();
 
         public string token =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF5ZXJJZCI6MSwiZXhwIjoxNzQ0NjE1MTQyLCJpYXQiOjE3NDQ1Mjg3NDJ9.hVbIeHKd7af5ygj-XUZKdMOSGprXHEUFxTu9p5OJ4Ks";
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF5ZXJJZCI6MSwiZXhwIjoxNzQ0NzQ4NDQ5LCJpYXQiOjE3NDQ2NjIwNDl9.GFVzskrWVoU6uRolxfoehfeTXA_fdZ2HNXN3dLkntUE";
 
         public override string ToString()
         {

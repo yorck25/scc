@@ -168,7 +168,7 @@ namespace Service
 
                 try
                 {
-                    GameListWrapper wrapper = JsonUtility.FromJson<GameListWrapper>(
+                    var wrapper = JsonUtility.FromJson<GameListWrapper>(
                         "{\"games\":" + request.downloadHandler.text + "}");
 
                     GameList = wrapper.games;

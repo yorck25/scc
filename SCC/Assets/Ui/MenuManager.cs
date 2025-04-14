@@ -25,6 +25,7 @@ namespace Ui
         [SerializeField] private GameObject joinGameCanvas;
         [SerializeField] private GameObject inGameCanvas;
         [SerializeField] private GameObject createGameCanvas;
+        [SerializeField] private GameObject gameCanvases;
         [SerializeField] private Button loginButton;
         [SerializeField] private TMP_InputField playerNameInput;
         [SerializeField] private TMP_InputField passwordInput;
@@ -201,7 +202,7 @@ namespace Ui
                     joinGameCanvas.SetActive(true);
                     break;
                 case UiElement.InGame:
-                    inGameCanvas.SetActive(true);
+                    gameCanvases.SetActive(true);
                     break;
                 default:
                     loginCanvas.SetActive(true);
