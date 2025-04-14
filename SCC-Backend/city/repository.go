@@ -13,10 +13,11 @@ func NewRepository(ctx *core.WebContext) *Repository {
 	return &Repository{db: ctx.GetDb()}
 }
 
-func (r *Repository) CreateNewCity(ccr CreateCityRequest, playerId int) error {
-	stmt, err := r.db.PrepareNamed(`INSERT INTO city (name, game_id, owner_id) VALUES (:name, :gameId, :ownerId)`)
+func (r *Repository) CreateNewCity(ccr CreateCityRequest, playerId int) (*City, error) {
+	var city City
+	stmt, err := r.db.PrepareNamed(`INSERT INTO city (name, game_id, owner_id) VALUES (:name, :gameId, :ownerId) RETURNING *`)
 	if err != nil {
-		return err
+		return &city, err
 	}
 
 	params := map[string]any{
@@ -25,12 +26,12 @@ func (r *Repository) CreateNewCity(ccr CreateCityRequest, playerId int) error {
 		"ownerId": playerId,
 	}
 
-	_, err = stmt.Exec(params)
+	err = stmt.Get(&city, params)
 	if err != nil {
-		return err
+		return &city, err
 	}
 
-	return nil
+	return &city, nil
 }
 
 func (r *Repository) UpdateCity(ucr UpdateCityRequest, playerId int) error {

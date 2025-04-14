@@ -104,12 +104,12 @@ func HandleCreateCity(ctx *core.WebContext) error {
 		return ctx.InternalError(err.Error())
 	}
 
-	err = repo.CreateNewCity(ccr, playerId)
+	city, err := repo.CreateNewCity(ccr, playerId)
 	if err != nil {
 		return ctx.InternalError(err.Error())
 	}
 
-	return ctx.Success("Created City")
+	return ctx.Success(city)
 }
 
 func HandleUpdateCity(ctx *core.WebContext) error {

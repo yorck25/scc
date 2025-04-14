@@ -4,7 +4,7 @@ type City struct {
 	CityId  int    `json:"cityId" db:"city_id"`
 	Name    string `json:"name" db:"name"`
 	GameId  int    `json:"gameId" db:"game_id"`
-	OwnerId int    `json:"ownerId" db:"ownerId"`
+	OwnerId int    `json:"ownerId" db:"owner_id"`
 }
 
 type CreateCityRequest struct {
