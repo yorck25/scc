@@ -22,7 +22,7 @@ func GenerateAuthToken(playerId int, config *core.Config) (string, error) {
 		PlayerId: playerId,
 		StandardClaims: jwt.StandardClaims{
 			IssuedAt:  time.Now().Unix(),
-			ExpiresAt: time.Now().Add(time.Hour * 24).Unix(),
+			ExpiresAt: time.Now().Add(time.Hour * 128).Unix(),
 		},
 	}
 
@@ -54,7 +54,7 @@ func GenerateGameToken(gameId int, playerId int, config *core.Config) (string, e
 		PlayerId: playerId,
 		StandardClaims: jwt.StandardClaims{
 			IssuedAt:  time.Now().Unix(),
-			ExpiresAt: time.Now().Add(time.Hour * 24).Unix(),
+			ExpiresAt: time.Now().Add(time.Hour * 128).Unix(),
 		},
 	}
 
