@@ -7,6 +7,12 @@ using UnityEngine.Networking;
 namespace Service
 {
     [Serializable]
+    public class CityListWrapper
+    {
+        public List<City> cities;
+    }
+
+    [Serializable]
     public class City
     {
         public int cityId;
@@ -44,6 +50,49 @@ namespace Service
             }
         }
 
+        public async Task LoadCitiesForGame()
+        {
+            try
+            {
+                var request = UnityWebRequest.Get(BaseUrl + "/cities").AddGameAuth();
+                request.SendWebRequest();
+
+                while (!request.isDone)
+                {
+                    await Task.Yield();
+                }
+
+                if (request.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Failed to load cities");
+                    return;
+                }
+
+                DecodeResponseToCityList(request);
+                Debug.Log("liste: " + CityList.Count);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Exception in Load Cities: {ex.Message}");
+                CityList = new List<City>();
+            }
+        }
+
+        private void DecodeResponseToCityList(UnityWebRequest request)
+        {
+            try
+            {
+                var wrapper = JsonUtility.FromJson<CityListWrapper>(
+                    "{\"cities\":" + request.downloadHandler.text + "}");
+
+                CityList = wrapper.cities;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error parsing search results: {ex.Message}");
+            }
+        }
+
         public async Task<bool> CreateCity(string cityName)
         {
             if (_gameService == null)
@@ -56,7 +105,7 @@ namespace Service
                 Debug.LogError("CityService: _gameService.CurrentGame is null!");
                 return false;
             }
-            
+
             var ccr = new CreateCityRequest
             {
                 name = cityName,

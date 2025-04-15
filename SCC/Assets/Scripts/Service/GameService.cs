@@ -123,11 +123,7 @@ namespace Service
 
                 try
                 {
-                    GameListWrapper wrapper = JsonUtility.FromJson<GameListWrapper>(
-                        "{\"games\":" + request.downloadHandler.text + "}");
-
-                    GameList = wrapper?.games ?? new List<Game>();
-                    Debug.Log($"Successfully loaded {GameList.Count} games");
+                    DecodeResponseToGameList(request);
                 }
                 catch (Exception ex)
                 {
@@ -165,23 +161,28 @@ namespace Service
                     Debug.LogError($"Failed to search games: {request.error}");
                     return;
                 }
-
-                try
-                {
-                    var wrapper = JsonUtility.FromJson<GameListWrapper>(
-                        "{\"games\":" + request.downloadHandler.text + "}");
-
-                    GameList = wrapper.games;
-                }
-                catch (Exception ex)
-                {
-                    Debug.LogError($"Error parsing search results: {ex.Message}");
-                }
+                
+                DecodeResponseToGameList(request);
             }
             catch (Exception ex)
             {
                 Debug.LogError($"Exception in SearchGame: {ex.Message}");
                 GameList = new List<Game>();
+            }
+        }
+
+        private void DecodeResponseToGameList(UnityWebRequest request)
+        {
+            try
+            {
+                var wrapper = JsonUtility.FromJson<GameListWrapper>(
+                    "{\"games\":" + request.downloadHandler.text + "}");
+
+                GameList = wrapper.games;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error parsing search results: {ex.Message}");
             }
         }
 

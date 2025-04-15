@@ -20,7 +20,7 @@ namespace Service
     [Serializable]
     public class Grid : Cell
     {
-        public int cityId;
+        public int gridCityId;
         public int height;
         public int width;
         public string updatedAt;

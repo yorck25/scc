@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Service;
 using TMPro;
 using UnityEngine;
@@ -10,33 +11,30 @@ namespace Ui
     {
         CreateCity,
         GamePlay,
+        CityList,
     }
 
     public class GameCanvasManager : MonoBehaviour
     {
         public static GameCanvasManager Instance { get; private set; }
 
-        [Header("In Game Canvases")] [SerializeField]
-        private GameObject createCityCanvas;
-
+        [Header("In Game Canvases")] 
+        [SerializeField] private GameObject createCityCanvas;
         [SerializeField] private GameObject inGameCanvas;
 
-        [Header("In Game Ui-Elements")] [SerializeField]
-        private Button leaveButton;
-
+        [Header("In Game Ui-Elements")] 
+        [SerializeField] private Button leaveButton;
         [SerializeField] private Button toggleBuildModeButton;
         [SerializeField] private TextMeshProUGUI cityNameText;
         [SerializeField] private TextMeshProUGUI gameNameText;
 
-        [Header("Create City Elements")] [SerializeField]
-        private TMP_InputField createCityNameInput;
-
+        [Header("Create City Elements")] 
+        [SerializeField] private TMP_InputField createCityNameInput;
         [SerializeField] private Button submitCreateGameButton;
 
-        [Header("City List Elements")] [SerializeField]
-        private Transform cityListContainer;
-
-        [SerializeField] private GameObject cityEntryPrefab;
+        [Header("City List Elements")] 
+        [SerializeField] private Transform cityListContainer;
+        [SerializeField] private GameObject gameEntryPrefab;
 
         private GameService _gameService;
         private CityService _cityService;
@@ -123,6 +121,13 @@ namespace Ui
             }
         }
 
+        private async Task ShowCityListCanvas()
+        {
+            Debug.Log("Show city list canvas");
+            await _cityService.LoadCitiesForGame();
+            RenderCityList();
+        }
+
         public void RenderCityList()
         {
             ClearItemList();
@@ -133,7 +138,7 @@ namespace Ui
         {
             foreach (Transform child in cityListContainer)
             {
-                if (child.gameObject != cityEntryPrefab)
+                if (child.gameObject != gameEntryPrefab)
                 {
                     Destroy(child.gameObject);
                 }
@@ -147,7 +152,7 @@ namespace Ui
                 return;
             }
             
-            if (cityEntryPrefab == null || cityListContainer == null)
+            if (gameEntryPrefab == null || cityListContainer == null)
             {
                 Debug.LogError("Missing required UI components");
                 return;
@@ -155,17 +160,17 @@ namespace Ui
 
             foreach (var city in cities)
             {
-                var gameEntry = Instantiate(cityEntryPrefab, cityListContainer);
+                var gameEntry = Instantiate(gameEntryPrefab, cityListContainer);
                 gameEntry.SetActive(true);
                 
-                var cityEntryScript = gameEntry.GetComponent<CityListObject>();
-                if (cityEntryPrefab != null)
+                var cityEntryScript = gameEntry.GetComponentInChildren<CityListObject>();
+                if (cityEntryScript != null)
                 {
                     cityEntryScript.Setup(city);
                 }
                 else
                 {
-                    Debug.LogError("GameEntry script is missing from the prefab.");
+                    Debug.LogError("CityListObject script is missing from the instantiated prefab.");
                     Destroy(gameEntry);
                 }
             }
@@ -182,6 +187,9 @@ namespace Ui
                     break;
                 case InGameUiElement.CreateCity:
                     createCityCanvas.SetActive(true);
+                    break;
+                case InGameUiElement.CityList:
+                    ShowCityListCanvas();
                     break;
             }
         }
