@@ -5877,7 +5877,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -325}
   m_SizeDelta: {x: 100, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1416161426
@@ -5911,8 +5911,8 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
-  m_Spacing: 35
+  m_ChildAlignment: 4
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -8917,10 +8917,10 @@ MonoBehaviour:
   inGameCanvas: {fileID: 1059924782}
   leaveButton: {fileID: 97576844}
   toggleBuildModeButton: {fileID: 486409424}
-  cityNameText: {fileID: 1415209651}
-  gameNameText: {fileID: 157116048}
-  createCityNameInput: {fileID: 1911471505}
-  submitCreateGameButton: {fileID: 405870161}
+  cityNameText: {fileID: 0}
+  gameNameText: {fileID: 1415209651}
+  createCityNameInput: {fileID: 0}
+  submitCreateGameButton: {fileID: 0}
   cityListContainer: {fileID: 1416161425}
   gameEntryPrefab: {fileID: 7292056353762564789, guid: 2759ce05bd3764119a8216ac40cdd451, type: 3}
 --- !u!4 &2081591428
