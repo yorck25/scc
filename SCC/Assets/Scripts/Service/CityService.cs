@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -25,6 +26,7 @@ namespace Service
     {
         public static CityService Instance { get; private set; }
         public City CurrentCity;
+        public List<City> CityList = new();
 
         private const string BaseUrl = GameConfig.BaseUrl;
         private GameService _gameService => GameService.Instance;
