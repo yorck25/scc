@@ -364,6 +364,11 @@
 "Assets/Scripts/Service/GridService.cs"
 "Assets/Scripts/Service/PlayerService.cs"
 "Assets/Scripts/Service/ServiceManager.cs"
+"Assets/Scripts/Ui/CityListObject.cs"
+"Assets/Scripts/Ui/CreateGameManager.cs"
+"Assets/Scripts/Ui/GameCanvasManager.cs"
+"Assets/Scripts/Ui/GameListObject.cs"
+"Assets/Scripts/Ui/MenuManager.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
@@ -398,10 +403,6 @@
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
-"Assets/Ui/CreateGameManager.cs"
-"Assets/Ui/GameCanvasManager.cs"
-"Assets/Ui/GameListObject.cs"
-"Assets/Ui/MenuManager.cs"
 -langversion:9.0
 /deterministic
 /optimize+
