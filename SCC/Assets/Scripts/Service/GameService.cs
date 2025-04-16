@@ -209,14 +209,10 @@ namespace Service
                 Debug.LogError($"Failed to create game: {request.error}");
                 return false;
             }
-
-            Debug.Log("Game was successfully created");
-
+            
             try
             {
-                Game createdGamesRes = JsonUtility.FromJson<Game>(request.downloadHandler.text);
-
-                Debug.Log(createdGamesRes);
+                var createdGamesRes = JsonUtility.FromJson<Game>(request.downloadHandler.text);
                 GameList.Add(createdGamesRes);
             }
             catch (Exception ex)
@@ -231,7 +227,6 @@ namespace Service
         {
             try
             {
-                Debug.Log($"Attempting to join game {gameId}");
                 var res = await _authService.JoinGame(gameId, password);
 
                 if (res)
@@ -262,7 +257,6 @@ namespace Service
         {
             try
             {
-                Debug.Log("Attempting to leave current game");
                 var res = await _authService.LeaveGame();
                 if (res)
                 {

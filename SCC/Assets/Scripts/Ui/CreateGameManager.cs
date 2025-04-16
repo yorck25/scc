@@ -34,7 +34,6 @@ public class CreateGameManager : MonoBehaviour
 
     private async void CreateGame()
     {
-        Debug.Log("Create game start");
         var name = createGameNameInput.text;
         var password = createGamePasswordInput.text;
 

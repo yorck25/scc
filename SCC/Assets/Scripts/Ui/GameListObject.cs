@@ -30,8 +30,7 @@ namespace Ui
 
         private async void OnJoinButtonClicked()
         {
-            string enteredPassword = passwordInput.text;
-            Debug.Log(enteredPassword);
+            var enteredPassword = passwordInput.text;
             var res = await _gameService.JoinGame(_gameData.gameId, enteredPassword);
 
             if (!res)

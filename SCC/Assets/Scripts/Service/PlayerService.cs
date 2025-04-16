@@ -48,7 +48,7 @@ public class PlayerService : MonoBehaviour
 
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log(request.error);
+            Debug.LogError(request.error);
         }
         else
         {

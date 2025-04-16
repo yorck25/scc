@@ -66,7 +66,6 @@ namespace Service
             try
             {
                 CurrentGrid = JsonUtility.FromJson<Grid>(request.downloadHandler.text);
-                Debug.Log("Successfully loaded grid");
             }
             catch (Exception ex)
             {

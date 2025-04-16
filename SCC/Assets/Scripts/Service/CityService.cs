@@ -69,7 +69,6 @@ namespace Service
                 }
 
                 DecodeResponseToCityList(request);
-                Debug.Log("liste: " + CityList.Count);
             }
             catch (Exception ex)
             {

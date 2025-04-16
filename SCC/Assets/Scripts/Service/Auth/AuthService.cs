@@ -21,7 +21,6 @@ namespace Service.Auth
             if (Instance == null)
             {
                 Instance = this;
-                Debug.Log("✅ AuthService initialized successfully");
             }
             else
             {
@@ -92,7 +91,6 @@ namespace Service.Auth
             }
 
             _authToken = JsonUtility.FromJson<AuthToken>(request.downloadHandler.text);
-            Debug.Log("Logged in, token: " + _authToken.token);
             return true;
         }
 
@@ -125,7 +123,6 @@ namespace Service.Auth
                 return false;
             }
 
-            Debug.Log("Joined game, token: " + GameToken.Instance.token);
             return await ConnectToWebsocket();
         }
 
@@ -142,8 +139,7 @@ namespace Service.Auth
 
         private async Task<bool> ConnectToWebsocket()
         {
-            Debug.Log("Trying to connect to WebSocket...");
-            bool success = await _webSocketClient.Connect();
+            var success = await _webSocketClient.Connect();
             return success;
         }
 
@@ -151,9 +147,7 @@ namespace Service.Auth
         {
             if (_webSocketClient != null)
             {
-                var res = await _webSocketClient.CloseConnection();
-                Debug.Log("Disconnected from WebSocket");
-                return res;
+                return await _webSocketClient.CloseConnection();
             }
 
             return false;

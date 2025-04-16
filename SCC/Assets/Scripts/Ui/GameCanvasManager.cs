@@ -84,8 +84,6 @@ namespace Ui
 
         private async void OnLeaveButtonClick()
         {
-            Debug.Log("start leave process");
-
             if (await _gameService.LeaveGame())
             {
                 HideAllCanvases();
@@ -95,12 +93,10 @@ namespace Ui
 
         private async void OnCreateCitySubmit()
         {
-            Debug.Log("Try to create city");
             var cityName = createCityNameInput.text;
 
             if (await _cityService.CreateCity(cityName))
             {
-                Debug.Log("hide menu");
                 createCityNameInput.text = "";
                 ChangeDisplayedCanvas(InGameUiElement.GamePlay);
             }

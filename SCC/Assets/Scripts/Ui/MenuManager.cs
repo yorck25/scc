@@ -64,11 +64,8 @@ namespace Ui
 
             createGameCanvas.SetActive(false);
             
-            Debug.Log("Check game mode");
-            
             if (_authService.GetGameToken() != "" && await _authService.ValidateGameToken())
             {
-                Debug.Log("Game token is valid");
                 _gameService.IsInGame = true;
                 ChangeDisplayMenu(UiElement.InGame);
                 return;
@@ -130,7 +127,6 @@ namespace Ui
         {
             if (success)
             {
-                Debug.Log("Login successful!");
                 ChangeDisplayMenu(UiElement.GameList);
                 _ = LoadGamesAfterLogin();
             }

@@ -45,7 +45,6 @@ namespace Service.Auth
             try
             {
                 await _webSocket.ConnectAsync(new Uri(_webSocketUrl), _cancellationTokenSource.Token);
-                Debug.Log("WebSocket connected to " + _webSocketUrl);
                 StartReceiving();
                 return true;
             }
@@ -68,7 +67,6 @@ namespace Service.Auth
                         _cancellationTokenSource.Token);
                     if (result.MessageType == WebSocketMessageType.Close)
                     {
-                        Debug.Log("WebSocket closed by the server.");
                         await CloseConnection();
                         return;
                     }
