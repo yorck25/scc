@@ -40,7 +40,7 @@ func main() {
 	app.PUT("/game", game.HandleUpdateGame)
 	app.DELETE("/game", game.HandleDeleteGame)
 
-	app.GET("/city/:gameId", city.HandleGetAllCitiesForGame)
+	app.GET("/cities", city.HandleGetAllCitiesForGame)
 	app.GET("/city/:gameId/:name", city.HandleGetCityByName)
 	app.POST("/city", city.HandleCreateCity)
 	app.PUT("/city", city.HandleUpdateCity)

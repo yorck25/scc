@@ -985,7 +985,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1100778125}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.61
+  m_Size: 0.6100001
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6658,8 +6658,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 786632445}
   m_HandleRect: {fileID: 786632444}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6918,8 +6918,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 429642075}
   m_HandleRect: {fileID: 429642074}
   m_Direction: 2
-  m_Value: 1.000001
-  m_Size: 0.54791933
+  m_Value: 1.0000007
+  m_Size: 0.5382538
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8915,12 +8915,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createCityCanvas: {fileID: 1370388830}
   inGameCanvas: {fileID: 1059924782}
+  cityListCanvas: {fileID: 1421983179}
   leaveButton: {fileID: 97576844}
   toggleBuildModeButton: {fileID: 486409424}
-  cityNameText: {fileID: 0}
-  gameNameText: {fileID: 1415209651}
-  createCityNameInput: {fileID: 0}
-  submitCreateGameButton: {fileID: 0}
+  cityNameText: {fileID: 1415209651}
+  gameNameText: {fileID: 157116048}
+  createCityNameInput: {fileID: 1911471505}
+  submitCreateGameButton: {fileID: 405870161}
   cityListContainer: {fileID: 1416161425}
   gameEntryPrefab: {fileID: 7292056353762564789, guid: 2759ce05bd3764119a8216ac40cdd451, type: 3}
 --- !u!4 &2081591428

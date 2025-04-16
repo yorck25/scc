@@ -14,24 +14,9 @@ func HandleGetAllCitiesForGame(ctx *core.WebContext) error {
 		return ctx.Unauthorized("no game token provided")
 	}
 
-	tokenGameId, _, err := api.DecodeGameToken(token, ctx)
+	gameId, _, err := api.DecodeGameToken(token, ctx)
 	if err != nil {
 		return ctx.Unauthorized(err.Error())
-	}
-
-	gameIdString := ctx.Param("gameId")
-
-	if gameIdString == "" {
-		return ctx.BadRequest("Missing gameId parameter")
-	}
-
-	gameId, err := strconv.Atoi(gameIdString)
-	if err != nil {
-		return ctx.InternalError(err.Error())
-	}
-
-	if gameId != tokenGameId {
-		return ctx.Unauthorized("")
 	}
 
 	cities, err := repo.GetAllCitiesForGame(gameId)

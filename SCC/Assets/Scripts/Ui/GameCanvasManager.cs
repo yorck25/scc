@@ -21,6 +21,7 @@ namespace Ui
         [Header("In Game Canvases")] 
         [SerializeField] private GameObject createCityCanvas;
         [SerializeField] private GameObject inGameCanvas;
+        [SerializeField] private GameObject cityListCanvas;
 
         [Header("In Game Ui-Elements")] 
         [SerializeField] private Button leaveButton;
@@ -108,6 +109,7 @@ namespace Ui
         private void HideAllCanvases()
         {
             inGameCanvas.SetActive(false);
+            cityListCanvas.SetActive(false);
             createCityCanvas.SetActive(false);
         }
 
@@ -123,7 +125,7 @@ namespace Ui
 
         private async Task ShowCityListCanvas()
         {
-            Debug.Log("Show city list canvas");
+            cityListCanvas.SetActive(true);
             await _cityService.LoadCitiesForGame();
             RenderCityList();
         }
