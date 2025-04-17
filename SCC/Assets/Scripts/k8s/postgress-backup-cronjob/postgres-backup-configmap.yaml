@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-backup-script
+  namespace: scc
+data:
+  backup.sh: |
+    #!/bin/sh
+    set -e
+    TIMESTAMP=$(date +"%Y-%m-%d-%H:%M:%S")
+    BACKUP_FILE="/backups/postgres-backup-${TIMESTAMP}.sql"
+    PGPASSWORD=$POSTGRES_PASSWORD pg_dump -h $POSTGRES_HOST -U $POSTGRES_USER -d $POSTGRES_DB > $BACKUP_FILE
+    gzip $BACKUP_FILE
+    ls -t /backups/postgres-backup-*.sql.gz | tail -n +4 | xargs rm -f --
