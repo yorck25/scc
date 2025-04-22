@@ -40,6 +40,7 @@ namespace Ui
 
         private GameService _gameService;
         private CityService _cityService;
+        private GridService _gridService;
 
         private void Awake()
         {
@@ -59,6 +60,7 @@ namespace Ui
         {
             _gameService = GameService.Instance;
             _cityService = CityService.Instance;
+            _gridService = GridService.Instance;
             leaveButton.onClick.AddListener(() => OnLeaveButtonClick());
             toggleBuildModeButton.onClick.AddListener(() => OnToggleBuildButtonClick());
             openCreateCityButton.onClick.AddListener(() => OnOpenCreateCityMenu());
@@ -106,6 +108,7 @@ namespace Ui
             {
                 createCityNameInput.text = "";
                 ChangeDisplayedCanvas(InGameUiElement.GamePlay);
+                _gridService.CreateGrid(_cityService.CurrentCity.cityId);
             }
         }
 

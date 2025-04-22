@@ -27,6 +27,14 @@ namespace Service
         public List<Cell> cells;
     }
 
+    [Serializable]
+    public class CreateGridRequest
+    {
+        public int cityId;
+        public int height;
+        public int width;
+    }
+
     public class GridService : MonoBehaviour
     {
         public static GridService Instance { get; private set; }
@@ -73,9 +81,42 @@ namespace Service
             }
         }
 
-        public async void CreateGrid()
+        public async void CreateGrid(int cityId)
         {
+            var cgr = new CreateGridRequest
+            {
+                cityId = cityId,
+                height = 10,
+                width = 10,
+            };
             
+            var jsonGridRequest = JsonUtility.ToJson(cgr);
+
+
+            var request = UnityWebRequest.Post(BaseUrl + "/grid", jsonGridRequest, "application/json").AddGameAuth();
+            request.SendWebRequest();
+
+            while (!request.isDone)
+            {
+                await Task.Yield();
+            }
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log("Fail to create new grid");
+                return;
+            }
+
+            try
+            {
+                CurrentGrid = JsonUtility.FromJson<Grid>(request.downloadHandler.text);
+                Debug.Log(CurrentGrid);
+                //Todo: Load all cells in the after grid got created;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Failed to parse grid data: {ex.Message}");
+            }
         }
     }
 }
