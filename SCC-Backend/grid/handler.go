@@ -58,12 +58,12 @@ func HandleCreateGridForCity(ctx *core.WebContext) error {
 		return ctx.InternalError(err.Error())
 	}
 
-	err = repo.CreateGridForCity(cgr)
+	grid, err := repo.CreateGridForCity(cgr)
 	if err != nil {
 		return ctx.InternalError(err.Error())
 	}
 
-	return ctx.Success("Created Grid")
+	return ctx.Success(grid)
 }
 
 func HandleUpdateGrid(ctx *core.WebContext) error {

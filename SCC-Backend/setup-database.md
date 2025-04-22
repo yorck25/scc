@@ -211,7 +211,7 @@ Create TABLE grid
     city_id int PRIMARY KEY,
     height int NOT NULL,
     width int NOT NULL,
-    UpdatedAt timestamp,
+    Updated_at timestamp,
     FOREIGN KEY (city_id) REFERENCES city (city_id)
 );
 

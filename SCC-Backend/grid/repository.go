@@ -3,6 +3,7 @@ package grid
 import (
 	"SCC_Backend/core"
 	"github.com/jmoiron/sqlx"
+	"time"
 )
 
 type Repository struct {
@@ -37,21 +38,23 @@ func (r *Repository) GetGridForCity(cityId int) (*Grid, error) {
 	return &grid, nil
 }
 
-func (r *Repository) CreateGridForCity(cgr CreateGridRequest) error {
-	stmt, err := r.db.PrepareNamed(`INSERT INTO grid (city_id,height,width) VALUES (:cityId, :height, :width)`)
+func (r *Repository) CreateGridForCity(cgr CreateGridRequest) (*Grid, error) {
+	var grid Grid
+	stmt, err := r.db.PrepareNamed(`INSERT INTO grid (city_id,height,width, updated_at) VALUES (:cityId, :height, :width, :updatedAt) RETURNING *`)
 	if err != nil {
-		return err
+		return &grid, err
 	}
 
 	params := map[string]any{
-		"cityId": cgr.CityID,
-		"height": cgr.Height,
-		"width":  cgr.Width,
+		"cityId":    cgr.CityID,
+		"height":    cgr.Height,
+		"width":     cgr.Width,
+		"updatedAt": time.Now(),
 	}
 
-	_, err = stmt.Exec(params)
+	err = stmt.Get(&grid, params)
 	if err != nil {
-		return err
+		return &grid, err
 	}
 
 	for w := 0; w < cgr.Width; w++ {
@@ -68,12 +71,12 @@ func (r *Repository) CreateGridForCity(cgr CreateGridRequest) error {
 
 			err := r.CreateCell(newCell)
 			if err != nil {
-				return err
+				return &grid, err
 			}
 		}
 	}
 
-	return nil
+	return &grid, err
 }
 
 func (r *Repository) UpdateGrid(ugr UpdateGridRequest) error {
@@ -162,7 +165,7 @@ func (r *Repository) CreateCell(cell Cell) error {
 	params := map[string]any{
 		"x":          cell.X,
 		"y":          cell.Y,
-		"buildingId": cell.BuildingId,
+		"buildingId": nil,
 		"cityId":     cell.CityId,
 	}
 

@@ -36,6 +36,7 @@ namespace Ui
         [Header("City List Elements")] 
         [SerializeField] private Transform cityListContainer;
         [SerializeField] private GameObject gameEntryPrefab;
+        [SerializeField] private Button openCreateCityButton;
 
         private GameService _gameService;
         private CityService _cityService;
@@ -60,6 +61,7 @@ namespace Ui
             _cityService = CityService.Instance;
             leaveButton.onClick.AddListener(() => OnLeaveButtonClick());
             toggleBuildModeButton.onClick.AddListener(() => OnToggleBuildButtonClick());
+            openCreateCityButton.onClick.AddListener(() => OnOpenCreateCityMenu());
 
             submitCreateGameButton.onClick.AddListener(() => OnCreateCitySubmit());
         }
@@ -89,6 +91,11 @@ namespace Ui
                 HideAllCanvases();
                 MenuManager.Instance.ChangeDisplayMenu(MenuManager.UiElement.GameList);
             }
+        }
+
+        private void OnOpenCreateCityMenu()
+        {
+            ChangeDisplayedCanvas(InGameUiElement.CreateCity);
         }
 
         private async void OnCreateCitySubmit()
