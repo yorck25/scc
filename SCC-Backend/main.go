@@ -50,6 +50,7 @@ func main() {
 	app.POST("/grid", grid.HandleCreateGridForCity)
 	app.PUT("/grid", grid.HandleUpdateGrid)
 	app.DELETE("/grid", grid.HandleDeleteGrid)
+	app.GET("/grid/cells", grid.HandleGetGridCells)
 
 	app.Logger.Fatal(app.Start(":5555"))
 }

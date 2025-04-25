@@ -1,8 +1,17 @@
 package grid
 
+import "database/sql"
+
 type Coordinate struct {
 	X int `json:"x" db:"x"`
 	Y int `json:"y" db:"y"`
+}
+
+type CellRequest struct {
+	CellId int `json:"cellId" db:"cell_id"`
+	Coordinate
+	BuildingId sql.NullInt64 `json:"buildingId" db:"building_id"`
+	CityId     int           `json:"cityId" db:"city_id"`
 }
 
 type Cell struct {

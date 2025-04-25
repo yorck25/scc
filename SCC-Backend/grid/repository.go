@@ -38,6 +38,38 @@ func (r *Repository) GetGridForCity(cityId int) (*Grid, error) {
 	return &grid, nil
 }
 
+func (r *Repository) LoadCellsForGrid(cityId int) ([]Cell, error) {
+	var cells []CellRequest
+
+	stmt, err := r.db.PrepareNamed(`SELECT * FROM cells WHERE city_id = :cityId`)
+	if err != nil {
+		return nil, err
+	}
+
+	err = stmt.Select(&cells, map[string]any{
+		"cityId": cityId,
+	})
+
+	if err != nil {
+		return nil, err
+	}
+
+	var mappedCells []Cell
+
+	for i := range cells {
+		newCell := Cell{
+			CellId:     cells[i].CellId,
+			Coordinate: cells[i].Coordinate,
+			BuildingId: int(cells[i].BuildingId.Int64),
+			CityId:     cells[i].CityId,
+		}
+
+		mappedCells = append(mappedCells, newCell)
+	}
+
+	return mappedCells, nil
+}
+
 func (r *Repository) CreateGridForCity(cgr CreateGridRequest) (*Grid, error) {
 	var grid Grid
 	stmt, err := r.db.PrepareNamed(`INSERT INTO grid (city_id,height,width, updated_at) VALUES (:cityId, :height, :width, :updatedAt) RETURNING *`)

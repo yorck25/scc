@@ -38,6 +38,38 @@ func HandleGetGridForCity(ctx *core.WebContext) error {
 	return ctx.Success(grid)
 }
 
+func HandleGetGridCells(ctx *core.WebContext) error {
+	repo := NewRepository(ctx)
+
+	token, err := ctx.GetGameToken()
+	if err != nil {
+		return ctx.Unauthorized("no game token provided")
+	}
+
+	_, _, err = api.DecodeGameToken(token, ctx)
+	if err != nil {
+		return ctx.Unauthorized(err.Error())
+	}
+
+	cityIdString := ctx.Request().Header.Get("cityId")
+
+	if cityIdString == "" {
+		return ctx.BadRequest("Missing cityId parameter")
+	}
+
+	cityId, err := strconv.Atoi(cityIdString)
+	if err != nil {
+		return ctx.InternalError(err.Error())
+	}
+
+	cells, err := repo.LoadCellsForGrid(cityId)
+	if err != nil {
+		return ctx.InternalError(err.Error())
+	}
+
+	return ctx.Success(cells)
+}
+
 func HandleCreateGridForCity(ctx *core.WebContext) error {
 	repo := NewRepository(ctx)
 
