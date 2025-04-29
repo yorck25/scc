@@ -187,10 +187,10 @@ func (r *Repository) CreateCell(cell Cell) error {
 	return err
 }
 
-func (r *Repository) UpdateCell(ugr UpdateGridRequest) error {
+func (r *Repository) UpdateCell(ugr Cell) error {
 	var exists bool
 
-	stmt, err := r.db.PrepareNamed(`SELECT EXISTS(SELECT 1 FROM cells WHERE city_id = :cityId AND x = :x AND y = :y)`)
+	stmt, err := r.db.PrepareNamed(`SELECT EXISTS(SELECT 1 FROM cells WHERE cell_id = :cellId AND x = :x AND y = :y)`)
 	if err != nil {
 		return err
 	}
@@ -198,7 +198,7 @@ func (r *Repository) UpdateCell(ugr UpdateGridRequest) error {
 	params := map[string]any{
 		"x":      ugr.X,
 		"y":      ugr.Y,
-		"cityId": ugr.CityId,
+		"cellId": ugr.CellId,
 	}
 
 	err = stmt.Get(&exists, params)
@@ -242,10 +242,18 @@ func (r *Repository) updateCell(cell Cell) error {
 		return err
 	}
 
+	var buildingIn *int
+
+	if cell.BuildingId == 0 {
+		buildingIn = nil
+	} else {
+		buildingIn = &cell.BuildingId
+	}
+
 	params := map[string]any{
 		"x":          cell.X,
 		"y":          cell.Y,
-		"buildingId": cell.BuildingId,
+		"buildingId": buildingIn,
 		"cityId":     cell.CityId,
 	}
 

@@ -247,8 +247,13 @@ CREATE TABLE game_player
 );
 
 INSERT INTO player (username, email, password) VALUES ('yorck', 'test@mail.de', 'test1234');
-INSERT INTO player (username, email, password) VALUES ('test', 'test@gmail.de', 'test1234');
 
 INSERT INTO game (name, password, owner_id) VALUES ('test game 1', 'test1234', 1);
-INSERT INTO game (name, password, owner_id) VALUES ('test game 2', 'test1234', 2);
+
+INSERT INTO city (name, game_id, owner_id) VALUES ('test city 1', 1, 1);
+INSERT INTO grid (city_id, height, width, updated_at) VALUES (1, 10, 10, now());
+
+INSERT INTO buildings_types (type, description) VALUES ('House', 'A building for human habitation, especially one that is lived in by a family or small group of people.');
+
+INSERT INTO buildings (type, owner_id, game_id) VALUES (1,1,1);
 ```

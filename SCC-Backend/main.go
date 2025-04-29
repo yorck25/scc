@@ -49,6 +49,7 @@ func main() {
 	app.GET("/grid/:cityId", grid.HandleGetGridForCity)
 	app.POST("/grid", grid.HandleCreateGridForCity)
 	app.PUT("/grid", grid.HandleUpdateGrid)
+	app.PUT("/grid/cell", grid.HandleUpdateCell)
 	app.DELETE("/grid", grid.HandleDeleteGrid)
 	app.GET("/grid/cells", grid.HandleGetGridCells)
 

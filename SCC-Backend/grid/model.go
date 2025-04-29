@@ -54,3 +54,9 @@ type BroadcastUpdateGrid struct {
 	Changes   []Cell `json:"changes"`
 	Timestamp int64  `json:"timestamp"`
 }
+
+type UpdateCellRequest struct {
+	CellId int `json:"cellId" db:"cell_id"`
+	Coordinate
+	BuildingId int `json:"buildingId" db:"building_id"`
+}

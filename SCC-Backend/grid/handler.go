@@ -155,3 +155,34 @@ func HandleDeleteGrid(ctx *core.WebContext) error {
 
 	return ctx.Success("Deleted Grid")
 }
+
+func HandleUpdateCell(ctx *core.WebContext) error {
+	repo := NewRepository(ctx)
+
+	token, err := ctx.GetGameToken()
+	if err != nil {
+		return ctx.Unauthorized("no game token provided")
+	}
+
+	_, _, err = api.DecodeGameToken(token, ctx)
+	if err != nil {
+		return ctx.Unauthorized(err.Error())
+	}
+
+	var ucr Cell
+
+	err = ctx.Bind(&ucr)
+	if err != nil {
+		return ctx.InternalError(err.Error())
+	}
+
+	err = repo.UpdateCell(ucr)
+	if err != nil {
+		return ctx.InternalError(err.Error())
+	}
+
+	//Todo: Broadcast the changes to other players
+	//broadcastGridUpdate(&ucr)
+
+	return ctx.Success("Update Grid")
+}

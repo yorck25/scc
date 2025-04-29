@@ -153,5 +153,36 @@ namespace Service
                 Debug.LogError($"Failed to parse grid data: {ex.Message}");
             }
         }
+        
+        public async void UpdateCell(Cell oldCell, int buildingId)
+        {
+            oldCell.buildingId = buildingId;
+            
+            var jsonCell = JsonUtility.ToJson(oldCell);
+            
+            var request = UnityWebRequest.Put(BaseUrl + "/grid/cell", jsonCell, "application/json").AddGameAuth();
+            request.SendWebRequest();
+
+            while (!request.isDone)
+            {
+                await Task.Yield();
+            }
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log("Fail to update cell");
+                return;
+            }
+
+            try
+            {
+                var cell = JsonUtility.FromJson<Cell>(request.downloadHandler.text);
+                Debug.Log(cell);
+                LoadCells(CurrentGrid.gridCityId);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Failed to parse grid data: {ex.Message}");
+            }
     }
 }
