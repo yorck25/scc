@@ -153,14 +153,22 @@ namespace Service
                 Debug.LogError($"Failed to parse grid data: {ex.Message}");
             }
         }
-        
-        public async void UpdateCell(Cell oldCell, int buildingId)
+
+        public async void UpdateCell(int x, int y, int buildingId, int cityId)
         {
-            oldCell.buildingId = buildingId;
-            
-            var jsonCell = JsonUtility.ToJson(oldCell);
-            
-            var request = UnityWebRequest.Put(BaseUrl + "/grid/cell", jsonCell, "application/json").AddGameAuth();
+            var newCell = new Cell
+            {
+                x= x,
+                y= y,
+                cityId= cityId,
+                buildingId = buildingId
+            };
+
+            var jsonCell = JsonUtility.ToJson(newCell);
+            byte[] cellData = System.Text.Encoding.UTF8.GetBytes(jsonCell);
+
+            var request = UnityWebRequest.Put(BaseUrl + "/grid/cell", cellData).AddGameAuth();
+            request.SetRequestHeader("Content-Type", "application/json");
             request.SendWebRequest();
 
             while (!request.isDone)
@@ -170,6 +178,7 @@ namespace Service
 
             if (request.result != UnityWebRequest.Result.Success)
             {
+                Debug.Log(request.result);
                 Debug.Log("Fail to update cell");
                 return;
             }
@@ -184,5 +193,13 @@ namespace Service
             {
                 Debug.LogError($"Failed to parse grid data: {ex.Message}");
             }
+        }
+
+        public (int newX, int newY) ConvertCoordinate(int oldX, int oldY)
+        {
+            var newX = Mathf.RoundToInt(oldX + 50);
+            var newY = Mathf.RoundToInt(oldY + 50);
+            return (newX, newY);
+        }
     }
 }

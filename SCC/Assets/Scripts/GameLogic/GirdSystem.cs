@@ -105,7 +105,15 @@ public class GridSystem : MonoBehaviour
         {
             Instantiate(objectToPlace, placementPosition, Quaternion.identity);
             
+            int gridX = Mathf.RoundToInt(placementPosition.x / gridSize);
+            int gridZ = Mathf.RoundToInt(placementPosition.z / gridSize);
+
+            (var newX, var newY) = GridService.Instance.ConvertCoordinate(gridX, gridZ);
+            
+            GridService.Instance.UpdateCell(newX, newY, 1, CityService.Instance.CurrentCity.cityId);
+            
             _occupiedPositions.Add(placementPosition);
         }
     }
+    
 }

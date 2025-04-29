@@ -179,7 +179,7 @@ func (r *Repository) CreateCell(cell Cell) error {
 	params := map[string]any{
 		"x":          cell.X,
 		"y":          cell.Y,
-		"buildingId": nil,
+		"buildingId": cell.BuildingId,
 		"cityId":     cell.CityId,
 	}
 
