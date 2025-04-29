@@ -62,7 +62,7 @@ func HandleGetGridCells(ctx *core.WebContext) error {
 		return ctx.InternalError(err.Error())
 	}
 
-	cells, err := repo.LoadCellsForGrid(cityId)
+	cells, err := repo.GetCellsForGrid(cityId)
 	if err != nil {
 		return ctx.InternalError(err.Error())
 	}

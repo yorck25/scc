@@ -35,6 +35,12 @@ namespace Service
         public int width;
     }
 
+    [Serializable]
+    public class CellListWrapper
+    {
+        public List<Cell> cells;
+    }
+
     public class GridService : MonoBehaviour
     {
         public static GridService Instance { get; private set; }
@@ -89,9 +95,8 @@ namespace Service
                 height = 10,
                 width = 10,
             };
-            
-            var jsonGridRequest = JsonUtility.ToJson(cgr);
 
+            var jsonGridRequest = JsonUtility.ToJson(cgr);
 
             var request = UnityWebRequest.Post(BaseUrl + "/grid", jsonGridRequest, "application/json").AddGameAuth();
             request.SendWebRequest();
@@ -111,7 +116,37 @@ namespace Service
             {
                 CurrentGrid = JsonUtility.FromJson<Grid>(request.downloadHandler.text);
                 Debug.Log(CurrentGrid);
-                //Todo: Load all cells in the after grid got created;
+                LoadCells(cityId);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Failed to parse grid data: {ex.Message}");
+            }
+        }
+
+        public async void LoadCells(int cityId)
+        {
+            var request = UnityWebRequest.Get(BaseUrl + "/grid/cells").AddGameAuth();
+            request.SetRequestHeader("cityId", cityId.ToString());
+            request.SendWebRequest();
+
+            while (!request.isDone)
+            {
+                await Task.Yield();
+            }
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log("Fail to load grid");
+                return;
+            }
+
+            try
+            {
+                var cellWrapper = JsonUtility.FromJson<CellListWrapper>(request.downloadHandler.text);
+                Debug.Log(cellWrapper);
+                CurrentGrid.cells = cellWrapper.cells;
+                Debug.Log(CurrentGrid);
             }
             catch (Exception ex)
             {

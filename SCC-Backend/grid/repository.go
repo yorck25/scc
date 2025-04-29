@@ -29,7 +29,7 @@ func (r *Repository) GetGridForCity(cityId int) (*Grid, error) {
 		return nil, err
 	}
 
-	cells, err := r.GetCells(cityId)
+	cells, err := r.GetCellsForGrid(cityId)
 	if err != nil {
 		return nil, err
 	}
@@ -38,7 +38,7 @@ func (r *Repository) GetGridForCity(cityId int) (*Grid, error) {
 	return &grid, nil
 }
 
-func (r *Repository) LoadCellsForGrid(cityId int) ([]Cell, error) {
+func (r *Repository) GetCellsForGrid(cityId int) ([]Cell, error) {
 	var cells []CellRequest
 
 	stmt, err := r.db.PrepareNamed(`SELECT * FROM cells WHERE city_id = :cityId`)
@@ -147,24 +147,6 @@ func (r *Repository) DeleteGrid(dgr DeleteGridRequest) error {
 	})
 
 	return err
-}
-
-func (r *Repository) GetCells(cityId int) ([]Cell, error) {
-	var cells []Cell
-
-	stmt, err := r.db.PrepareNamed(`SELECT * FROM cells WHERE city_id = :cityId`)
-	if err != nil {
-		return nil, err
-	}
-
-	err = stmt.Select(&cells, map[string]any{
-		"cityId": cityId,
-	})
-	if err != nil {
-		return nil, err
-	}
-
-	return cells, nil
 }
 
 func (r *Repository) GetCell(cityId, x, y int) (*Cell, error) {
