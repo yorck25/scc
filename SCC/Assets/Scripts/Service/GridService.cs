@@ -143,10 +143,8 @@ namespace Service
 
             try
             {
-                var cellWrapper = JsonUtility.FromJson<CellListWrapper>(request.downloadHandler.text);
-                Debug.Log(cellWrapper);
+                var cellWrapper = JsonUtility.FromJson<CellListWrapper>("{\"cells\":" + request.downloadHandler.text + "}");                Debug.Log(cellWrapper);
                 CurrentGrid.cells = cellWrapper.cells;
-                Debug.Log(CurrentGrid);
             }
             catch (Exception ex)
             {
@@ -185,8 +183,7 @@ namespace Service
 
             try
             {
-                var cell = JsonUtility.FromJson<Cell>(request.downloadHandler.text);
-                Debug.Log(cell);
+                //Todo: add that cell object gets retruned after update
                 LoadCells(CurrentGrid.gridCityId);
             }
             catch (Exception ex)
