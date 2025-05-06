@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Service;
 using UnityEngine;
+using Service;
 
 public class GridSystem : MonoBehaviour
 {
+    public static GridSystem Instance { get; private set; }
+    
     public GameObject objectToPlace;
     public bool isBuildModeEnabled = false;
     public float gridSize = 1f;
@@ -13,6 +16,21 @@ public class GridSystem : MonoBehaviour
     private GameObject _ghostObject;
     private HashSet<Vector3> _occupiedPositions = new();
     private GameService _gameService;
+    private GridService _gridService;
+    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     private void Start()
     {
         _gameService = GameService.Instance;
@@ -115,5 +133,18 @@ public class GridSystem : MonoBehaviour
             _occupiedPositions.Add(placementPosition);
         }
     }
-    
+
+    public void RenderLoadedGrid(Service.Grid loadedGrid)
+    {
+        foreach (var cell in loadedGrid.cells)
+        {
+            if (cell.buildingId != 0)
+            {
+                Vector3 worldPosition = new Vector3(cell.x - 50, 0, cell.y - 50);
+
+                Instantiate(objectToPlace, worldPosition, Quaternion.identity);
+                _occupiedPositions.Add(worldPosition);
+            }
+        }
+    }
 }

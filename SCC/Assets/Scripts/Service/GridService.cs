@@ -60,7 +60,7 @@ namespace Service
             }
         }
 
-        public async void LoadGrid(int cityId)
+        public async Task<bool> LoadGrid(int cityId)
         {
             var request = UnityWebRequest.Get(BaseUrl + "/grid").AddGameAuth();
             request.SetRequestHeader("cityId", cityId.ToString());
@@ -74,16 +74,18 @@ namespace Service
             if (request.result != UnityWebRequest.Result.Success)
             {
                 Debug.Log("Fail to load grid");
-                return;
+                return false;
             }
 
             try
             {
                 CurrentGrid = JsonUtility.FromJson<Grid>(request.downloadHandler.text);
+                return true;
             }
             catch (Exception ex)
             {
                 Debug.LogError($"Failed to parse grid data: {ex.Message}");
+                return false;
             }
         }
 

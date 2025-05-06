@@ -19,7 +19,7 @@ func HandleGetGridForCity(ctx *core.WebContext) error {
 		return ctx.Unauthorized(err.Error())
 	}
 
-	cityIdString := ctx.Param("cityId")
+	cityIdString := ctx.Request().Header.Get("cityId")
 
 	if cityIdString == "" {
 		return ctx.BadRequest("Missing cityId parameter")

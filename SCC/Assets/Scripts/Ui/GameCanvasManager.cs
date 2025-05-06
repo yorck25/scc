@@ -119,13 +119,20 @@ namespace Ui
             createCityCanvas.SetActive(false);
         }
 
-        private void ShowGamePlayCanvas()
+        private async void ShowGamePlayCanvas()
         {
-            inGameCanvas.SetActive(true);
-
             if (_cityService.CurrentCity == null)
             {
                 createCityCanvas.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Load gird after game gets displayed");
+                inGameCanvas.SetActive(true);
+                if (await _gridService.LoadGrid(_cityService.CurrentCity.cityId))
+                {
+                    GridSystem.Instance.RenderLoadedGrid(_gridService.CurrentGrid);
+                }
             }
         }
 
