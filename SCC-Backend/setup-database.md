@@ -265,7 +265,7 @@ CREATE TABLE grid_cells
 (
     x                        INT NOT NULL,
     y                        INT NOT NULL,
-    game_id                  INT,
+    city_id                  INT,
     owner_id                 INT,
     building_id              INT,
     zone_type                VARCHAR(50),
@@ -275,8 +275,8 @@ CREATE TABLE grid_cells
     available_goods          INT     DEFAULT 0,
     is_powered               BOOLEAN DEFAULT FALSE,
     is_adjacent_to_powerline BOOLEAN DEFAULT FALSE,
-    PRIMARY KEY (x, y, game_id),
-    FOREIGN KEY (game_id) REFERENCES game (game_id),
+    PRIMARY KEY (x, y, city_id),
+    FOREIGN KEY (city_id) REFERENCES city (city_id),
     FOREIGN KEY (owner_id) REFERENCES player (id),
     FOREIGN KEY (building_id) REFERENCES buildings (id)
 );
@@ -387,6 +387,6 @@ INSERT INTO buildings_types (type, description)
 VALUES ('House',
         'A building for human habitation, especially one that is lived in by a family or small group of people.');
 
-INSERT INTO buildings (type, owner_id, game_id)
+INSERT INTO buildings (type, owner_id, city_id)
 VALUES (1, 1, 1);
 ```
