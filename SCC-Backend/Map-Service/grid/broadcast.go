@@ -2,9 +2,9 @@ package grid
 
 import (
 	"encoding/json"
-	"game-service/core"
 	"github.com/gorilla/websocket"
 	"log"
+	"map-service/core"
 )
 
 func broadcastGridUpdate(grid *UpdateGridRequest) {

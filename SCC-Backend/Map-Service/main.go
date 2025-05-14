@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/labstack/echo/v4/middleware"
+	"map-service/cell"
 	"map-service/core"
 	"map-service/grid"
 )
@@ -21,8 +22,9 @@ func main() {
 	app.POST("/grid", grid.HandleCreateGridForCity)
 	app.PUT("/grid", grid.HandleUpdateGrid)
 	app.DELETE("/grid", grid.HandleDeleteGrid)
-	app.GET("/grid/cells", grid.HandleGetGridCells)
-	app.PUT("/grid/cell", grid.HandleUpdateCell)
+
+	app.GET("/cells", cell.HandleGetGridCells)
+	app.PUT("/cell", cell.HandleUpdateCell)
 
 	app.Logger.Fatal(app.Start(":5655"))
 }

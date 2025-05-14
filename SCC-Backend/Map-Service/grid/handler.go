@@ -1,13 +1,15 @@
 package grid
 
 import (
-	"game-service/api"
-	"game-service/core"
+	"map-service/api"
+	"map-service/cell"
+	"map-service/core"
 	"strconv"
 )
 
 func HandleGetGridForCity(ctx *core.WebContext) error {
 	repo := NewRepository(ctx)
+	cellRepo := cell.NewRepository(ctx)
 
 	token, err := ctx.GetGameToken()
 	if err != nil {
@@ -35,43 +37,19 @@ func HandleGetGridForCity(ctx *core.WebContext) error {
 		return ctx.InternalError(err.Error())
 	}
 
+	cells, err := cellRepo.GetCellsForGrid(cityId)
+	if err != nil {
+		return ctx.InternalError(err.Error())
+	}
+
+	grid.Cells = cells
+
 	return ctx.Success(grid)
-}
-
-func HandleGetGridCells(ctx *core.WebContext) error {
-	repo := NewRepository(ctx)
-
-	token, err := ctx.GetGameToken()
-	if err != nil {
-		return ctx.Unauthorized("no game token provided")
-	}
-
-	_, _, err = api.DecodeGameToken(token, ctx)
-	if err != nil {
-		return ctx.Unauthorized(err.Error())
-	}
-
-	cityIdString := ctx.Request().Header.Get("cityId")
-
-	if cityIdString == "" {
-		return ctx.BadRequest("Missing cityId parameter")
-	}
-
-	cityId, err := strconv.Atoi(cityIdString)
-	if err != nil {
-		return ctx.InternalError(err.Error())
-	}
-
-	cells, err := repo.GetCellsForGrid(cityId)
-	if err != nil {
-		return ctx.InternalError(err.Error())
-	}
-
-	return ctx.Success(cells)
 }
 
 func HandleCreateGridForCity(ctx *core.WebContext) error {
 	repo := NewRepository(ctx)
+	cellRepo := cell.NewRepository(ctx)
 
 	token, err := ctx.GetGameToken()
 	if err != nil {
@@ -93,6 +71,20 @@ func HandleCreateGridForCity(ctx *core.WebContext) error {
 	grid, err := repo.CreateGridForCity(cgr)
 	if err != nil {
 		return ctx.InternalError(err.Error())
+	}
+
+	var successCount = 0
+
+	for _, newCell := range grid.Cells {
+		err := cellRepo.CreateCell(newCell)
+		if err != nil {
+			return err
+		}
+		successCount++
+	}
+
+	if successCount != len(grid.Cells) {
+		return ctx.InternalError("Error while creating the cells.")
 	}
 
 	return ctx.Success(grid)
@@ -130,6 +122,7 @@ func HandleUpdateGrid(ctx *core.WebContext) error {
 
 func HandleDeleteGrid(ctx *core.WebContext) error {
 	repo := NewRepository(ctx)
+	cellRepo := cell.NewRepository(ctx)
 
 	token, err := ctx.GetGameToken()
 	if err != nil {
@@ -148,41 +141,15 @@ func HandleDeleteGrid(ctx *core.WebContext) error {
 		return ctx.InternalError(err.Error())
 	}
 
+	err = cellRepo.DeleteCellForGrid(dgr.CityId)
+	if err != nil {
+		return ctx.InternalError(err.Error())
+	}
+
 	err = repo.DeleteGrid(dgr)
 	if err != nil {
 		return ctx.InternalError(err.Error())
 	}
 
 	return ctx.Success("Deleted Grid")
-}
-
-func HandleUpdateCell(ctx *core.WebContext) error {
-	repo := NewRepository(ctx)
-
-	token, err := ctx.GetGameToken()
-	if err != nil {
-		return ctx.Unauthorized("no game token provided")
-	}
-
-	_, _, err = api.DecodeGameToken(token, ctx)
-	if err != nil {
-		return ctx.Unauthorized(err.Error())
-	}
-
-	var ucr Cell
-
-	err = ctx.Bind(&ucr)
-	if err != nil {
-		return ctx.InternalError(err.Error())
-	}
-
-	err = repo.UpdateCell(ucr)
-	if err != nil {
-		return ctx.InternalError(err.Error())
-	}
-
-	//Todo: Broadcast the changes to other players
-	//broadcastGridUpdate(&ucr)
-
-	return ctx.Success("Update Grid")
 }
