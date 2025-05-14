@@ -16,7 +16,7 @@ func NewRepository(ctx *core.WebContext) *Repository {
 
 func (r *Repository) GetGridForCity(cityId int) (*Grid, error) {
 	var grid Grid
-	stmt, err := r.db.PrepareNamed(`SELECT * FROM grid WHERE city_id = :cityId`)
+	stmt, err := r.db.PrepareNamed(`SELECT * FROM grid.grid WHERE city_id = :cityId`)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func (r *Repository) GetGridForCity(cityId int) (*Grid, error) {
 func (r *Repository) GetCellsForGrid(cityId int) ([]Cell, error) {
 	var cells []CellRequest
 
-	stmt, err := r.db.PrepareNamed(`SELECT * FROM cells WHERE city_id = :cityId`)
+	stmt, err := r.db.PrepareNamed(`SELECT * FROM grid.cells WHERE city_id = :cityId`)
 	if err != nil {
 		return nil, err
 	}
@@ -72,7 +72,7 @@ func (r *Repository) GetCellsForGrid(cityId int) ([]Cell, error) {
 
 func (r *Repository) CreateGridForCity(cgr CreateGridRequest) (*Grid, error) {
 	var grid Grid
-	stmt, err := r.db.PrepareNamed(`INSERT INTO grid (city_id,height,width, updated_at) VALUES (:cityId, :height, :width, :updatedAt) RETURNING *`)
+	stmt, err := r.db.PrepareNamed(`INSERT INTO grid.grid (city_id,height,width, updated_at) VALUES (:cityId, :height, :width, :updatedAt) RETURNING *`)
 	if err != nil {
 		return &grid, err
 	}
@@ -112,7 +112,7 @@ func (r *Repository) CreateGridForCity(cgr CreateGridRequest) (*Grid, error) {
 }
 
 func (r *Repository) UpdateGrid(ugr UpdateGridRequest) error {
-	stmt, err := r.db.PrepareNamed(`UPDATE grid SET height = :height, width = :width WHERE city_id = :cityId`)
+	stmt, err := r.db.PrepareNamed(`UPDATE grid.grid SET height = :height, width = :width WHERE city_id = :cityId`)
 	if err != nil {
 		return err
 	}
@@ -137,7 +137,7 @@ func (r *Repository) DeleteGrid(dgr DeleteGridRequest) error {
 		return err
 	}
 
-	stmt, err := r.db.PrepareNamed(`DELETE FROM grid WHERE city_id = :cityId`)
+	stmt, err := r.db.PrepareNamed(`DELETE FROM grid.grid WHERE city_id = :cityId`)
 	if err != nil {
 		return err
 	}
@@ -152,7 +152,7 @@ func (r *Repository) DeleteGrid(dgr DeleteGridRequest) error {
 func (r *Repository) GetCell(cityId, x, y int) (*Cell, error) {
 	var cell Cell
 
-	stmt, err := r.db.PrepareNamed(`SELECT * FROM cells WHERE city_id = $1 AND x = $2 AND y = $3`)
+	stmt, err := r.db.PrepareNamed(`SELECT * FROM grid.cells WHERE city_id = $1 AND x = $2 AND y = $3`)
 	if err != nil {
 		return nil, err
 	}
@@ -171,7 +171,7 @@ func (r *Repository) GetCell(cityId, x, y int) (*Cell, error) {
 }
 
 func (r *Repository) CreateCell(cell Cell) error {
-	stmt, err := r.db.PrepareNamed(`INSERT INTO cells (x, y, building_id, city_id) VALUES (:x, :y, :buildingId, :cityId)`)
+	stmt, err := r.db.PrepareNamed(`INSERT INTO grid.cells (x, y, building_id, city_id) VALUES (:x, :y, :buildingId, :cityId)`)
 	if err != nil {
 		return err
 	}
@@ -190,7 +190,7 @@ func (r *Repository) CreateCell(cell Cell) error {
 func (r *Repository) UpdateCell(ugr Cell) error {
 	var exists bool
 
-	stmt, err := r.db.PrepareNamed(`SELECT EXISTS(SELECT 1 FROM cells WHERE cell_id = :cellId AND x = :x AND y = :y)`)
+	stmt, err := r.db.PrepareNamed(`SELECT EXISTS(SELECT 1 FROM grid.cells WHERE cell_id = :cellId AND x = :x AND y = :y)`)
 	if err != nil {
 		return err
 	}
@@ -237,7 +237,7 @@ func (r *Repository) UpdateCell(ugr Cell) error {
 }
 
 func (r *Repository) updateCell(cell Cell) error {
-	stmt, err := r.db.PrepareNamed(`UPDATE cells SET building_id = :buildingId WHERE city_id = :cityId AND x = :x AND y = :y`)
+	stmt, err := r.db.PrepareNamed(`UPDATE grid.cells SET building_id = :buildingId WHERE city_id = :cityId AND x = :x AND y = :y`)
 	if err != nil {
 		return err
 	}
@@ -262,7 +262,7 @@ func (r *Repository) updateCell(cell Cell) error {
 }
 
 func (r *Repository) DeleteSingleCell(cityId, x, y int) error {
-	stmt, err := r.db.PrepareNamed(`DELETE FROM cells WHERE city_id = :cityId AND x = :x AND y = :y`)
+	stmt, err := r.db.PrepareNamed(`DELETE FROM grid.cells WHERE city_id = :cityId AND x = :x AND y = :y`)
 	if err != nil {
 		return err
 	}
@@ -277,7 +277,7 @@ func (r *Repository) DeleteSingleCell(cityId, x, y int) error {
 }
 
 func (r *Repository) DeleteCellForGrid(cityId int) error {
-	stmt, err := r.db.PrepareNamed(`DELETE FROM cells WHERE city_id = :cityId`)
+	stmt, err := r.db.PrepareNamed(`DELETE FROM grid.cells WHERE city_id = :cityId`)
 	if err != nil {
 		return err
 	}

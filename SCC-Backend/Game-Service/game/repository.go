@@ -16,7 +16,7 @@ func NewRepository(ctx *core.WebContext) *Repository {
 func (r *Repository) ListGames() ([]Game, error) {
 	var games []Game
 
-	stmt, err := r.db.PrepareNamed(`SELECT game_id, name, owner_id FROM game LIMIT 25`)
+	stmt, err := r.db.PrepareNamed(`SELECT game_id, name, owner_id FROM game.game LIMIT 25`)
 	if err != nil {
 		return nil, err
 	}
@@ -32,7 +32,7 @@ func (r *Repository) ListGames() ([]Game, error) {
 func (r *Repository) GetGameByName(searchName string) ([]Game, error) {
 	var game []Game
 
-	stmt, err := r.db.PrepareNamed(`SELECT game_id, name, owner_id FROM game WHERE name LIKE :name`)
+	stmt, err := r.db.PrepareNamed(`SELECT game_id, name, owner_id FROM game.game WHERE name LIKE :name`)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +53,7 @@ func (r *Repository) CreateNewGame(cgr CreateGameRequest, playerId int) (*Game, 
 	var game Game
 
 	stmt, err := r.db.PrepareNamed(`
-        INSERT INTO game (name, password, owner_id) 
+        INSERT INTO game.game (name, password, owner_id) 
         VALUES (:name, :password, :ownerId)
         RETURNING *
     `)
@@ -77,7 +77,7 @@ func (r *Repository) CreateNewGame(cgr CreateGameRequest, playerId int) (*Game, 
 }
 
 func (r *Repository) UpdateGame(ugr UpdateGameRequest, playerId int) error {
-	stmt, err := r.db.PrepareNamed(`UPDATE game SET game_id = :gameId, name = :name, password = :password, owner_id = :ownerId WHERE game_id = :gameId AND owner_id = :playerId`)
+	stmt, err := r.db.PrepareNamed(`UPDATE game.game SET game_id = :gameId, name = :name, password = :password, owner_id = :ownerId WHERE game_id = :gameId AND owner_id = :playerId`)
 	if err != nil {
 		return err
 	}
@@ -99,7 +99,7 @@ func (r *Repository) UpdateGame(ugr UpdateGameRequest, playerId int) error {
 }
 
 func (r *Repository) DeleteGame(dgr DeleteGameRequest, playerId int) error {
-	stmt, err := r.db.PrepareNamed(`DELETE FROM game WHERE game_id = :gameId AND owner_id = :ownerId`)
+	stmt, err := r.db.PrepareNamed(`DELETE FROM game.game WHERE game_id = :gameId AND owner_id = :ownerId`)
 	if err != nil {
 		return err
 	}
@@ -118,7 +118,7 @@ func (r *Repository) DeleteGame(dgr DeleteGameRequest, playerId int) error {
 }
 
 func (r *Repository) CreatePlayerGame(cpgr CreatePlayerGameRequest) error {
-	stmt, err := r.db.PrepareNamed(`INSERT INTO game (game_id, player_id) VALUES (:gameId, :playerId)`)
+	stmt, err := r.db.PrepareNamed(`INSERT INTO game.game (game_id, player_id) VALUES (:gameId, :playerId)`)
 	if err != nil {
 		return err
 	}

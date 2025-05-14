@@ -15,7 +15,7 @@ func NewRepository(ctx *core.WebContext) *Repository {
 
 func (r *Repository) CreateNewCity(ccr CreateCityRequest, playerId int) (*City, error) {
 	var city City
-	stmt, err := r.db.PrepareNamed(`INSERT INTO city (name, game_id, owner_id) VALUES (:name, :gameId, :ownerId) RETURNING *`)
+	stmt, err := r.db.PrepareNamed(`INSERT INTO game.city (name, game_id, owner_id) VALUES (:name, :gameId, :ownerId) RETURNING *`)
 	if err != nil {
 		return &city, err
 	}
@@ -35,7 +35,7 @@ func (r *Repository) CreateNewCity(ccr CreateCityRequest, playerId int) (*City, 
 }
 
 func (r *Repository) UpdateCity(ucr UpdateCityRequest, playerId int) error {
-	stmt, err := r.db.PrepareNamed(`UPDATE city SET name = :name, game_id = :gameId WHERE city_id = :cityId AND owner_id = :ownerId`)
+	stmt, err := r.db.PrepareNamed(`UPDATE game.city SET name = :name, game_id = :gameId WHERE city_id = :cityId AND owner_id = :ownerId`)
 	if err != nil {
 		return err
 	}
@@ -56,7 +56,7 @@ func (r *Repository) UpdateCity(ucr UpdateCityRequest, playerId int) error {
 }
 
 func (r *Repository) DeleteCity(dcr DeleteCityRequest, playerId int) error {
-	stmt, err := r.db.PrepareNamed(`DELETE FROM city WHERE city_id = :cityId AND owner_id = :ownerId`)
+	stmt, err := r.db.PrepareNamed(`DELETE FROM game.city WHERE city_id = :cityId AND owner_id = :ownerId`)
 	if err != nil {
 		return err
 	}
@@ -77,7 +77,7 @@ func (r *Repository) DeleteCity(dcr DeleteCityRequest, playerId int) error {
 func (r *Repository) GetAllCitiesForGame(gameId int) ([]City, error) {
 	var cities []City
 
-	stmt, err := r.db.PrepareNamed(`SELECT * FROM city WHERE game_id = :gameId`)
+	stmt, err := r.db.PrepareNamed(`SELECT * FROM game.city WHERE game_id = :gameId`)
 	if err != nil {
 		return nil, err
 	}
@@ -97,7 +97,7 @@ func (r *Repository) GetAllCitiesForGame(gameId int) ([]City, error) {
 func (r *Repository) GetCityByName(gameId int, name string) ([]City, error) {
 	var cities []City
 
-	stmt, err := r.db.PrepareNamed(`SELECT * FROM city WHERE game_id = :gameId AND name LIKE :name`)
+	stmt, err := r.db.PrepareNamed(`SELECT * FROM game.city WHERE game_id = :gameId AND name LIKE :name`)
 	if err != nil {
 		return nil, err
 	}

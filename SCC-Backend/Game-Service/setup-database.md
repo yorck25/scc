@@ -38,7 +38,7 @@
  └────┬───────┘
       ▼  
  ┌────────────────────┐  
- │    grid_cells      │  
+ │       cells        │  
  ├────────────────────┤  
  │ x (PK)             │  
  │ y (PK)             │  
@@ -180,7 +180,10 @@ CREATE TABLE game_player (
 
 ### Extras
 ```postgresql
-CREATE TABLE player
+create schema game;
+create schema grid;
+
+CREATE TABLE game.player
 (
     id       SERIAL PRIMARY KEY,
     username VARCHAR(128) NOT NULL,
@@ -189,79 +192,100 @@ CREATE TABLE player
 );
 
 -- Games
-CREATE TABLE game
+CREATE TABLE game.game
 (
     game_id  SERIAL PRIMARY KEY,
     name     VARCHAR(255),
     password VARCHAR(255),
     owner_id INT,
-    FOREIGN KEY (owner_id) REFERENCES player (id)
+    FOREIGN KEY (owner_id) REFERENCES game.player (id)
 );
 
 -- Game Player Mapping (Multiplayer)
-CREATE TABLE game_player
+CREATE TABLE game.game_player
 (
     id        SERIAL PRIMARY KEY,
     game_id   INT,
     player_id INT,
-    FOREIGN KEY (game_id) REFERENCES game (game_id),
-    FOREIGN KEY (player_id) REFERENCES player (id)
+    FOREIGN KEY (game_id) REFERENCES game.game (game_id),
+    FOREIGN KEY (player_id) REFERENCES game.player (id)
 );
 
 -- Game State / Simulation Data
-CREATE TABLE game_data
+CREATE TABLE game.game_data
 (
     game_id        INT PRIMARY KEY,
     game_time      TIMESTAMP,
     economy_status VARCHAR(255),
     tax_modifier   NUMERIC,
-    FOREIGN KEY (game_id) REFERENCES game (game_id)
+    FOREIGN KEY (game_id) REFERENCES game.game (game_id)
 );
 
 -- Player Statistics
-CREATE TABLE player_stats
+CREATE TABLE game.player_stats
 (
     id        SERIAL PRIMARY KEY,
     player_id INT,
     game_id   INT,
     balance   DOUBLE PRECISION,
     tax_rate  INT,
-    FOREIGN KEY (player_id) REFERENCES player (id),
-    FOREIGN KEY (game_id) REFERENCES game (game_id)
+    FOREIGN KEY (player_id) REFERENCES game.player (id),
+    FOREIGN KEY (game_id) REFERENCES game.game (game_id)
 );
 
 -- Financial Transactions
-CREATE TABLE transactions
+CREATE TABLE game.transactions
 (
     id        SERIAL PRIMARY KEY,
     player_id INT,
     amount    NUMERIC,
-    FOREIGN KEY (player_id) REFERENCES player (id)
+    FOREIGN KEY (player_id) REFERENCES game.player (id)
 );
 
 -- City
-CREATE TABLE city
+CREATE TABLE game.city
 (
     city_id  SERIAL PRIMARY KEY,
     name     VARCHAR(255),
     game_id  INT,
     owner_id INT,
-    FOREIGN KEY (game_id) REFERENCES game (game_id),
-    FOREIGN KEY (owner_id) REFERENCES player (id)
+    FOREIGN KEY (game_id) REFERENCES game.game (game_id),
+    FOREIGN KEY (owner_id) REFERENCES game.player (id)
 );
 
 -- Grid Information
-CREATE TABLE grid
+CREATE TABLE grid.grid
 (
     city_id    INT PRIMARY KEY,
     height     INT NOT NULL,
     width      INT NOT NULL,
     updated_at TIMESTAMP,
-    FOREIGN KEY (city_id) REFERENCES city (city_id)
+    FOREIGN KEY (city_id) REFERENCES game.city (city_id)
+);
+
+-- Building Types
+CREATE TABLE game.building_types
+(
+    id          SERIAL PRIMARY KEY,
+    type        VARCHAR(128) NOT NULL UNIQUE,
+    description VARCHAR(255)
+);
+
+-- Buildings
+CREATE TABLE game.buildings
+(
+    id         SERIAL PRIMARY KEY,
+    type       INT NOT NULL,
+    owner_id   INT NOT NULL,
+    city_id    INT NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY (type) REFERENCES game.building_types (id),
+    FOREIGN KEY (owner_id) REFERENCES game.player (id),
+    FOREIGN KEY (city_id) REFERENCES game.city (city_id)
 );
 
 -- Grid Cells with Simulation Data
-CREATE TABLE grid_cells
+CREATE TABLE grid.cells
 (
     x                        INT NOT NULL,
     y                        INT NOT NULL,
@@ -276,83 +300,62 @@ CREATE TABLE grid_cells
     is_powered               BOOLEAN DEFAULT FALSE,
     is_adjacent_to_powerline BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (x, y, city_id),
-    FOREIGN KEY (city_id) REFERENCES city (city_id),
-    FOREIGN KEY (owner_id) REFERENCES player (id),
-    FOREIGN KEY (building_id) REFERENCES buildings (id)
-);
-
--- Building Types
-CREATE TABLE building_types
-(
-    id          SERIAL PRIMARY KEY,
-    type        VARCHAR(128) NOT NULL UNIQUE,
-    description VARCHAR(255)
-);
-
--- Buildings
-CREATE TABLE buildings
-(
-    id         SERIAL PRIMARY KEY,
-    type       INT NOT NULL,
-    owner_id   INT NOT NULL,
-    city_id    INT NOT NULL,
-    created_at TIMESTAMP DEFAULT NOW(),
-    FOREIGN KEY (type) REFERENCES building_types (id),
-    FOREIGN KEY (owner_id) REFERENCES player (id),
-    FOREIGN KEY (city_id) REFERENCES city (city_id)
+    FOREIGN KEY (city_id) REFERENCES game.city (city_id),
+    FOREIGN KEY (owner_id) REFERENCES game.player (id),
+    FOREIGN KEY (building_id) REFERENCES game.buildings (id)
 );
 
 -- House Buildings
-CREATE TABLE houses
+CREATE TABLE game.houses
 (
     building_id INT PRIMARY KEY,
     residents   INT,
     comfort     INT,
     rent        NUMERIC,
-    FOREIGN KEY (building_id) REFERENCES buildings (id)
+    FOREIGN KEY (building_id) REFERENCES game.buildings (id)
 );
 
 -- Factory Buildings
-CREATE TABLE factories
+CREATE TABLE game.factories
 (
     building_id  INT PRIMARY KEY,
     employees    INT,
     pollution    INT,
     output_goods INT,
-    FOREIGN KEY (building_id) REFERENCES buildings (id)
+    FOREIGN KEY (building_id) REFERENCES game.buildings (id)
 );
 
 -- Park Buildings
-CREATE TABLE parks
+CREATE TABLE game.parks
 (
     building_id     INT PRIMARY KEY,
     happiness_boost INT,
     greenery_level  INT,
-    FOREIGN KEY (building_id) REFERENCES buildings (id)
+    FOREIGN KEY (building_id) REFERENCES game.buildings (id)
 );
 
 -- Roads
-CREATE TABLE roads
+CREATE TABLE game.roads
 (
     x        INT,
     y        INT,
     owner_id INT,
     PRIMARY KEY (x, y),
-    FOREIGN KEY (owner_id) REFERENCES player (id)
+    FOREIGN KEY (owner_id) REFERENCES game.player (id)
 );
 
 -- Traffic System
-CREATE TABLE traffic
+CREATE TABLE game.traffic
 (
     road_x     INT,
     road_y     INT,
     congestion INT,
     PRIMARY KEY (road_x, road_y),
-    FOREIGN KEY (road_x, road_y) REFERENCES roads (x, y)
+    FOREIGN KEY (road_x, road_y) REFERENCES game.roads (x, y)
 );
 
 -- Events & Disasters
-CREATE TABLE events
+CREATE TABLE game.events
 (
     id            SERIAL PRIMARY KEY,
     event_type    VARCHAR(128),
@@ -362,31 +365,31 @@ CREATE TABLE events
 );
 
 -- Audit Log
-CREATE TABLE audit
+CREATE TABLE game.audit
 (
     id        SERIAL PRIMARY KEY,
     player_id INT,
     action    VARCHAR(255) NOT NULL,
     old_value JSONB,
     new_value JSONB,
-    FOREIGN KEY (player_id) REFERENCES player (id)
+    FOREIGN KEY (player_id) REFERENCES game.player (id)
 );
 
-INSERT INTO player (username, email, password)
+INSERT INTO game.player (username, email, password)
 VALUES ('yorck', 'test@mail.de', 'test1234');
 
-INSERT INTO game (name, password, owner_id)
+INSERT INTO game.game (name, password, owner_id)
 VALUES ('test game 1', 'test1234', 1);
 
-INSERT INTO city (name, game_id, owner_id)
+INSERT INTO game.city (name, game_id, owner_id)
 VALUES ('test city 1', 1, 1);
-INSERT INTO grid (city_id, height, width, updated_at)
+INSERT INTO grid.grid (city_id, height, width, updated_at)
 VALUES (1, 10, 10, now());
 
-INSERT INTO buildings_types (type, description)
+INSERT INTO game.building_types (type, description)
 VALUES ('House',
         'A building for human habitation, especially one that is lived in by a family or small group of people.');
 
-INSERT INTO buildings (type, owner_id, city_id)
+INSERT INTO game.buildings (type, owner_id, city_id)
 VALUES (1, 1, 1);
 ```
