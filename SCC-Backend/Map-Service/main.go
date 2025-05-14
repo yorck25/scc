@@ -26,6 +26,8 @@ func main() {
 	app.GET("/cells", cell.HandleGetGridCells)
 	app.PUT("/cell", cell.HandleUpdateCell)
 
+	app.GET("/generate-res", cell.TestCreateCluster)
+
 	app.Logger.Fatal(app.Start(":5655"))
 }
 
