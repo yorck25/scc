@@ -59,8 +59,20 @@ func (r *Repository) CreateGridForCity(cgr CreateGridRequest) (*Grid, error) {
 				Y: h,
 			}
 
+			newCellData := cell.CellData{
+				ZoneType:              "plane",
+				Population:            0,
+				Pollution:             0,
+				AvailableWorkers:      0,
+				AvailableGoods:        0,
+				IsPowered:             false,
+				IsAdjacentToPowerline: false,
+			}
+
 			newCell := cell.Cell{
 				Coordinate: newCoordinate,
+				BuildingId: 0,
+				CellData:   newCellData,
 				CityId:     cgr.CityID,
 			}
 

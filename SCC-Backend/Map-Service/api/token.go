@@ -1,8 +1,8 @@
 package api
 
 import (
-	"game-service/core"
 	"github.com/golang-jwt/jwt"
+	"map-service/core"
 	"time"
 )
 

@@ -1,6 +1,7 @@
 package cell
 
 import (
+	"fmt"
 	"github.com/jmoiron/sqlx"
 	"map-service/core"
 )
@@ -72,10 +73,18 @@ func (r *Repository) CreateCell(cell Cell) error {
 		return err
 	}
 
+	var buildingId *int = nil
+
+	if cell.BuildingId != 0 {
+		buildingId = &cell.BuildingId
+	}
+
+	fmt.Println(buildingId)
+
 	params := map[string]any{
 		"x":          cell.X,
 		"y":          cell.Y,
-		"buildingId": cell.BuildingId,
+		"buildingId": buildingId,
 		"cityId":     cell.CityId,
 	}
 
