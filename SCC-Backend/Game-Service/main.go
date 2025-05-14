@@ -1,13 +1,12 @@
 package main
 
 import (
-	"SCC_Backend/audit"
-	"SCC_Backend/auth"
-	"SCC_Backend/city"
-	"SCC_Backend/core"
-	"SCC_Backend/game"
-	"SCC_Backend/grid"
-	"SCC_Backend/player"
+	"game-service/audit"
+	"game-service/auth"
+	"game-service/city"
+	"game-service/core"
+	"game-service/game"
+	"game-service/player"
 	"github.com/labstack/echo/v4/middleware"
 )
 
@@ -45,13 +44,6 @@ func main() {
 	app.POST("/city", city.HandleCreateCity)
 	app.PUT("/city", city.HandleUpdateCity)
 	app.DELETE("/city", city.HandleDeleteCity)
-
-	app.GET("/grid", grid.HandleGetGridForCity)
-	app.POST("/grid", grid.HandleCreateGridForCity)
-	app.PUT("/grid", grid.HandleUpdateGrid)
-	app.DELETE("/grid", grid.HandleDeleteGrid)
-	app.GET("/grid/cells", grid.HandleGetGridCells)
-	app.PUT("/grid/cell", grid.HandleUpdateCell)
 
 	app.Logger.Fatal(app.Start(":5555"))
 }

@@ -1,8 +1,8 @@
 package player
 
 import (
-	"SCC_Backend/api"
-	"SCC_Backend/core"
+	"game-service/api"
+	"game-service/core"
 )
 
 func HandleGetPlayer(ctx *core.WebContext) error {

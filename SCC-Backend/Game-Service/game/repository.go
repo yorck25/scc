@@ -1,7 +1,7 @@
 package game
 
 import (
-	"SCC_Backend/core"
+	"game-service/core"
 	"github.com/jmoiron/sqlx"
 )
 

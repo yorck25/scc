@@ -1,8 +1,8 @@
 package grid
 
 import (
-	"SCC_Backend/api"
-	"SCC_Backend/core"
+	"game-service/api"
+	"game-service/core"
 	"strconv"
 )
 

@@ -1,8 +1,8 @@
 package game
 
 import (
-	"SCC_Backend/api"
-	"SCC_Backend/core"
+	"game-service/api"
+	"game-service/core"
 )
 
 func HandleSearchGame(ctx *core.WebContext) error {

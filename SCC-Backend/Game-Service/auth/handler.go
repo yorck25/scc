@@ -1,8 +1,8 @@
 package auth
 
 import (
-	"SCC_Backend/api"
-	"SCC_Backend/core"
+	"game-service/api"
+	"game-service/core"
 	"github.com/labstack/echo/v4"
 	"strconv"
 )

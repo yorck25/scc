@@ -1,8 +1,8 @@
 package grid
 
 import (
-	"SCC_Backend/core"
 	"encoding/json"
+	"game-service/core"
 	"github.com/gorilla/websocket"
 	"log"
 )
