@@ -14,6 +14,13 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     
     
     <section id="grid-section"></section>
+    
+    <div id="resource-filters">
+        <button data-resource="oil">Oil</button>
+        <button data-resource="iron">Iron</button>
+        <button data-resource="water">Water</button>
+        <button data-resource="all">All</button>
+    </div>
   </div>
 `;
 

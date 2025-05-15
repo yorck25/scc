@@ -28,7 +28,7 @@ func TestCreateCluster(ctx *core.WebContext) error {
 				Population:            0,
 				Pollution:             0,
 				AvailableWorkers:      0,
-				AvailableGoods:        0,
+				AvailableGoods:        make(map[string]int),
 				IsPowered:             false,
 				IsAdjacentToPowerline: false,
 			}
@@ -44,7 +44,17 @@ func TestCreateCluster(ctx *core.WebContext) error {
 		}
 	}
 
-	newCells, err := GenerateRandomFieldCluster(x, y, cells)
+	newCells, err := GenerateRandomFieldCluster(x, y, cells, oil)
+	if err != nil {
+		return err
+	}
+
+	newCells, err = GenerateRandomFieldCluster(x, y, cells, iron)
+	if err != nil {
+		return err
+	}
+
+	newCells, err = GenerateRandomFieldCluster(x, y, cells, water)
 	if err != nil {
 		return err
 	}
@@ -52,7 +62,7 @@ func TestCreateCluster(ctx *core.WebContext) error {
 	return ctx.Success(newCells)
 }
 
-func GenerateRandomFieldCluster(x int, y int, cells []Cell) ([]Cell, error) {
+func GenerateRandomFieldCluster(x int, y int, cells []Cell, goodsName Resource) ([]Cell, error) {
 	var percentage = 0.25
 	minClusterRadius := 1
 
@@ -62,7 +72,11 @@ func GenerateRandomFieldCluster(x int, y int, cells []Cell) ([]Cell, error) {
 	setSeedOfCluster := func(coordinate Coordinate, availableGoods int) {
 		for i := range cells {
 			if cells[i].X == coordinate.X && cells[i].Y == coordinate.Y {
-				cells[i].AvailableGoods = availableGoods
+				if cells[i].AvailableGoods == nil {
+					cells[i].AvailableGoods = make(map[string]int)
+				}
+
+				cells[i].AvailableGoods[goodsName.ToString()] = availableGoods
 			}
 		}
 	}
@@ -75,7 +89,7 @@ func GenerateRandomFieldCluster(x int, y int, cells []Cell) ([]Cell, error) {
 		Y: ySeed,
 	}
 
-	setSeedOfCluster(originCoordinate, 100)
+	setSeedOfCluster(originCoordinate, rand.IntN(100-90)+90)
 
 	var selectedCoordinates []Coordinate
 

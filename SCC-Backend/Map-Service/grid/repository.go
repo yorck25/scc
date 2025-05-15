@@ -64,7 +64,7 @@ func (r *Repository) CreateGridForCity(cgr CreateGridRequest) (*Grid, error) {
 				Population:            0,
 				Pollution:             0,
 				AvailableWorkers:      0,
-				AvailableGoods:        0,
+				AvailableGoods:        make(map[string]int),
 				IsPowered:             false,
 				IsAdjacentToPowerline: false,
 			}
