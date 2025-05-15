@@ -15,8 +15,10 @@ interface ICell {
     cityId: number;
 }
 
+let cells: ICell[] = [];
+let displayType = 'availableGoods';
+
 export function getGridFieldCluster(el: HTMLButtonElement) {
-    let cells: ICell[] = [];
 
     const fetchData = async () => {
         const myHeaders = new Headers();
@@ -37,13 +39,21 @@ export function getGridFieldCluster(el: HTMLButtonElement) {
 
     const printCells = () => {
         cells.forEach(cell => {
-            let col = '#fff';
+            let col: string = '#fff';
+            let cellText: string = '';
 
-            if(cell.availableGoods) {
+            if (cell.availableGoods) {
                 col = '#707070';
             }
 
-            updateGridCell(cell.x, cell.y, cell.zoneType, col);
+            if (displayType == 'availableGoods') {
+                cellText = `${cell.availableGoods}`;
+            } else if (displayType == 'cellType') {
+                cellText = cell.zoneType[0];
+            }
+
+
+            updateGridCell(cell.x, cell.y, cellText, col);
         })
     }
 
@@ -51,13 +61,18 @@ export function getGridFieldCluster(el: HTMLButtonElement) {
 }
 
 
-function updateGridCell(x: number, y: number, text: string, col: string ) {
+function updateGridCell(x: number, y: number, text: string, col: string) {
     const el = document.querySelector<HTMLDivElement>(`#col-${x}-${y}`);
 
     if (el == null) {
         return;
     }
 
-    el.innerHTML = text.length == 0 ? y.toString() : text[0];
-    el.style.backgroundColor = `${col}`
+    el.innerHTML = text;
+    el.style.backgroundColor = `${col}`;
+    el.style.opacity = '100%';
+
+    if (displayType == 'availableGoods' && text != "0") {
+        el.style.opacity = `${text}%`;
+    }
 }

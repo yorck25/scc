@@ -1,7 +1,6 @@
 package cell
 
 import (
-	"fmt"
 	"map-service/core"
 	"math"
 	"math/rand/v2"
@@ -56,20 +55,18 @@ func TestCreateCluster(ctx *core.WebContext) error {
 func GenerateRandomFieldCluster(x int, y int, cells []Cell) ([]Cell, error) {
 	var percentage = 0.25
 	minClusterRadius := 1
-	//spreadChance := 0.6
 
 	xBuffer := int(math.Round(float64(x) * percentage))
 	yBuffer := int(math.Round(float64(y) * percentage))
 
-	setSeedOfCluster := func(coordinate Coordinate) {
+	setSeedOfCluster := func(coordinate Coordinate, availableGoods int) {
 		for i := range cells {
 			if cells[i].X == coordinate.X && cells[i].Y == coordinate.Y {
-				cells[i].AvailableGoods = 1
+				cells[i].AvailableGoods = availableGoods
 			}
 		}
 	}
 
-	//defines the cluster origin seed
 	xSeed := rand.IntN((x-xBuffer)-xBuffer) + xBuffer
 	ySeed := rand.IntN((y-yBuffer)-yBuffer) + yBuffer
 
@@ -78,23 +75,19 @@ func GenerateRandomFieldCluster(x int, y int, cells []Cell) ([]Cell, error) {
 		Y: ySeed,
 	}
 
-	setSeedOfCluster(originCoordinate)
+	setSeedOfCluster(originCoordinate, 100)
 
 	var selectedCoordinates []Coordinate
 
 	xMin := rand.IntN((x-xBuffer)-minClusterRadius) + minClusterRadius
 	xMax := rand.IntN((x-xBuffer)-minClusterRadius) + minClusterRadius
-
 	yMin := rand.IntN((y-yBuffer)-minClusterRadius) + minClusterRadius
 	yMax := rand.IntN((y-yBuffer)-minClusterRadius) + minClusterRadius
 
 	xMin = (originCoordinate.X - xMin) + 1
-	xMax = (originCoordinate.X + xMax)
-
+	xMax = originCoordinate.X + xMax
 	yMin = (originCoordinate.Y - yMin) + 1
-	yMax = (originCoordinate.Y + yMax)
-
-	//fmt.Printf("xMin=%d, xMax=%d | yMin=%d, yMax=%d\n", xMin, xMax, yMin, yMax)
+	yMax = originCoordinate.Y + yMax
 
 	for i := xMin; i < xMax; i++ {
 		for j := yMin; j < yMax; j++ {
@@ -105,15 +98,61 @@ func GenerateRandomFieldCluster(x int, y int, cells []Cell) ([]Cell, error) {
 
 			if newCoordinate != originCoordinate {
 				selectedCoordinates = append(selectedCoordinates, newCoordinate)
-			} else {
-				fmt.Println("skipping origin coordinate")
 			}
 		}
 	}
 
+	calcDistanceToOriginPos := func(coordinate Coordinate) int {
+		disX := abs(coordinate.X - originCoordinate.X)
+		disY := abs(coordinate.Y - originCoordinate.Y)
+
+		return disX + disY
+	}
+
+	randomResource := func(distance int) int {
+		maxResource := 90
+		minResource := 45
+		decayPerCell := 10
+
+		base := maxResource - decayPerCell*distance
+		if base < minResource {
+			base = minResource
+		}
+
+		variation := 10
+		minR := base - variation/2
+		maxR := base + variation/2
+
+		if minR < minResource {
+			minR = minResource
+		}
+		if maxR > maxResource {
+			maxR = maxResource
+		}
+
+		if maxR < minR {
+			maxR = minR
+		}
+
+		return rand.IntN(maxR-minR+1) + minR
+	}
+
+	goodsMap := make(map[Coordinate]int)
+
 	for _, coordinate := range selectedCoordinates {
-		setSeedOfCluster(coordinate)
+		distance := calcDistanceToOriginPos(coordinate)
+		resourceValue := randomResource(distance)
+
+		goodsMap[coordinate] = resourceValue
+		setSeedOfCluster(coordinate, resourceValue)
 	}
 
 	return cells, nil
+}
+
+func abs(value int) int {
+	if value < 0 {
+		return -value
+	}
+	return value
 }
