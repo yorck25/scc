@@ -182,6 +182,7 @@ CREATE TABLE game_player (
 ```postgresql
 create schema game;
 create schema grid;
+create schema simulation
 
 CREATE TABLE game.player
 (
@@ -287,6 +288,7 @@ CREATE TABLE game.buildings
 -- Grid Cells with Simulation Data
 CREATE TABLE grid.cells
 (
+    id                       SERIAL PRIMARY KEY,
     x                        INT NOT NULL,
     y                        INT NOT NULL,
     city_id                  INT,
@@ -299,7 +301,6 @@ CREATE TABLE grid.cells
     available_goods          INT     DEFAULT 0,
     is_powered               BOOLEAN DEFAULT FALSE,
     is_adjacent_to_powerline BOOLEAN DEFAULT FALSE,
-    PRIMARY KEY (x, y, city_id),
     FOREIGN KEY (city_id) REFERENCES game.city (city_id),
     FOREIGN KEY (owner_id) REFERENCES game.player (id),
     FOREIGN KEY (building_id) REFERENCES game.buildings (id)
@@ -373,6 +374,26 @@ CREATE TABLE game.audit
     old_value JSONB,
     new_value JSONB,
     FOREIGN KEY (player_id) REFERENCES game.player (id)
+);
+
+CREATE TABLE simulation.npc
+(
+    id              SERIAL PRIMARY KEY,
+    name            TEXT NOT NULL,
+    gender          varchar(150),
+    city_id         INT,
+    home_cell_id    INT,
+    work_cell_id    INT,
+    current_cell_id INT,
+    degree          INT       DEFAULT 0,
+    happiness       FLOAT     DEFAULT 50.0,
+    money           FLOAT     DEFAULT 0.0,
+    profession      TEXT      DEFAULT 'unemployed',
+    state           TEXT      DEFAULT 'idle',
+    last_updated    TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY (home_cell_id) REFERENCES grid.cells (id),
+    FOREIGN KEY (work_cell_id) REFERENCES grid.cells  (id),
+    FOREIGN KEY (current_cell_id) REFERENCES grid.cells  (id)
 );
 
 INSERT INTO game.player (username, email, password)
