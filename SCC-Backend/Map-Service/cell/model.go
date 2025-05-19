@@ -5,9 +5,9 @@ import "database/sql"
 type Resource int
 
 const (
-	oil   Resource = iota
-	iron           = iota
-	water          = iota
+	Oil   Resource = iota
+	Iron           = iota
+	Water          = iota
 )
 
 func (r Resource) ToString() string {

@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/labstack/echo/v4/middleware"
 	"map-service/cell"
+	"map-service/cluster"
 	"map-service/core"
 	"map-service/grid"
 )
@@ -26,7 +27,7 @@ func main() {
 	app.GET("/cells", cell.HandleGetGridCells)
 	app.PUT("/cell", cell.HandleUpdateCell)
 
-	app.GET("/generate-res", cell.TestCreateCluster)
+	app.GET("/generate-res", cluster.CreateCluster)
 
 	app.Logger.Fatal(app.Start(":5655"))
 }
