@@ -47,7 +47,7 @@ export function getGridFieldCluster(el: HTMLButtonElement) {
         myHeaders.append("X", BaseData.x.toString())
         myHeaders.append("Y", BaseData.y.toString())
 
-        let response = await fetch("http://localhost:5655/generate-res", {
+        let response = await fetch("http://localhost:5655/generate-res-cluster", {
             method: "GET",
             headers: myHeaders
         });

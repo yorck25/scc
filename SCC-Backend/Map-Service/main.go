@@ -28,6 +28,7 @@ func main() {
 	app.PUT("/cell", cell.HandleUpdateCell)
 
 	app.GET("/generate-res-cluster", cluster.CreateCluster)
+	app.GET("/add-resource-grid", cluster.AddClustersGrid)
 
 	app.Logger.Fatal(app.Start(":5655"))
 }

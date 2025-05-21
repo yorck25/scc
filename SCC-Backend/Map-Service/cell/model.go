@@ -1,13 +1,18 @@
 package cell
 
-import "database/sql"
+import (
+	"database/sql"
+	"database/sql/driver"
+	"encoding/json"
+	"fmt"
+)
 
 type Resource int
 
 const (
-	oil   Resource = iota
-	iron           = iota
-	water          = iota
+	Oil   Resource = iota
+	Iron           = iota
+	Water          = iota
 )
 
 func (r Resource) ToString() string {
@@ -27,18 +32,31 @@ type Coordinate struct {
 	Y int `json:"y" db:"y"`
 }
 
+type AvailableGoods map[string]int
+
+func (a *AvailableGoods) Scan(value interface{}) error {
+	bytes, ok := value.([]byte)
+	if !ok {
+		return fmt.Errorf("failed to scan AvailableGoods: type assertion to []byte failed")
+	}
+	return json.Unmarshal(bytes, a)
+}
+
+func (a AvailableGoods) Value() (driver.Value, error) {
+	return json.Marshal(a)
+}
+
 type CellData struct {
 	ZoneType              string         `json:"zoneType" db:"zone_type"`
 	Population            int            `json:"population" db:"population"`
 	Pollution             int            `json:"pollution" db:"pollution"`
 	AvailableWorkers      int            `json:"availableWorkers" db:"available_workers"`
-	AvailableGoods        map[string]int `json:"availableGoods" db:"available_goods"`
+	AvailableGoods        AvailableGoods `json:"availableGoods" db:"available_goods"`
 	IsPowered             bool           `json:"isPowered" db:"is_powered"`
 	IsAdjacentToPowerline bool           `json:"isAdjacentToPowerline" db:"is_adjacent_to_powerline"`
 }
 
 type Cell struct {
-	CellId int `json:"cellId" db:"cell_id"`
 	Coordinate
 	CellData
 	BuildingId int `json:"buildingId" db:"building_id"`
@@ -46,7 +64,6 @@ type Cell struct {
 }
 
 type CellRequest struct {
-	CellId int `json:"cellId" db:"cell_id"`
 	Coordinate
 	CellData
 	BuildingId sql.NullInt64 `json:"buildingId" db:"building_id"`
@@ -54,7 +71,6 @@ type CellRequest struct {
 }
 
 type UpdateCellRequest struct {
-	CellId int `json:"cellId" db:"cell_id"`
 	Coordinate
 	CellData
 	BuildingId int `json:"buildingId" db:"building_id"`

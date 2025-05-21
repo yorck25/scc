@@ -290,18 +290,16 @@ CREATE TABLE grid.cells
     x                        INT NOT NULL,
     y                        INT NOT NULL,
     city_id                  INT,
-    owner_id                 INT,
     building_id              INT,
     zone_type                VARCHAR(50),
     population               INT     DEFAULT 0,
     pollution                INT     DEFAULT 0,
     available_workers        INT     DEFAULT 0,
-    available_goods          INT     DEFAULT 0,
+    available_goods          jsonb DEFAULT '{}'::jsonb,
     is_powered               BOOLEAN DEFAULT FALSE,
     is_adjacent_to_powerline BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (x, y, city_id),
     FOREIGN KEY (city_id) REFERENCES game.city (city_id),
-    FOREIGN KEY (owner_id) REFERENCES game.player (id),
     FOREIGN KEY (building_id) REFERENCES game.buildings (id)
 );
 
@@ -383,6 +381,7 @@ VALUES ('test game 1', 'test1234', 1);
 
 INSERT INTO game.city (name, game_id, owner_id)
 VALUES ('test city 1', 1, 1);
+
 INSERT INTO grid.grid (city_id, height, width, updated_at)
 VALUES (1, 10, 10, now());
 

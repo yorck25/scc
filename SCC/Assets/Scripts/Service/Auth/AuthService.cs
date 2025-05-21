@@ -14,7 +14,7 @@ namespace Service.Auth
         private AuthToken _authToken;
         private GameToken _gameToken;
         private WebSocketClient _webSocketClient;
-        private const string BaseUrl = GameConfig.BaseUrl;
+        private const string BaseUrl = GameConfig.GameServiceBaseUrl;
 
         private void Awake()
         {

@@ -21,15 +21,10 @@ func HandleGetGridForCity(ctx *core.WebContext) error {
 		return ctx.Unauthorized(err.Error())
 	}
 
-	cityIdString := ctx.Request().Header.Get("cityId")
+	cityId, err := strconv.Atoi(ctx.Request().Header.Get("cityId"))
 
-	if cityIdString == "" {
-		return ctx.BadRequest("Missing cityId parameter")
-	}
-
-	cityId, err := strconv.Atoi(cityIdString)
 	if err != nil {
-		return ctx.InternalError(err.Error())
+		return ctx.BadRequest("Missing cityId parameter or cityId is not a number")
 	}
 
 	grid, err := repo.GetGridForCity(cityId)
