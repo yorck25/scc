@@ -41,6 +41,7 @@ namespace Ui
         private GameService _gameService;
         private CityService _cityService;
         private GridService _gridService;
+        private CellService _cellService;
 
         private void Awake()
         {
@@ -52,20 +53,21 @@ namespace Ui
             {
                 Destroy(gameObject);
             }
+            
+            _gameService = GameService.Instance;
+            _cityService = CityService.Instance;
+            _gridService = GridService.Instance;
+            _cellService = CellService.Instance;
 
             HideAllCanvases();
         }
 
         private void Start()
         {
-            _gameService = GameService.Instance;
-            _cityService = CityService.Instance;
-            _gridService = GridService.Instance;
-            leaveButton.onClick.AddListener(() => OnLeaveButtonClick());
+            leaveButton.onClick.AddListener(async () => await OnLeaveButtonClick());
             toggleBuildModeButton.onClick.AddListener(() => OnToggleBuildButtonClick());
-            openCreateCityButton.onClick.AddListener(() => OnOpenCreateCityMenu());
-
-            submitCreateGameButton.onClick.AddListener(() => OnCreateCitySubmit());
+            openCreateCityButton.onClick.AddListener(async () => await OnOpenCreateCityMenu());
+            submitCreateGameButton.onClick.AddListener(async () => await OnCreateCitySubmit());
         }
 
         private void Update()
@@ -86,7 +88,7 @@ namespace Ui
             _gameService.ToggleBuildMode();
         }
 
-        private async void OnLeaveButtonClick()
+        private async Task OnLeaveButtonClick()
         {
             if (await _gameService.LeaveGame())
             {
@@ -95,20 +97,29 @@ namespace Ui
             }
         }
 
-        private void OnOpenCreateCityMenu()
+        private async Task OnOpenCreateCityMenu()
         {
-            ChangeDisplayedCanvas(InGameUiElement.CreateCity);
+            await ChangeDisplayedCanvas(InGameUiElement.CreateCity);
         }
 
-        private async void OnCreateCitySubmit()
+        private async Task OnCreateCitySubmit()
         {
             var cityName = createCityNameInput.text;
 
             if (await _cityService.CreateCity(cityName))
             {
+                if (!await _gridService.CreateGrid(_cityService.CurrentCity.cityId))
+                {
+                    return;
+                }
+                
+                if (await _cellService.AddResourceToGrid(_cityService.CurrentCity.cityId))
+                {
+                    GridSystem.Instance.RenderLoadedGrid(_gridService.CurrentGrid);
+                }
+                
                 createCityNameInput.text = "";
-                ChangeDisplayedCanvas(InGameUiElement.GamePlay);
-                _gridService.CreateGrid(_cityService.CurrentCity.cityId);
+                await ChangeDisplayedCanvas(InGameUiElement.GamePlay);
             }
         }
 
@@ -143,7 +154,7 @@ namespace Ui
             RenderCityList();
         }
 
-        public void RenderCityList()
+        private void RenderCityList()
         {
             ClearItemList();
             RenderItems(_cityService.CityList);
@@ -191,7 +202,7 @@ namespace Ui
             }
         }
 
-        public void ChangeDisplayedCanvas(InGameUiElement uiElement)
+        public async Task ChangeDisplayedCanvas(InGameUiElement uiElement)
         {
             HideAllCanvases();
 
@@ -204,7 +215,7 @@ namespace Ui
                     createCityCanvas.SetActive(true);
                     break;
                 case InGameUiElement.CityList:
-                    ShowCityListCanvas();
+                    await ShowCityListCanvas();
                     break;
             }
         }

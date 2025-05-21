@@ -7,15 +7,7 @@ using UnityEngine.Networking;
 
 namespace Service
 {
-    [Serializable]
-    public class Cell
-    {
-        public int cellId;
-        public int x;
-        public int y;
-        public int buildingId;
-        public int cityId;
-    }
+
 
     [Serializable]
     public class Grid : Cell
@@ -35,17 +27,12 @@ namespace Service
         public int width;
     }
 
-    [Serializable]
-    public class CellListWrapper
-    {
-        public List<Cell> cells;
-    }
-
     public class GridService : MonoBehaviour
     {
         public static GridService Instance { get; private set; }
         public Grid CurrentGrid;
-        private const string BaseUrl = GameConfig.BaseUrl;
+        private const string BaseUrl = GameConfig.MapServiceBaseUrl;
+        private CellService _cellService;
 
         private void Awake()
         {
@@ -58,6 +45,8 @@ namespace Service
             {
                 Destroy(gameObject);
             }
+            
+            _cellService = CellService.Instance;
         }
 
         public async Task<bool> LoadGrid(int cityId)
@@ -89,7 +78,7 @@ namespace Service
             }
         }
 
-        public async void CreateGrid(int cityId)
+        public async Task<bool> CreateGrid(int cityId)
         {
             var cgr = new CreateGridRequest
             {
@@ -111,46 +100,18 @@ namespace Service
             if (request.result != UnityWebRequest.Result.Success)
             {
                 Debug.Log("Fail to create new grid");
-                return;
+                return false;
             }
 
             try
             {
                 CurrentGrid = JsonUtility.FromJson<Grid>(request.downloadHandler.text);
-                Debug.Log(CurrentGrid);
-                LoadCells(cityId);
+                return true;
             }
             catch (Exception ex)
             {
                 Debug.LogError($"Failed to parse grid data: {ex.Message}");
-            }
-        }
-
-        public async void LoadCells(int cityId)
-        {
-            var request = UnityWebRequest.Get(BaseUrl + "/grid/cells").AddGameAuth();
-            request.SetRequestHeader("cityId", cityId.ToString());
-            request.SendWebRequest();
-
-            while (!request.isDone)
-            {
-                await Task.Yield();
-            }
-
-            if (request.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log("Fail to load grid");
-                return;
-            }
-
-            try
-            {
-                var cellWrapper = JsonUtility.FromJson<CellListWrapper>("{\"cells\":" + request.downloadHandler.text + "}");                Debug.Log(cellWrapper);
-                CurrentGrid.cells = cellWrapper.cells;
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"Failed to parse grid data: {ex.Message}");
+                return false;
             }
         }
 
@@ -186,7 +147,7 @@ namespace Service
             try
             {
                 //Todo: add that cell object gets retruned after update
-                LoadCells(CurrentGrid.gridCityId);
+                _cellService.LoadCells(CurrentGrid.gridCityId);
             }
             catch (Exception ex)
             {

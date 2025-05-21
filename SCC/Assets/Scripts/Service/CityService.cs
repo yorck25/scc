@@ -34,7 +34,7 @@ namespace Service
         public City CurrentCity;
         public List<City> CityList = new();
 
-        private const string BaseUrl = GameConfig.BaseUrl;
+        private const string BaseUrl = GameConfig.GameServiceBaseUrl;
         private GameService _gameService => GameService.Instance;
 
         private void Awake()

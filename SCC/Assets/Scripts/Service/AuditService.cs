@@ -19,7 +19,7 @@ namespace Service
     {
         public static AuditService Instance { get; private set; }
 
-        private const string BaseUrl = GameConfig.BaseUrl;
+        private const string BaseUrl = GameConfig.GameServiceBaseUrl;
 
         private void Awake()
         {

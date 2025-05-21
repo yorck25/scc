@@ -22,7 +22,7 @@ public class Player
 
 public class PlayerService : MonoBehaviour
 {
-    private const string BaseUrl = GameConfig.BaseUrl;
+    private const string BaseUrl = GameConfig.GameServiceBaseUrl;
 
     private Player _player = new Player();
     

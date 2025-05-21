@@ -1,0 +1,89 @@
+package core
+
+import (
+	"errors"
+	"github.com/jmoiron/sqlx"
+	"github.com/labstack/echo/v4"
+	"net/http"
+)
+
+type WebContext struct {
+	echo.Context
+	*AppContext
+}
+
+type Context interface {
+	GetDb() *sqlx.DB
+	GetConfig() *Config
+}
+
+type AppContext struct {
+	config *Config
+	db     *sqlx.DB
+}
+
+func (ac *AppContext) GetDb() *sqlx.DB {
+	return ac.db
+}
+
+func (ac *AppContext) GetConfig() *Config {
+	return ac.config
+}
+
+func CreateCtx(ctx *AppContext) echo.MiddlewareFunc {
+	return func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			cc := &WebContext{Context: c, AppContext: ctx}
+			return next(cc)
+		}
+	}
+}
+
+func (c *WebContext) GetAuthToken() (string, error) {
+	authToken := c.Request().Header.Get("authToken")
+
+	if authToken == "" {
+		return "", errors.New("no auth Token")
+	}
+
+	return authToken, nil
+}
+
+func (c *WebContext) GetGameToken() (string, error) {
+	gameToken := c.Request().Header.Get("gameToken")
+
+	if gameToken == "" {
+		return "", errors.New("no game Token")
+	}
+
+	return gameToken, nil
+}
+
+func (c *WebContext) Success(data ...interface{}) error {
+
+	if data != nil {
+		return c.JSON(http.StatusOK, data[0])
+	}
+
+	return c.NoContent(http.StatusOK)
+}
+
+func (c *WebContext) InternalError(msg string) error {
+	return c.JSON(http.StatusInternalServerError, msg)
+}
+
+func (c *WebContext) Forbidden(msg string) error {
+	return c.JSON(http.StatusForbidden, msg)
+}
+
+func (c *WebContext) Unauthorized(msg string) error {
+	return c.JSON(http.StatusUnauthorized, msg)
+}
+
+func (c *WebContext) BadRequest(msg string) error {
+	return c.JSON(http.StatusBadRequest, msg)
+}
+
+func (c *WebContext) NotFound(msg string) error {
+	return c.JSON(http.StatusNotFound, msg)
+}

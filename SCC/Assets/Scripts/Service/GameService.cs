@@ -43,7 +43,7 @@ namespace Service
         public Game CurrentGame;
         public bool IsInGame;
         public bool IsBuildModeActive;
-        private const string BaseUrl = GameConfig.BaseUrl;
+        private const string BaseUrl = GameConfig.GameServiceBaseUrl;
         private AuthService _authService;
 
         private void Awake()
